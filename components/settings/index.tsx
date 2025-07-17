@@ -51,16 +51,28 @@ export default function SettingsIndex({user}: {
       }),
   })
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: {
+    username?: string
+    daily_target?: number
+    current_password?: string
+    new_password?: string
+    new_password_confirm?: string
+  }) => {
     setIsSubmitting(true);
     setError("");
     setSuccess("");
     
     try {
       // Only include password fields if password is being changed
-      const updateData: any = {
+      const updateData: {
+        username?: string
+        daily_target?: number
+        current_password?: string
+        new_password?: string
+        new_password_confirm?: string
+      } = {
         username: values.username,
-        daily_target: values.daily_target >= 5 ? values.daily_target : 0
+        daily_target: values.daily_target && values.daily_target >= 5 ? values.daily_target : 0
       };
       
       if (values.current_password && values.new_password && values.new_password_confirm) {
@@ -107,6 +119,7 @@ export default function SettingsIndex({user}: {
         }
       }
     } catch (err) {
+      console.log(err)
       setError("Network error. Please check your connection.");
     } finally {
       setIsSubmitting(false);

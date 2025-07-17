@@ -1,5 +1,5 @@
 'use client'
-import { Form, Formik, useFormik } from "formik";
+import { Form, Formik } from "formik";
 import InputField from "../form/inputField";
 import ButtonPrimary from "../form/buttonPrimary";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -15,13 +15,13 @@ export default function Login() {
     if (session?.error === "RefreshAccessTokenError") {
       signOut({ callbackUrl: "/login" });
     }
-  }, [session]);
+  }, [session?.error]);
 
   useEffect(() => {
     if (status === "authenticated" && !session?.error) {
       router.push("/");
     }
-  }, [status, router]);
+  }, [status, router, session?.error]);
 
   if (status === "loading" || status === "authenticated") {
     return <div>Loading...</div>;
@@ -40,7 +40,7 @@ export default function Login() {
           <InputField label="Username" name="username" type="text" error={props.errors.username}/>
           <InputField label="Password" name="password" type="password" error={props.errors.password}/>
           <ButtonPrimary type="submit" label="Sign In" handleClick={() => {}} />
-          <p>Don't have an account? <Link href="/register">Register</Link></p>
+          <p>Don&apos;t have an account? <Link href="/register">Register</Link></p>
         </Form>
       )}
     </Formik>

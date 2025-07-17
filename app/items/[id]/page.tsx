@@ -1,10 +1,9 @@
 import { auth } from "@/auth";
 import SessionDetail, { PracticeItem } from "@/components/practice/detailView";
 import Login from "@/components/shared/login";
-import { components } from "@/types/api";
 
 
-export default async function PracticeItemPage({ params }: { params: { id: string } }) {
+export default async function PracticeItemPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
   const { id } = await params
 

@@ -20,15 +20,6 @@ useEffect(() => {
   }
 }, []);
 
-  const getDateArray = (): DateTime[] => {
-    let arr = new Array(364).fill(null);
-    let today = DateTime.now().startOf('day');
-
-    for (let i = 0; i < arr.length; i ++) {
-      arr[i] = today.minus({days: 365 - i - 2});
-    }
-    return arr;
-  }
 
   return (
     <div className="shadow m-4 rounded p-4 flex flex-col bg-white">

@@ -1,4 +1,4 @@
-import { Field, FormikErrors } from "formik";
+import { Field } from "formik";
 
 export default function InputField({
   label,

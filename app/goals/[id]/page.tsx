@@ -1,12 +1,11 @@
 import { auth } from "@/auth";
 import GoalDetail from "@/components/goals/detailView";
-import SessionDetail from "@/components/practice/detailView";
 import Login from "@/components/shared/login";
 import { components } from "@/types/api";
 
 type Goal = components["schemas"]["Goal"]
 
-export default async function GoalDetailPage({ params }: { params: { id: string } }) {
+export default async function GoalDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
   const { id } = await params
 

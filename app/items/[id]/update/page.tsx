@@ -4,7 +4,7 @@ import { PracticeItem } from "@/components/practice/detailView";
 import Login from "@/components/shared/login";
 
 
-export default async function PracticeItemUpdatePage({ params }: { params: { id: string } }) {
+export default async function PracticeItemUpdatePage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
   const { id } = await params
 
@@ -27,7 +27,9 @@ export default async function PracticeItemUpdatePage({ params }: { params: { id:
     throw new Error("Failed to load session");
   }
 
+
   const data: PracticeItem = await res.json();
 
-  return <CreateSession mode={"update"} session={session} practiceItem={data} />;
+  return <CreateSession mode={"update"} session={session}     practiceItem={{ ...data, tags: data.tags ?? [] }}
+  />;
 }

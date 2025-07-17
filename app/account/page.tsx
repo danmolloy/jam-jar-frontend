@@ -24,7 +24,9 @@ const ProductDisplay = ({ onCheckout, loading }: { onCheckout: () => void, loadi
   </section>
 );
 
-const SuccessDisplay = ({ sessionId }: any) => (
+const SuccessDisplay = ({ sessionId }: {
+  sessionId: string
+}) => (
   <section>
     <div className="product Box-root">
       <div className="description Box-root">
@@ -45,7 +47,9 @@ const SuccessDisplay = ({ sessionId }: any) => (
   </section>
 );
 
-const Message = ({ message }: any) => (
+const Message = ({ message }: {
+  message: string
+}) => (
   <section>
     <p>{message}</p>
   </section>
@@ -56,7 +60,7 @@ export default function Premium() {
   const [success, setSuccess] = useState(false);
   const [sessionId, setSessionId] = useState('');
   const [loading, setLoading] = useState(false);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   // Check for session_id in URL and confirm subscription
   useEffect(() => {
@@ -115,6 +119,7 @@ export default function Premium() {
         setMessage(data.error || "Failed to create checkout session.");
       }
     } catch (err) {
+      console.log(err)
       setMessage("Network error. Please try again.");
     } finally {
       setLoading(false);

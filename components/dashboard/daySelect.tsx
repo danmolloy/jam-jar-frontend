@@ -3,7 +3,6 @@ import { DateTime } from "luxon"
 import { useState } from "react"
 import { PracticeItem } from "../practice/detailView";
 import { FaAngleLeft, FaAngleRight, FaRegCalendar } from "react-icons/fa";
-import { FaLeftLong } from "react-icons/fa6";
 import WeekBarChart from "./barChart";
 import { components } from "@/types/api";
 
@@ -19,7 +18,7 @@ export default function DaySelect({practiceItems, selectedActivity, dailyTarget=
   const [selectedWeek, setSelectedWeek] = useState(DateTime.now().startOf('week'))
 
   const getWeekArray = (): DateTime[] => {
-    let arr = new Array(7).fill(null);
+    const arr = new Array(7).fill(null);
 
     for (let i = 0; i < arr.length; i ++) {
       arr[i] = selectedWeek.plus({days: i});

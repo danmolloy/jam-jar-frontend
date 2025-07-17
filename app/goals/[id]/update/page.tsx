@@ -5,7 +5,7 @@ import { components } from "@/types/api";
 
 export type Goal = components["schemas"]["Goal"]
 
-export default async function GoalUpdatePage({ params }: { params: { id: string } }) {
+export default async function GoalUpdatePage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
   const { id } = await params
 

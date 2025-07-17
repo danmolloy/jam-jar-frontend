@@ -1,5 +1,3 @@
-import { IoIosMenu } from "react-icons/io";
-import FlyoutMenu from "./externalMenu";
 import { auth } from "@/auth";
 import SessionMenu from "./sessionMenu";
 import ExternalMenu from "./externalMenu";

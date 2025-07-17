@@ -1,13 +1,9 @@
 'use client'
 import { Field, Formik } from "formik"
 import { Session } from "next-auth";
-import { components, paths } from "@/types/api";
 import { Goal } from "@/app/goals/[id]/update/page";
 import InputField from "../form/inputField";
 import ButtonPrimary from "../form/buttonPrimary";
-
-//type Goal = components["schemas"]["Goal"]
-type CreateGoalPayload = paths["/api/goals/"]["post"]["requestBody"]["content"]["application/json"];
 
 
 export default function CreateGoal({
@@ -93,7 +89,7 @@ try {
       <h1>Create Goal</h1>
       <Formik
       initialValues={initialVals}
-        onSubmit={async (values, actions) => {
+        onSubmit={async (values) => {
           handleSubmit(values)
         }}
         //validationSchema={{}}

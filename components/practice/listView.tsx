@@ -1,4 +1,3 @@
-import { components } from "@/types/api"
 import Link from "next/link"
 import { PracticeItem } from "./detailView"
 

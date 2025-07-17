@@ -2,9 +2,7 @@
 import { Session } from "next-auth"
 import HeatMap from "../practice/heatMap"
 import DaySelect from "./daySelect"
-import RecentActivity from "./recentActivity"
 import StreakIndex from "./streak"
-import AchievementsList from "./achievements"
 import AddPracticeBtn from "./addPracticeBtn"
 import { useEffect, useState } from "react"
 import ActivityFilter from "./activityFilter"
@@ -45,6 +43,7 @@ const [data, setData] = useState<UserData|null>(null)
         const result = await res.json()
         setData(result)
       } catch (err) {
+        console.log(err)
         setError("Failed to fetch user data")
       } finally {
         setLoading(false)

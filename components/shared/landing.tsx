@@ -10,7 +10,7 @@ export default function LandingPage() {
       </div>
       <div className="pb-36">
         <h2>about</h2>
-        <p>Jam Jar is your personal practice companion. Whether you're a student, teacher or flying solo, Jam Jar helps you stay motivated, track your progress, and reflect on your journey through sound and stats.</p>
+        <p>Jam Jar is your personal practice companion. Whether you&apos;re a student, teacher or flying solo, Jam Jar helps you stay motivated, track your progress, and reflect on your journey through sound and stats.</p>
       </div>
       <div className="pb-36">
         <h2>features</h2>

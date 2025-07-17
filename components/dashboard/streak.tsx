@@ -25,7 +25,7 @@ export default function StreakIndex({practiceItems}: {
   const dateSet = new Set(practiceItems.map(i => DateTime.fromISO(i.date).toISODate()));
   let maxStreak = 0;
 
-  for (let isoDate of dateSet) {
+  for (const isoDate of dateSet) {
     const date = DateTime.fromISO(isoDate!);
 
     // Only start counting if the previous day is NOT in the set

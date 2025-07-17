@@ -1,5 +1,5 @@
 'use client'
-import { Form, Formik, useFormik } from "formik";
+import { Form, Formik } from "formik";
 import InputField from "../form/inputField";
 import ButtonPrimary from "../form/buttonPrimary";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -38,19 +38,26 @@ export default function Register() {
     if (session?.error === "RefreshAccessTokenError") {
       signOut({ callbackUrl: "/register" });
     }
-  }, [session]);
+  }, [session?.error]);
 
   useEffect(() => {
     if (status === "authenticated" && !session?.error) {
       router.push("/");
     }
-  }, [status, router]);
+  }, [status, router, session?.error]);
 
   if (status === "loading" || status === "authenticated") {
     return <div>Loading...</div>;
   }
 
-  const handleRegister = async (values: any) => {
+  const handleRegister = async (values: {
+     username: string 
+        password: string
+        password_confirm: string
+        email: string
+        first_name: string
+        last_name: string
+  }) => {
     setIsSubmitting(true);
     setError("");
     
@@ -90,6 +97,7 @@ export default function Register() {
         }
       }
     } catch (err) {
+      console.log(err)
       setError("Network error. Please check your connection.");
     } finally {
       setIsSubmitting(false);

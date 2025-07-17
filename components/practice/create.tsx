@@ -1,10 +1,8 @@
 'use client'
-import { components } from "@/types/api";
 import { Field, FieldArray, Formik } from "formik";
 import { Session } from "next-auth";
 import InputField from "../form/inputField";
 import ButtonPrimary from "../form/buttonPrimary";
-import ButtonSecondary from "../form/buttonSecondary";
 import { PracticeItem } from "./detailView";
 import { useRouter } from "next/navigation";
 
@@ -20,7 +18,7 @@ export default function CreateSession({
 }) {
   const router = useRouter();
 
-  let initialVals = mode === "create" ? {
+  const initialVals = mode === "create" ? {
     activity: "",
     notes: "",
     duration: 0,
@@ -86,7 +84,7 @@ try {
       <h1>Add Session</h1>
       <Formik 
         initialValues={initialVals}
-        onSubmit={async (values, actions) => {
+        onSubmit={async (values) => {
           await handleCreate(values);
         }}
         //validationSchema={{}}

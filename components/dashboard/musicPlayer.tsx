@@ -1,13 +1,11 @@
 import { components } from "@/types/api";
-import { useRef, useState } from "react"
-import { FaPlay, FaPause } from "react-icons/fa6";
+import { useRef } from "react"
 
 type Recording = components["schemas"]["AudioRecording"]
 
 export default function MusicPlayer({recording}: {
   recording: Recording
 }) {
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   
 

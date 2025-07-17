@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Barriecito } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import { auth } from '@/auth';
 import SessionProviderWrapper from '@/components/SessionProviderWrapper';
 
 const geistSans = Geist({
