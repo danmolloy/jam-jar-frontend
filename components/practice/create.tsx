@@ -31,8 +31,6 @@ export default function CreateSession({
     duration: practiceItem!.duration ? practiceItem!.duration : 0,
     tags: practiceItem!.tags ? practiceItem!.tags : [""],
     rating: practiceItem!.rating ? practiceItem!.rating : 3,
-    
-    
   }
 
   const handleCreate = async (values: {
@@ -95,7 +93,6 @@ try {
 
             <InputField label="Notes" type="text" name="notes" error={props.errors.notes} />
             
-            <InputField error={props.errors.rating} label="Rating" name={`rating`} type="number" min={0} max={5}/>
             <InputField 
                     error={props.errors.duration}
                     label="Duration"

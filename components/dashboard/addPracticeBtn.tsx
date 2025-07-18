@@ -20,6 +20,9 @@ export default function AddPracticeBtn() {
     <Link href={"/audio/create"} className="p-2 hover:text-blue-500">
       Recording
     </Link>
+    <Link href={"/diary/create"} className="p-2 hover:text-blue-500">
+        Diary Entry
+    </Link>
       </div>}
     </div>
   )

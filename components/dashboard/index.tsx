@@ -77,7 +77,7 @@ const [data, setData] = useState<UserData|null>(null)
       <TagFilter selectedTag={selectedTag} setSelectedTag={(tag) => setSelectedTag(tag)}   tags={data.practice_items.map(i => i.tags).flat().filter((t): t is string => typeof t === "string")}
       />
       </div>
-      <DaySelect recordings={data.recordings} dailyTarget={data.daily_target} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
+      <DaySelect diaryEntries={data.diary_entries} recordings={data.recordings} dailyTarget={data.daily_target} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
       
       <HeatMap selectedActivity={selectedActivity} practiceItems={filteredPracticeItems} />
       <StreakIndex practiceItems={filteredPracticeItems}/>

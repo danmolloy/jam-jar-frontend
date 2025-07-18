@@ -4,6 +4,38 @@
  */
 
 export interface paths {
+    "/api/diary-entries/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["api_diary_entries_list"];
+        put?: never;
+        post: operations["api_diary_entries_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/diary-entries/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["api_diary_entries_retrieve"];
+        put: operations["api_diary_entries_update"];
+        post?: never;
+        delete: operations["api_diary_entries_destroy"];
+        options?: never;
+        head?: never;
+        patch: operations["api_diary_entries_partial_update"];
+        trace?: never;
+    };
     "/api/goals/": {
         parameters: {
             query?: never;
@@ -243,6 +275,38 @@ export interface paths {
         patch: operations["api_users_partial_update"];
         trace?: never;
     };
+    "/diary-entries/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["diary_entries_list"];
+        put?: never;
+        post: operations["diary_entries_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/diary-entries/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["diary_entries_retrieve"];
+        put: operations["diary_entries_update"];
+        post?: never;
+        delete: operations["diary_entries_destroy"];
+        options?: never;
+        head?: never;
+        patch: operations["diary_entries_partial_update"];
+        trace?: never;
+    };
     "/goals/": {
         parameters: {
             query?: never;
@@ -419,6 +483,16 @@ export interface components {
          * @enum {string}
          */
         CategoryEnum: "streak" | "time" | "sessions";
+        DiaryEntry: {
+            /** Format: date */
+            readonly date: string;
+            title: string;
+            body: string;
+            readonly id: number;
+            /** Format: date-time */
+            readonly created_at: string;
+            readonly author: number;
+        };
         Goal: {
             readonly id: number;
             category?: components["schemas"]["CategoryEnum"];
@@ -435,6 +509,16 @@ export interface components {
             assigned_by?: number | null;
             /** Format: date */
             readonly creation_date: string;
+        };
+        PatchedDiaryEntry: {
+            /** Format: date */
+            readonly date?: string;
+            title?: string;
+            body?: string;
+            readonly id?: number;
+            /** Format: date-time */
+            readonly created_at?: string;
+            readonly author?: number;
         };
         PatchedGoal: {
             readonly id?: number;
@@ -518,6 +602,8 @@ export interface components {
             timezone?: string;
             daily_target?: number;
             subscription_id?: string | null;
+            subscription_status?: string | null;
+            readonly diary_entries: components["schemas"]["DiaryEntry"][];
             readonly practice_items: components["schemas"]["PracticeItem"][];
             readonly full_achievements: string;
             readonly goals: components["schemas"]["Goal"][];
@@ -562,6 +648,149 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    api_diary_entries_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"][];
+                };
+            };
+        };
+    };
+    api_diary_entries_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DiaryEntry"];
+                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
+                "multipart/form-data": components["schemas"]["DiaryEntry"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
+    api_diary_entries_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
+    api_diary_entries_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DiaryEntry"];
+                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
+                "multipart/form-data": components["schemas"]["DiaryEntry"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
+    api_diary_entries_destroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    api_diary_entries_partial_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["PatchedDiaryEntry"];
+                "application/x-www-form-urlencoded": components["schemas"]["PatchedDiaryEntry"];
+                "multipart/form-data": components["schemas"]["PatchedDiaryEntry"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
     api_goals_list: {
         parameters: {
             query?: never;
@@ -1167,6 +1396,149 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["UserUpdate"];
+                };
+            };
+        };
+    };
+    diary_entries_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"][];
+                };
+            };
+        };
+    };
+    diary_entries_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DiaryEntry"];
+                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
+                "multipart/form-data": components["schemas"]["DiaryEntry"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
+    diary_entries_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
+    diary_entries_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DiaryEntry"];
+                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
+                "multipart/form-data": components["schemas"]["DiaryEntry"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
+                };
+            };
+        };
+    };
+    diary_entries_destroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    diary_entries_partial_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A unique integer value identifying this diary entry. */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["PatchedDiaryEntry"];
+                "application/x-www-form-urlencoded": components["schemas"]["PatchedDiaryEntry"];
+                "multipart/form-data": components["schemas"]["PatchedDiaryEntry"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DiaryEntry"];
                 };
             };
         };

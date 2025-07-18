@@ -5,14 +5,17 @@ import { PracticeItem } from "../practice/detailView";
 import { FaAngleLeft, FaAngleRight, FaRegCalendar } from "react-icons/fa";
 import WeekBarChart from "./barChart";
 import { components } from "@/types/api";
+import DiaryEntry from "./diaryEntry";
 
 type Recording = components["schemas"]["AudioRecording"]
+type DiaryEntry = components["schemas"]["DiaryEntry"]
 
-export default function DaySelect({practiceItems, selectedActivity, dailyTarget=0, recordings}: {
+export default function DaySelect({practiceItems, selectedActivity, dailyTarget=0, recordings, diaryEntries}: {
   recordings: Recording[]
   practiceItems: PracticeItem[]
   selectedActivity: string
   dailyTarget: number | undefined
+  diaryEntries: DiaryEntry[]
 }) {
   const [selectedDay, setSelectedDay] = useState(DateTime.now().startOf('day'));
   const [selectedWeek, setSelectedWeek] = useState(DateTime.now().startOf('week'))
@@ -39,6 +42,10 @@ export default function DaySelect({practiceItems, selectedActivity, dailyTarget=
 
 const dayRecordings = (day: DateTime) =>
   recordings.filter(i => DateTime.fromISO(i.date).hasSame(day, "day"));
+
+const dayDiaryEntries = (day: DateTime) =>
+  diaryEntries.filter(i => DateTime.fromISO(i.date).hasSame(day, "day"));
+
 
 const totalItemsForDay = (day: DateTime) =>
   practiceItems
@@ -195,6 +202,11 @@ const progressPercent = (day: DateTime) =>
             <p>{j.title}</p>
           </div>
         ))}
+    </div>
+    <div>
+      {dayDiaryEntries(selectedDay).map(entry => (
+        <DiaryEntry key={entry.id} diaryEntry={entry} />
+      ))}
     </div>
     </div>
     <div>

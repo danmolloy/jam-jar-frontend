@@ -1,15 +1,18 @@
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className=" flex flex-col items-center justify-center bg-white font-mono p-4">
-  <p>© 2025 Jam Jar. All rights reserved.</p>
-  <p>Jam Jar is a digital practice journal for musicians.</p>
-  <p>Operated by Daniel Molloy, Sole Trader, UK</p>
-  <p>
-    <a href="/privacy">Privacy Policy</a> •
-    <a href="/terms">Terms of Service</a>
-  </p>
-  <p>Contact: <a href="mailto:support@jamjarmusic.com">support@jamjarmusic.com</a></p>
+    <footer className=" text-sm flex flex-col items-start justify-start w-full  bg-white font-mono text-gray-600 p-4">
+  <div className="flex flex-row justify-between  w-full my-4">
+    <Link href="/privacy" className="hover:underline">Privacy Policy</Link> 
+    <Link href="/terms" className="hover:underline">Terms of Service</Link>
+    <Link href="/contact" className="hover:underline">Contact</Link>
+  </div>
+  <div className="flex flex-row justify-between w-full">
+    <p>Operated by Daniel Molloy, Sole Trader, UK</p>
+    <p>© 2025 Jam Jar. All rights reserved.</p>
+
+  </div>
 </footer>
   )
 }
