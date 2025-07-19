@@ -9,6 +9,7 @@ import ActivityFilter from "./activityFilter"
 import { components } from "@/types/api"
 import TagFilter from "./tagFilter"
 import RecordingsTable from "./recordings"
+import Link from "next/link"
 
 type UserData = components["schemas"]["User"]
 
@@ -77,10 +78,21 @@ const [data, setData] = useState<UserData|null>(null)
       <TagFilter selectedTag={selectedTag} setSelectedTag={(tag) => setSelectedTag(tag)}   tags={data.practice_items.map(i => i.tags).flat().filter((t): t is string => typeof t === "string")}
       />
       </div>
+      <div className="relative flex flex-col">
+               
+      { (selectedActivity !== "" || selectedTag !== "") && data.subscription_status !== "active" 
+      &&  <div className={`z-10 absolute backdrop-blur-xs right-4 left-4 top-4 bottom-4`}>
+        <div className="text-center mt-24 mx-8 shadow bg-white">
+          <p className="font-bold text-xl">Filters are available for Premium users only.</p>
+          <Link href="/account" className="my-4 hover:underline text-blue-500">Get Premium</Link>
+        </div>
+        </div>}
+      
       <DaySelect diaryEntries={data.diary_entries} recordings={data.recordings} dailyTarget={data.daily_target} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
       
       <HeatMap selectedActivity={selectedActivity} practiceItems={filteredPracticeItems} />
       <StreakIndex practiceItems={filteredPracticeItems}/>
+     </div>
       <RecordingsTable recordings={data.recordings} />   
      </div>
   )

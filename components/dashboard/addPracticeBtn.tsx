@@ -8,11 +8,11 @@ export default function AddPracticeBtn() {
   const [showMenu, setShowMenu] = useState(false)
   
   return (
-    <div className="relative ">
+    <div className="relative z-10">
       <button onClick={() => setShowMenu(!showMenu)} className="shadow hover:cursor-pointer p-2 bg-white text-black mt-1 hover:text-blue-500 font-mono flex flex-row items-center justify-center">
         <p className="mr-1">New</p><IoMdAdd />
       </button>
-      {showMenu &&<div className="absolute  flex flex-col bg-white shadow right-0">
+      {showMenu &&<div className="absolute  flex flex-col bg-white shadow right-0 w-32">
 
     <Link href={"/items/create"} className="p-2 hover:text-blue-500">
       Practice
