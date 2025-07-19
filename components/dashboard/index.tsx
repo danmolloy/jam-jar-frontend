@@ -71,7 +71,7 @@ const [data, setData] = useState<UserData|null>(null)
     <div className="flex flex-col p-4">
       <div className="flex flex-row justify-between items-center p-4 font-medium">
           <h1>Practice Overview{selectedActivity !== "" && ` - ${selectedActivity}`}</h1>
-        <AddPracticeBtn />
+        <AddPracticeBtn subscriptionStatus={data.subscription_status}/>
       </div>
       <div>
       <ActivityFilter selectedActivity={selectedActivity} setSelectedActivity={(a) => setSelectedActivity(a)} activities={data.practice_items.map((i) => i.activity)} />
@@ -81,8 +81,8 @@ const [data, setData] = useState<UserData|null>(null)
       <div className="relative flex flex-col">
                
       { (selectedActivity !== "" || selectedTag !== "") && data.subscription_status !== "active" 
-      &&  <div className={`z-10 absolute backdrop-blur-xs right-4 left-4 top-4 bottom-4`}>
-        <div className="text-center mt-24 mx-8 shadow bg-white">
+      &&  <div className={`z-10 absolute flex flex-col items-center  backdrop-blur-xs right-4 left-4 top-4 bottom-4`}>
+        <div className="text-center mt-24 mx-8 shadow bg-white border max-w-[300px] ">
           <p className="font-bold text-xl">Filters are available for Premium users only.</p>
           <Link href="/account" className="my-4 hover:underline text-blue-500">Get Premium</Link>
         </div>
