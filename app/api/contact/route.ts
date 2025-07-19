@@ -30,10 +30,11 @@ SgMail.setApiKey(process.env.SENDGRID_API_KEY);
 try {
     const data = await SgMail.send(emailData);
     return NextResponse.json({ ...data, success: true }, { status: 201 });
-  } catch (e: any) {
-    console.log(e)
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred';
+    console.log(e);
     return NextResponse.json(
-      { error: e.message || 'An unexpected error occurred', success: false },
+      { error: errorMessage, success: false },
       { status: 500 }
     );
   }
