@@ -4,14 +4,12 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export default function DeleteAccount() {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const router = useRouter();
 
   const handleDeleteAccount = async () => {
     setLoading(true);

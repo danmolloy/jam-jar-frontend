@@ -46,7 +46,7 @@ export default function UpdateEmail({email}: {
         body: JSON.stringify(updateData),
       });
 
-      const data = await response.json();
+      await response.json();
 
       if (response.ok) {
         setSuccess("Settings updated successfully!");

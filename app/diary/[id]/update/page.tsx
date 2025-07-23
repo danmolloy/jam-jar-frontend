@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import CreateDiaryEntry from "@/components/diaryEntries/create";
-import CreateSession from "@/components/practice/create";
 import Login from "@/components/shared/login";
 import { components } from "@/types/api";
 

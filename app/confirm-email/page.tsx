@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function ConfirmEmail() {
+function ConfirmEmailContent() {
     const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
     const [message, setMessage] = useState('');
     const searchParams = useSearchParams();
@@ -37,6 +37,7 @@ export default function ConfirmEmail() {
                     setMessage(data.error || 'Failed to confirm email. Please try again.');
                 }
             } catch (error) {
+                console.log(error)
                 setStatus('error');
                 setMessage('An error occurred while confirming your email. Please try again.');
             }
@@ -67,6 +68,8 @@ export default function ConfirmEmail() {
                 setMessage(data.error || 'Failed to send confirmation email.');
             }
         } catch (error) {
+            console.log(error)
+
             setStatus('error');
             setMessage('An error occurred while sending the confirmation email.');
         }
@@ -125,5 +128,21 @@ export default function ConfirmEmail() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function ConfirmEmail() {
+    return (
+        <Suspense fallback={
+            <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+                <h1 className="text-2xl font-bold mb-6">Confirm Your Email</h1>
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        }>
+            <ConfirmEmailContent />
+        </Suspense>
     );
 } 

@@ -3,8 +3,6 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import InputField from "@/components/form/inputField";
-import { useSession } from "next-auth/react";
-import { saveRecordingMetadata, uploadAudioFile } from "@/app/audio/create/lib"; 
 import { components } from "@/types/api";
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation"
@@ -90,6 +88,7 @@ body: JSON.stringify({
     }
 
     } catch(e) {
+      console.log(setMessage(String(e)))
       console.error(e)
     }
   }
@@ -107,7 +106,7 @@ body: JSON.stringify({
           date: audioRecording ? audioRecording.date :'',
         }}
         validationSchema={AudioSchema}
-        onSubmit={async (values, { resetForm }) => {
+        onSubmit={async (values, ) => {
           let formattedTags: string[] = [];
           if (typeof values.tags === 'string') {
 
@@ -118,12 +117,12 @@ body: JSON.stringify({
 } else if (!Array.isArray(values.tags)) {
   formattedTags = [];
 }
-
-          handleUpdate(values);
+        setIsSubmitting(true);
+          handleUpdate({...values, tags: formattedTags});
           
         }}
       >
-        {({ setFieldValue, errors, touched }) => (
+        {({ errors, touched }) => (
           <Form className="flex flex-col gap-4 max-w-md mt-4">
             
             <InputField

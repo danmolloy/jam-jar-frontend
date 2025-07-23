@@ -1,8 +1,6 @@
 import Link from "next/link";
 import AboutIndex from "./about";
 import PricingIndex from "./pricing";
-import Image from "next/image";
-import Jar from "../../public/hero.png"
 import Contact from "./contact";
 
 export default function LandingPage() {

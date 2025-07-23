@@ -1,11 +1,4 @@
 'use client'
-import { Form, Formik } from "formik"
-import InputField from "../form/inputField"
-import ButtonPrimary from "../form/buttonPrimary"
-import * as Yup from "yup";
-import { useState } from "react";
-import { useSession } from "next-auth/react";
-import UpdatePassword from "./updatePassword";
 import UpdateDailyTarget from "./updateDailyTarget";
 import { components } from "@/types/api";
 import UpdateUsername from "./updateUsername";

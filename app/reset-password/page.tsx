@@ -2,13 +2,11 @@
 
 import InputField from "@/components/form/inputField";
 import { Form, Formik } from "formik";
-import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import * as Yup from 'yup';
 
-export default function ResetPassword() {
-    const { data: session } = useSession();
+function ResetPasswordContent() {
     const [message, setMessage] = useState('');
     const [submitting, setIsSubmitting] = useState(false);
     const [isConfirming, setIsConfirming] = useState(false);
@@ -166,5 +164,21 @@ export default function ResetPassword() {
                 )}
             </Formik>
         </div>
+    );
+}
+
+export default function ResetPassword() {
+    return (
+        <Suspense fallback={
+            <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+                <h1 className="text-2xl font-bold mb-6">Reset Your Password</h1>
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        }>
+            <ResetPasswordContent />
+        </Suspense>
     );
 }
