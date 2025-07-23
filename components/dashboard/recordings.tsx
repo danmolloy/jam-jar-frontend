@@ -12,7 +12,7 @@ export default function RecordingsTable({recordings}: {
 
   return (
     <div className=" rounded p-4  shadow m-2 bg-white">
-      <h2>Recordings</h2>
+      <h2>All Recordings</h2>
       <div className="border-t border-gray-300">
         {recordings.length === 0 
         ? <p>No recordings</p> 

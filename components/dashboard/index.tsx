@@ -10,6 +10,7 @@ import { components } from "@/types/api"
 import TagFilter from "./tagFilter"
 import RecordingsTable from "./recordings"
 import Link from "next/link"
+import AllEntries from "./allEntries"
 
 type UserData = components["schemas"]["User"]
 
@@ -93,7 +94,8 @@ const [data, setData] = useState<UserData|null>(null)
       <HeatMap selectedActivity={selectedActivity} practiceItems={filteredPracticeItems} />
       <StreakIndex practiceItems={filteredPracticeItems}/>
      </div>
-      <RecordingsTable recordings={data.recordings} />   
+      <RecordingsTable recordings={data.recordings} />  
+      <AllEntries entries={data.diary_entries} /> 
      </div>
   )
 }

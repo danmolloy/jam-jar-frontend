@@ -11,6 +11,8 @@ import { components } from "@/types/api";
 import UpdateUsername from "./updateUsername";
 import UpdateEmail from "./updateEmail";
 import DeleteAccount from "./deleteAccount";
+import ManageSubscription from "./manageSubscription";
+import Link from "next/link";
 
 type UserData = components["schemas"]["User"]
 
@@ -24,7 +26,8 @@ export default function SettingsIndex({user}: {
       <UpdateDailyTarget dailyTarget={user.daily_target}/>
       <UpdateEmail email={user.email} />
       <UpdateUsername username={user.username} />
-      <UpdatePassword />
+      <Link href={"/settings/update-password/"}>Update Password</Link>
+      <ManageSubscription />
       <DeleteAccount />
     </div>
   )

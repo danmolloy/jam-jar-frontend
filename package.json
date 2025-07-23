@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
+    "stripe": "stripe listen --forward-to http://127.0.0.1:8000/api/payments/",
     "types": "npx openapi-typescript http://localhost:8000/api/schema/ --output types/api.d.ts"
   },
   "dependencies": {

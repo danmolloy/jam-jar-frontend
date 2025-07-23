@@ -47,11 +47,20 @@ const SuccessDisplay = ({ sessionId }: {
   </section>
 );
 
-const Message = ({ message }: {
+const Message = ({ message, onRetry }: {
   message: string
+  onRetry?: () => void
 }) => (
-  <section>
-    <p>{message}</p>
+  <section className="text-center">
+    <p className="mb-4">{message}</p>
+    {onRetry && (
+      <button 
+        onClick={onRetry}
+        className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
+      >
+        Try Again
+      </button>
+    )}
   </section>
 );
 
@@ -83,10 +92,20 @@ export default function Premium() {
             setSuccess(true);
             setMessage('Subscription confirmed!');
           } else {
-            setMessage(data.error || 'Failed to confirm subscription.');
+            // Clear the invalid session_id from URL
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.delete('session_id');
+            window.history.replaceState({}, '', newUrl.toString());
+            setMessage(data.error || 'Failed to confirm subscription. Please try again.');
           }
         })
-        .catch(() => setMessage('Network error. Please try again.'))
+        .catch(() => {
+          // Clear the invalid session_id from URL
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.delete('session_id');
+          window.history.replaceState({}, '', newUrl.toString());
+          setMessage('Network error. Please try again.');
+        })
         .finally(() => setLoading(false));
     }
   }, [session]);
@@ -95,6 +114,7 @@ export default function Premium() {
     setLoading(true);
     setMessage('');
     try {
+      console.log('Creating checkout session...');
       const res = await fetch('/api/subscriptions/create-checkout-session/', {
         method: 'POST',
         headers: {
@@ -104,11 +124,16 @@ export default function Premium() {
         body: JSON.stringify({}),
       });
       const data = await res.json();
+      console.log('Checkout session response:', data);
+      
       if (data.sessionId) {
+        console.log('Loading Stripe...');
         const stripe = await stripePromise;
         if (stripe) {
+          console.log('Redirecting to checkout with session ID:', data.sessionId);
           const result = await stripe.redirectToCheckout({ sessionId: data.sessionId });
           if (result.error) {
+            console.error('Stripe redirect error:', result.error);
             setMessage(result.error.message!);
           }
           // No need to set success here; Stripe will redirect if successful
@@ -119,7 +144,7 @@ export default function Premium() {
         setMessage(data.error || "Failed to create checkout session.");
       }
     } catch (err) {
-      console.log(err)
+      console.error('Checkout error:', err);
       setMessage("Network error. Please try again.");
     } finally {
       setLoading(false);
@@ -131,6 +156,6 @@ export default function Premium() {
   } else if (success && sessionId !== '') {
     return <SuccessDisplay sessionId={sessionId} />;
   } else {
-    return <Message message={message} />;
+    return <Message message={message} onRetry={message.includes('Failed to confirm') ? handleCheckout : undefined} />;
   }
 }

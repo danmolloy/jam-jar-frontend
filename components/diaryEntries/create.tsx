@@ -65,6 +65,32 @@ try {
           }
   }
 
+  const handleDelete = async () => {
+    if (!diaryEntry!.id) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/diary-entries/${diaryEntry!.id}/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session?.accessToken}`, 
+      },
+    })
+    if (!res.ok) {
+       const errorData = await res.json();
+  throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
+    } else {
+
+      router.push("/");
+    }
+    
+    } catch(e) {
+      console.log(e);
+
+    }
+  }
   return (
     <div>
       <h1>Create Entry</h1>
@@ -81,6 +107,9 @@ try {
             </form>
           )}
         </Formik>
+        {mode === "update" && <button onClick={() => handleDelete()} className="w-24 border border-red-500 text-red-500 rounded hover:bg-red-50">
+        Delete
+      </button>}
     </div>
   )
 }

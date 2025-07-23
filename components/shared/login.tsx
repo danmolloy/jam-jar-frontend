@@ -40,52 +40,10 @@ export default function Login() {
           <InputField label="Username" name="username" type="text" error={props.errors.username}/>
           <InputField label="Password" name="password" type="password" error={props.errors.password}/>
           <ButtonPrimary type="submit" label="Sign In" handleClick={() => {}} />
+          <Link href="/reset-password" className="hover:underline text-blue-500">Forgot your password?</Link>
           <p>Don&apos;t have an account? <Link href="/register">Register</Link></p>
         </Form>
       )}
     </Formik>
   );
 }
-
-/* 
-'use client'
-import { useState } from "react";
-import { login, getProtectedData } from "@/app/lib/api";
-
-export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-
-const handleLogin = async () => {
-  try {
-    const { access, refresh } = await login(username, password);
-    localStorage.setItem("accessToken", access);
-    localStorage.setItem("refreshToken", refresh);
-
-    // Optionally re-fetch protected info or redirect
-    setMessage("Login successful");
-  } catch (err) {
-    console.error(err);
-    setMessage("Login failed");
-  }
-};
-
-  return (
-    <main className="flex flex-col">
-      <input
-        placeholder="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      <p>{message}</p>
-    </main>
-  );
-} */

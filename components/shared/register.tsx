@@ -32,6 +32,7 @@ export default function Register() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ export default function Register() {
   }) => {
     setIsSubmitting(true);
     setError("");
+    setSuccess("");
     
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/register/`, {
@@ -73,15 +75,8 @@ export default function Register() {
       const data = await response.json();
 
       if (response.ok) {
-        // Registration successful, sign in the user
-        await signIn("credentials", {
-          username: values.username,
-          password: values.password,
-          redirect: false,
-        });
-        
-        // Redirect to home page
-        router.push("/");
+        // Registration successful, show email confirmation message
+        setSuccess(data.message || "Account created successfully! Please check your email to confirm your account.");
       } else {
         // Handle registration errors
         if (data.username) {
@@ -121,6 +116,7 @@ export default function Register() {
         <Form className="flex flex-col p-4 font-mono">
           <h1>Register</h1>
           {error && <div className="text-red-500 mb-4">{error}</div>}
+          {success && <div className="text-green-500 mb-4">{success}</div>}
           <InputField label="Username" name="username" type="text" error={props.errors.username}/>
           <InputField label="Email" name="email" type="email" error={props.errors.email}/>
           <InputField label="Password" name="password" type="password" error={props.errors.password}/>

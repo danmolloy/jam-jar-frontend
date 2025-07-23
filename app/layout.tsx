@@ -38,7 +38,7 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${barriecito.variable} antialiased flex flex-col  min-h-screen`}>
           <SessionProviderWrapper>
         <Header />
-        <div className=' grow bg-gray-50 font-sans pt-12'>
+        <div className=' grow bg-gray-100 font-sans pt-12'>
             {children}
         </div>
         <Footer />

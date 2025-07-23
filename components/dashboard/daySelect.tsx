@@ -6,6 +6,8 @@ import { FaAngleLeft, FaAngleRight, FaRegCalendar } from "react-icons/fa";
 import WeekBarChart from "./barChart";
 import { components } from "@/types/api";
 import DiaryEntry from "./diaryEntry";
+import {  MdEdit } from "react-icons/md";
+import Link from "next/link";
 
 type Recording = components["schemas"]["AudioRecording"]
 type DiaryEntry = components["schemas"]["DiaryEntry"]
@@ -181,32 +183,50 @@ const progressPercent = (day: DateTime) =>
       </div>
     <div className="p-2">
       <h2>{selectedDay.toFormat('cccc dd LLL')}</h2>
+      <h3 className="text-xl">Practice</h3>
       {practiceItems.filter((j) =>
               DateTime.fromISO(j.date).hasSame(selectedDay, "day")
             ).length > 0 
             ? practiceItems.filter((j) =>
               DateTime.fromISO(j.date).hasSame(selectedDay, "day")
-            ).map(i => (
-          <div key={i.id}>
-            
+            ).map((i, index) => (
+          <div key={i.id} className={`w-full flex flex-row justify-between items-center ${index % 2 === 0 && 'bg-slate-50'}`}>
+              <div className="flex flex-col">
               <p>{i.activity} ({i.duration} mins)</p>
               <p>{i.notes}</p>
-          
+              </div>
+              <div className="flex flex-row items-start">
+                <Link href={`/items/${i.id}/update/`} className="text-black p-1 m-1">
+                  <MdEdit size={20}/>
+                </Link>
+                
+              </div>
           </div>
         )): <p>No practice on this day</p>}
+        <div>
+        <h3 className="text-xl">Recordings</h3>
         {recordings.filter(j => (
                         DateTime.fromISO(j.date).hasSame(selectedDay, "day")
-
+        )).length > 0 ? recordings.filter(j => (
+                        DateTime.fromISO(j.date).hasSame(selectedDay, "day")
         )).map(j => (
           <div key={j.id}>
-            <p>{j.title}</p>
-          </div>
-        ))}
-    </div>
+           <p className="font-medium text-base text-start">{j.title}</p>
+            <div className="flex flex-row justify-between items-center ">
+              <p>{DateTime.fromISO(j.date).toFormat('dd LLL yyyy')}</p>
+              <p>{j.location}</p>
+            </div>
+            </div>
+        )): <p>No recordings </p>}
+        </div>
     <div>
-      {dayDiaryEntries(selectedDay).map(entry => (
+      <h3 className="text-xl">Diary</h3>
+      {dayDiaryEntries(selectedDay).length < 1 
+      ? <p>No entries</p>
+      : dayDiaryEntries(selectedDay).map(entry => (
         <DiaryEntry key={entry.id} diaryEntry={entry} />
       ))}
+    </div>
     </div>
     </div>
     <div>

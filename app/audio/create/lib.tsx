@@ -53,3 +53,20 @@ export async function saveRecordingMetadata(key: string, metadata: {
     throw new Error(err.error || 'Failed to save metadata');
   }
 }
+
+export async function deleteRecording(recordingId: string, accessToken: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/recordings/${recordingId}/`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
+    },
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || 'Failed to delete recording');
+  }
+
+  return true;
+}
