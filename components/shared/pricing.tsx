@@ -30,9 +30,9 @@ const pricingTiers = [
   }
 ]
 
-export default function PricingIndex() {
+export default function PricingIndex({landing}: {landing: boolean}) {
   return (
-    <div id="pricing" className="bg-cyan-400 py-16 flex flex-col items-center">
+    <div id="pricing" className={`${landing ? "bg-cyan-400" : "bg-white"} py-16 flex flex-col items-center`}>
       <h2 className="font-semibold font-mono text-4xl self-center">Pricing</h2>
       <div className="flex flex-col md:flex-row items-start justify-center">
 
@@ -52,12 +52,12 @@ export default function PricingIndex() {
         </div>
       ))}
       </div>
-      <div className=" w-screen flex flex-col items-center pt-24">
+      {landing && <div className=" w-screen flex flex-col items-center pt-24">
               <Link href={"/register"} className="text-xl flex flex-row items-center  text-black rounded p-2 hover:underline ">
-              <p>Get started</p>
+              <p>Get Started</p>
               <IoIosArrowRoundForward size={24}/>
-              </Link>
-            </div>
+              </Link> 
+            </div>}
     </div>
   )
 }

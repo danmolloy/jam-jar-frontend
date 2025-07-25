@@ -21,8 +21,8 @@ export default function SettingsPage() {
   }, [session]);
 
   if (status === "loading") return <div>Loading...</div>;
-  if (!session || !session.user || session.error === "RefreshAccessTokenError" || !session.accessToken) {
-    return <Login />;
+  if (!session?.accessToken) {
+    return <div>Loading...</div>;
   }
   if (!user) return <div>Loading user data...</div>;
 

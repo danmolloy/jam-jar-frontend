@@ -3,23 +3,23 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import PricingIndex from "@/components/shared/pricing";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
 const ProductDisplay = ({ onCheckout, loading }: { onCheckout: () => void, loading: boolean }) => (
-  <section>
-    <div className="product">
-      <div className="description">
-        <h3>Starter plan</h3>
-        <h5>£11.99 / 3 months</h5>
-      </div>
-    </div>
+  <section className="flex flex-col items-center justify-center font-mono mb-16">
+
+    <PricingIndex landing={false}/>
     <button
+      className="text-xl flex flex-row items-center hover:cursor-pointer text-black rounded p-2 hover:underline "
       id="checkout-and-portal-button"
       onClick={onCheckout}
       disabled={loading}
     >
-      {loading ? "Redirecting..." : "Checkout"}
+      {loading ? "Redirecting..." : "Get Premium"}
+      <IoIosArrowRoundForward size={24}/>
     </button>
   </section>
 );

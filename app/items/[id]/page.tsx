@@ -1,16 +1,10 @@
 import { auth } from "@/auth";
 import SessionDetail, { PracticeItem } from "@/components/practice/detailView";
-import Login from "@/components/shared/login";
 
 
 export default async function PracticeItemPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
   const { id } = await params
-
-
-   if (!session || session.error === "RefreshAccessTokenError" || !session.accessToken) {
-      return <Login />
-    }
  
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${id}/`,
@@ -28,5 +22,5 @@ export default async function PracticeItemPage({ params }: { params: Promise<{ i
 
   const data: PracticeItem = await res.json();
 
-  return <SessionDetail session={session} practiceItem={data} />;
+  return <SessionDetail session={session!} practiceItem={data} />;
 }

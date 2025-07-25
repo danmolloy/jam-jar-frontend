@@ -1,9 +1,10 @@
 'use client'
 import { Form, Formik } from "formik";
 import InputField from "../form/inputField";
+import UsernameField from "../form/usernameField";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import * as Yup from "yup";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -12,7 +13,11 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
     .min(3, "Username must be at least 3 characters")
-    .required("Username is required"),
+    .required("Username is required")
+    .test('username-available', 'Username is already taken', function(value) {
+      // This will be handled by the real-time checking, but we keep it for form validation
+      return true;
+    }),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
@@ -34,6 +39,15 @@ export default function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [usernameStatus, setUsernameStatus] = useState<{
+    checking: boolean;
+    available: boolean | null;
+    message: string;
+  }>({
+    checking: false,
+    available: null,
+    message: "",
+  });
 
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
@@ -47,6 +61,71 @@ export default function Register() {
     }
   }, [status, router, session?.error]);
 
+  // Debounced username availability check
+  const checkUsernameAvailability = useCallback(
+    async (username: string) => {
+      if (!username || username.length < 3) {
+        setUsernameStatus({
+          checking: false,
+          available: null,
+          message: "",
+        });
+        return;
+      }
+
+      setUsernameStatus(prev => ({ ...prev, checking: true }));
+
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}api/check-username/?username=${encodeURIComponent(username)}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setUsernameStatus({
+            checking: false,
+            available: data.available,
+            message: data.message,
+          });
+        } else {
+          setUsernameStatus({
+            checking: false,
+            available: false,
+            message: "Error checking username availability",
+          });
+        }
+      } catch (err) {
+        setUsernameStatus({
+          checking: false,
+          available: false,
+          message: "Network error checking username",
+        });
+      }
+    },
+    []
+  );
+
+  // Debounce function
+  const debounce = (func: Function, delay: number) => {
+    let timeoutId: NodeJS.Timeout;
+    return (...args: any[]) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedCheckUsername = useCallback(
+    debounce(checkUsernameAvailability, 500),
+    [checkUsernameAvailability]
+  );
+
   if (status === "loading" || status === "authenticated") {
     return <div>Loading...</div>;
   }
@@ -59,6 +138,16 @@ export default function Register() {
         first_name: string
         last_name: string
   }) => {
+    // Check if username is available before submitting
+    if (usernameStatus.available === false) {
+      setError("Please choose a different username");
+      return;
+    }
+    
+    if (usernameStatus.checking) {
+      setError("Please wait while we check username availability");
+      return;
+    }
     setIsSubmitting(true);
     setError("");
     setSuccess("");
@@ -118,7 +207,13 @@ export default function Register() {
           <p>Already have an account? <Link href="/login" className="hover:underline text-blue-500">Login</Link></p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           {success && <div className="text-green-500 mb-4">{success}</div>}
-          <InputField label="Username" name="username" type="text" error={props.errors.username}/>
+          <UsernameField 
+            label="Username" 
+            name="username" 
+            error={props.errors.username}
+            onUsernameChange={debouncedCheckUsername}
+            usernameStatus={usernameStatus}
+          />
           <InputField label="Email" name="email" type="email" error={props.errors.email}/>
           <InputField label="Password" name="password" type="password" error={props.errors.password}/>
           <InputField label="Confirm Password" name="password_confirm" type="password" error={props.errors.password_confirm}/>

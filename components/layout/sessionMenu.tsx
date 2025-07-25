@@ -20,16 +20,14 @@ export default function SessionMenu() {
           }}>
                 <IoIosMenu size={20}/>
               </button>
-    {showMenu && <div className="fixed right-0 top-12   flex flex-col justify-between bg-amber-100 w-screen h-[95vh] z-10 py-8">
-      <Link href={"/"} className="p-3 py-6 hover:bg-amber-200 text-start">Home</Link>
+    {showMenu && <div className="fixed bg-white right-0 top-12  pb-24  flex flex-col justify-between  w-screen h-[95vh] z-10 py-8">
+      <Link href={"/"} className="p-3   text-start hover:underline">Home</Link>
 {/*       <Link href="/items" className="p-3 py-6 hover:bg-amber-200 text-start">Practice</Link>
  */}      {/* <Link href="/achievements" className="p-3 py-6 hover:bg-amber-200 text-start">Achievements</Link> */}
 
 {/*       <Link href={'/goals/create'} className="p-3 py-6 hover:bg-amber-200 text-start">Create Goal</Link>
- */}      <Link href={'/items/create'} className="p-3 py-6 hover:bg-amber-200 text-start">Add Practice</Link>
-      <Link href={'/settings'} className="p-3 py-6 hover:bg-amber-200 text-start">Settings</Link>
-      <Link href={'/account'} className="p-3 py-6 hover:bg-amber-200 text-start">Account</Link>
-      <button onClick={() => signOut()} className="p-3 py-6 hover:bg-amber-200 text-start hover:cursor-pointer">Log Out</button>
+ */}            <Link href={'/settings'} className="p-3   text-start hover:underline">Settings</Link>
+      <button onClick={() => signOut()} className="p-3   text-start hover:cursor-pointer hover:underline">Log Out</button>
     </div>}
     </div>
   )

@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import CreateGoal from "@/components/goals/create";
-import Login from "@/components/shared/login";
 import { components } from "@/types/api";
 
 export type Goal = components["schemas"]["Goal"]
@@ -8,11 +7,6 @@ export type Goal = components["schemas"]["Goal"]
 export default async function GoalUpdatePage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth();
   const { id } = await params
-
-
-   if (!session || session.error === "RefreshAccessTokenError" || !session.accessToken) {
-      return <Login />
-    }
  
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}api/goals/${id}/`,
@@ -30,5 +24,5 @@ export default async function GoalUpdatePage({ params }: { params: Promise<{ id:
 
   const data: Goal = await res.json();
 
-  return <CreateGoal mode={"update"} session={session} goal={data} />;
+  return <CreateGoal mode={"update"} session={session!} goal={data} />;
 }

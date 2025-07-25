@@ -1,13 +1,8 @@
 import { auth } from "@/auth"
 import SessionList from "@/components/practice/listView";
-import Login from "@/components/shared/login";
 
 export default async function SessionsPage() {
   const session = await auth()
-  
-  if (!session || session.error === "RefreshAccessTokenError" || !session.accessToken) {
-    return <Login />
-  }
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/practice-items/`, {
     headers: {

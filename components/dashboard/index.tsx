@@ -70,6 +70,9 @@ const [data, setData] = useState<UserData|null>(null)
 
   return (
     <div className="flex flex-col p-4">
+      {data.subscription_status !== "active" && <div className="text-center bg-black text-white font-medium -mt-4 ">
+        <Link href="/account" className="hover:underline">Unlock your potential with our premium subscription.</Link>
+      </div>}
       <div className="flex flex-row justify-between items-center p-4 font-medium">
           <h1>Practice Overview{selectedActivity !== "" && ` - ${selectedActivity}`}</h1>
         <AddPracticeBtn subscriptionStatus={data.subscription_status}/>
