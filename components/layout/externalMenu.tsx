@@ -11,7 +11,7 @@ export default function ExternalMenu() {
   return (
      <div className=" flex flex-col items-center justify-center font-mono">
         <button 
-          className="hover:text-amber-600 hover:cursor-pointer p-2 rounded"
+          className="hover:underline hover:cursor-pointer p-2 rounded"
          onBlur={() => setTimeout(() => setShowMenu(false), 250)}
           onClick={(e) => {
             e.preventDefault();
@@ -20,11 +20,12 @@ export default function ExternalMenu() {
           }}>
                 <IoIosMenu size={20}/>
               </button>
-    {showMenu && <div className="fixed right-0 top-12   flex flex-col justify-between bg-amber-100 w-screen h-[95vh] z-10 py-8">
-      <Link href={"/"} className="p-3 py-6 hover:bg-amber-200 text-start">Home</Link>
-      <Link href="/about" className="p-3 py-6 hover:bg-amber-200 text-start">About</Link>
-      <Link href="/contact" className="p-3 py-6 hover:bg-amber-200 text-start">Contact</Link>
-      <Link href="/login" className="p-3 py-6 hover:bg-amber-200 text-start">Log In</Link>
+    {showMenu && <div className="fixed right-0 top-12 pb-24 outline flex flex-col justify-between bg-white w-screen h-[95vh] z-10 py-8">
+      <Link href={"/"} className="p-3  hover:underline text-start">Home</Link>
+      <Link href="/#about" className="p-3  hover:underline text-start">About</Link>
+      <Link href="/#pricing" className="p-3  hover:underline text-start">Pricing</Link>
+      <Link href="/#contact" className="p-3  hover:underline text-start">Contact</Link>
+      <Link href="/login" className="p-3  hover:underline text-start">Log In</Link>
     </div>}
     </div>
   )

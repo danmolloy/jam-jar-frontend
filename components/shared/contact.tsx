@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import axios from "axios";
+import { IoIosArrowRoundForward } from 'react-icons/io';
 
 export default function Contact() {
   const [sendStatus, setSendStatus] = useState<"success"|"sending"|"err"|null>(null)
@@ -14,11 +15,9 @@ export default function Contact() {
   const sendingMsg = (<div><h2 className="text-2xl">Message sending...</h2></div>)
 
   return (
-    <section className="flex flex-col w-screen justify-between p-2 py-8 text-sm">
-            <div className="w-full  border-black">
+    <section id="contact" className="flex flex-col w-screen justify-start items-center p-2 py-16 text-sm min-h-[90vh] bg-slate-50">
 
-      <h1 className='self-center font-medium text-lg'>CONTACT</h1>
-      </div>
+      <h1 className='font-semibold font-mono text-4xl self-center'>Contact</h1>
     <Formik    
     initialValues={{
       name: '',
@@ -59,10 +58,10 @@ export default function Contact() {
       <Form data-testid="contact-form" className="z-10  flex flex-col w-[95vw] self-center lg:w-1/2 ">
 
           <div className="flex flex-col m-2">
-          <label htmlFor='name-input' className="form-label dark:text-zinc-400 text-sm">Name</label>
+          <label htmlFor='name-input' className="form-label dark:text-zinc-400 ">Name</label>
           <Field 
             id="name-input" 
-            className=" text-dark border-b border-dark bg-light  w-full p-1 dark:bg-zinc-300"
+            className=" text-dark border rounded border-dark bg-light  w-full p-1 dark:bg-zinc-300"
             type="text"
             name="name"/>
             <div className="h-6">
@@ -72,10 +71,10 @@ export default function Contact() {
           </div>
           </div>
           <div className="flex flex-col m-2">
-          <label htmlFor='email' className="form-label dark:text-zinc-400 text-sm">Email</label>
+          <label htmlFor='email' className="form-label dark:text-zinc-400 ">Email</label>
           <Field
             id="email" 
-            className="text-dark border-b border-dark bg-light w-full p-1 dark:bg-zinc-300" 
+            className="text-dark border rounded border-dark bg-light w-full p-1 dark:bg-zinc-300" 
             type="email"
             name="email"/>
             <div className="h-6">
@@ -85,7 +84,7 @@ export default function Contact() {
           </div>
           </div>
           <div className="flex flex-col m-2 mb-0">
-          <label htmlFor='msg-text' className="form-label dark:text-zinc-400 text-sm">Message</label>
+          <label htmlFor='msg-text' className="form-label dark:text-zinc-400 ">Message</label>
           <Field 
           multiline="6"
           maxLength="500"
@@ -103,7 +102,10 @@ export default function Contact() {
           </ErrorMessage>
           </div>
           </div>
-        <button disabled={props.isSubmitting || (sendStatus === "sending")} id="submit-button" type='submit' className=" disabled:opacity-30 hover:bg-gray-50 shadow-sm   border border-black m-2 p-1 w-20 rounded-sm self-end  text-sm">SUBMIT</button>
+        <button disabled={props.isSubmitting || (sendStatus === "sending")} id="submit-button" type='submit' className=" disabled:opacity-30 hover:underline hover:cursor-pointer flex flex-row m-2 p-1 w-20 rounded-sm self-end  text-sm">
+          <p>Submit</p>
+          <IoIosArrowRoundForward size={20} />
+        </button>
         <div>
         {sendStatus === "sending" 
         ? sendingMsg

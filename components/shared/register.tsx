@@ -1,12 +1,12 @@
 'use client'
 import { Form, Formik } from "formik";
 import InputField from "../form/inputField";
-import ButtonPrimary from "../form/buttonPrimary";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import * as Yup from "yup";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 // Validation schema
 const RegisterSchema = Yup.object().shape({
@@ -113,8 +113,9 @@ export default function Register() {
       onSubmit={handleRegister}
     >
       {(props) => (
-        <Form className="flex flex-col p-4 font-mono">
+        <Form className="flex flex-col p-4 font-mono justify-center items-start">
           <h1>Register</h1>
+          <p>Already have an account? <Link href="/login" className="hover:underline text-blue-500">Login</Link></p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           {success && <div className="text-green-500 mb-4">{success}</div>}
           <InputField label="Username" name="username" type="text" error={props.errors.username}/>
@@ -123,12 +124,11 @@ export default function Register() {
           <InputField label="Confirm Password" name="password_confirm" type="password" error={props.errors.password_confirm}/>
           <InputField label="First Name" name="first_name" type="text" error={props.errors.first_name}/>
           <InputField label="Last Name" name="last_name" type="text" error={props.errors.last_name}/>
-          <ButtonPrimary 
-            type="submit" 
-            label={isSubmitting ? "Creating Account..." : "Register"} 
-            handleClick={() => {}} 
-          />
-          <p>Already have an account? <Link href="/login" className="hover:underline">Login</Link></p>
+          
+          <button type="submit" className="flex  flex-row items-center hover:underline border p-1 m-2 hover:cursor-pointer rounded">
+                      <p>{isSubmitting ? "Creating Account..." : "Register"}</p>
+                      <IoIosArrowRoundForward size={24}/>
+                    </button>
         </Form>
       )}
     </Formik>

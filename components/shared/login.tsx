@@ -1,11 +1,11 @@
 'use client'
 import { Form, Formik } from "formik";
 import InputField from "../form/inputField";
-import ButtonPrimary from "../form/buttonPrimary";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
+import { IoIosArrowRoundForward } from "react-icons/io"; 
 
 export default function Login() {
   const { data: session, status } = useSession();
@@ -35,13 +35,16 @@ export default function Login() {
       }}
     >
       {(props) => (
-        <Form className="flex flex-col p-4">
+        <Form className="flex flex-col p-4 font-mono items-center justify-center">
           <h1>Login</h1>
+          <p>Don&apos;t have an account? <Link href="/register" className="text-blue-500 hover:underline">Register</Link></p>
           <InputField label="Username" name="username" type="text" error={props.errors.username}/>
           <InputField label="Password" name="password" type="password" error={props.errors.password}/>
-          <ButtonPrimary type="submit" label="Sign In" handleClick={() => {}} />
-          <Link href="/reset-password" className="hover:underline text-blue-500">Forgot your password?</Link>
-          <p>Don&apos;t have an account? <Link href="/register">Register</Link></p>
+          <button type="submit" className="flex  flex-row items-center hover:underline border p-1 m-2 hover:cursor-pointer rounded">
+            <p>Sign in</p>
+            <IoIosArrowRoundForward size={24}/>
+          </button>
+          <Link href="/reset-password" className="hover:underline text-sm text-blue-500 mt-4">Forgot your password?</Link>
         </Form>
       )}
     </Formik>

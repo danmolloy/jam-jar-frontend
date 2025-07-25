@@ -87,7 +87,7 @@ function ResetPasswordContent() {
 
     if (isConfirming) {
         return (
-            <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+            <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md font-mono">
                 <h1 className="text-2xl font-bold mb-6">Reset Your Password</h1>
                 {message && (
                     <div className={`mb-4 p-3 rounded ${message.includes('successfully') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
@@ -131,7 +131,7 @@ function ResetPasswordContent() {
     }
 
     return (
-        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md font-mono">
             <h1 className="text-2xl font-bold mb-6">Reset Your Password</h1>
             {message && (
                 <div className={`mb-4 p-3 rounded ${message.includes('sent') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
@@ -156,7 +156,7 @@ function ResetPasswordContent() {
                         <button 
                             type="submit" 
                             disabled={submitting} 
-                            className="w-full bg-blue-600 text-white rounded px-4 py-2 mt-4 hover:bg-blue-700 disabled:opacity-50"
+                            className="w-full bg-blue-600 text-white rounded px-4 py-2 mt-4 hover:bg-blue-700 disabled:opacity-50 hover:cursor-pointer"
                         >
                             {submitting ? 'Sending...' : 'Send Reset Link'}
                         </button>
