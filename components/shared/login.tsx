@@ -73,6 +73,7 @@ export default function Login() {
             router.push(callbackUrl);
           }
         } catch (err) {
+          console.log(err)
           setError('Network error. Please check your connection and try again.');
         } finally {
           setIsSubmitting(false);

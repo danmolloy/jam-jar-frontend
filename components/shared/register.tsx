@@ -14,7 +14,7 @@ const RegisterSchema = Yup.object().shape({
   username: Yup.string()
     .min(3, "Username must be at least 3 characters")
     .required("Username is required")
-    .test('username-available', 'Username is already taken', function(value) {
+    .test('username-available', 'Username is already taken', function() {
       // This will be handled by the real-time checking, but we keep it for form validation
       return true;
     }),
@@ -102,6 +102,7 @@ export default function Register() {
           });
         }
       } catch (err) {
+        console.log(err)
         setUsernameStatus({
           checking: false,
           available: false,
@@ -112,17 +113,17 @@ export default function Register() {
     []
   );
 
-  // Debounce function
-  const debounce = (func: Function, delay: number) => {
+  // Debounce function for username checking
+  const debounce = (func: (username: string) => void, delay: number) => {
     let timeoutId: NodeJS.Timeout;
-    return (...args: any[]) => {
+    return (username: string) => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func(...args), delay);
+      timeoutId = setTimeout(() => func(username), delay);
     };
   };
 
   const debouncedCheckUsername = useCallback(
-    debounce(checkUsernameAvailability, 500),
+    debounce((username: string) => checkUsernameAvailability(username), 500),
     [checkUsernameAvailability]
   );
 

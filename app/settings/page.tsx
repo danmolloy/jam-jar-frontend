@@ -2,7 +2,6 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import SettingsIndex from "@/components/settings";
-import Login from "@/components/shared/login";
 
 export default function SettingsPage() {
   const { data: session, status } = useSession();

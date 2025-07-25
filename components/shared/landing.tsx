@@ -21,7 +21,7 @@ export default function LandingPage() {
       </div>
       </div>
       <AboutIndex />
-      <PricingIndex />
+      <PricingIndex landing={true} />
       
       <Contact />
     </div>
