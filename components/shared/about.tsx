@@ -50,7 +50,7 @@ export default function AboutIndex() {
       <div className="pb-24 flex flex-col items-center justify-center md:w-[50vw] self-center">
                 <h3 className="font-semibold font-mono text-4xl">Jam Jar</h3>
 
-      <p className="text-lg">Jam Jar brings structure and motivation to your music practice. Whether you&apos;re a student, professional or amateur, Jam Jar will help you see improvements.</p>
+      <p className="text-lg p-2">Jam Jar brings structure and motivation to your music practice. Whether you&apos;re a student, professional or amateur, Jam Jar will help you see improvements.</p>
       </div>
       <div className="flex flex-row flex-wrap items-start justify-start border border-white rounded">
         {featuresArr.map((i, index) => (

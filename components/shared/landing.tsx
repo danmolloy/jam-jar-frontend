@@ -11,7 +11,7 @@ export default function LandingPage() {
 
 {/*       <Image src={Jar} alt="Jam Jar" width={800/2} height={1024/2} className="-mt-48 "/>
  */}      <div className=" flex flex-col items-center justify-center ">
-        <h1 className="-mt-[400px] font-bold text-8xl font-display">Jam Jar</h1>
+        <h1 className="-mt-[300px] font-bold text-8xl font-display">Jam Jar</h1>
         <p className="">the music practice studio</p>
         <Link href={"/register"} className="text-blue-600 flex flex-row items-center  p-2 m-2 rounded hover:underline">
           <p>Start</p>

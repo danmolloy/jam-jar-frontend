@@ -37,10 +37,10 @@ export default function PricingIndex() {
       <div className="flex flex-col md:flex-row items-start justify-center">
 
       {pricingTiers.map((i, index) => (
-        <div key={index} className="border shadow m-4 p-4 rounded w-[90vw] md:w-[45vw] bg-white h-[300px]">
+        <div key={index} className="border shadow m-4 p-4 rounded w-[90vw] md:w-[45vw] bg-white min-h-[300px]">
           <h2 className="font-semibold text-2xl">{i.name}</h2>
           <p>{i.byline}</p>
-          <h3 className="font-bold text-xl my-4">{i.price}{i.frequency && <span className="font-medium">/{i.frequency}</span>}</h3>
+          <h3 className="font-bold text-xl my-4 text-center">{i.price}{i.frequency && <span className="font-medium">/{i.frequency}</span>}</h3>
           <div>
             
           {i.features.map((j, jndex) => (
