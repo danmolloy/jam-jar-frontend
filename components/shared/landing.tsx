@@ -3,7 +3,6 @@ import AboutIndex from "./about";
 import PricingIndex from "./pricing";
 import Contact from "./contact";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import Image from "next/image";
 
 export default function LandingPage() {
   return (
