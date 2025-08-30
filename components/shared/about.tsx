@@ -46,20 +46,22 @@ const featuresArr: {
 
 export default function AboutIndex() {
   return (
-    <div id="about" className="flex flex-col p-4 py-16 bg-black text-white">
-      <div className="pb-24 flex flex-col items-center justify-center md:w-[50vw] self-center">
-                <h3 className="font-semibold font-mono text-4xl">Jam Jar</h3>
+    <div id="about" className="flex font-medium flex-col p-4 py-16 bg-black text-white border-t">
+      <div className="pb-16 flex flex-col items-center justify-center md:mx-4 self-center">
+                <h3 className="font-bold font-mono text-4xl self-start">ABOUT</h3>
 
-      <p className="text-lg p-2">Jam Jar brings structure and motivation to your music practice. Whether you&apos;re a student, professional or amateur, Jam Jar will help you see improvements.</p>
+      <p className="text-lg py-2">Jam Jar brings structure and motivation to your music practice. Whether you&apos;re a student, professional or amateur, Jam Jar will help you see improvements.</p>
       </div>
-      <div className="flex flex-row flex-wrap items-start justify-start border border-white rounded">
+      <div className="flex flex-row flex-wrap items-start justify-start border border-white ">
         {featuresArr.map((i, index) => (
-          <div key={index} className="md:w-[40vw]  rounded p-4 m-2">
+          <div key={index} className="md:mx-4  rounded p-4 m-4">
             <div className="flex flex-row items-center justify-start">
+              <div className="w-8 ">
               {i.icon}
-            <h3 className="font-semibold text-xl ml-2">{i.title}</h3>
+              </div>
+            <h3 className="font-semibold text-xl ">{i.title}</h3>
             </div>
-            <p className="text-lg">{i.body}</p>
+            <p className="text-lg font-normal ml-8">{i.body}</p>
           </div>
         ))}
       </div>

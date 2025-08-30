@@ -9,8 +9,8 @@ export default async function Header() {
 
 
   return (
-    <div className=" fixed w-screen flex flex-row h-12 justify-between px-4 z-20 items-center bg-white shadow">
-      <Link href={"/"} className="font-display text-lg">Jam Jar</Link>
+    <div className=" fixed w-screen flex flex-row h-12 justify-between px-4 z-20 items-center bg-white  border-b border-black">
+      <Link href={"/"} className="font-display text-lg font-bold">Jam Jar</Link>
       {(!session || session.error === "RefreshAccessTokenError" || !session.accessToken) 
       ? <ExternalMenu /> 
       : <SessionMenu />}
