@@ -29,3 +29,30 @@ export async function getProtectedData(accessToken: string) {
 
   return res.json();
 }
+
+// Utility function to make authenticated API calls with automatic token refresh
+export async function authenticatedFetch(
+  url: string, 
+  options: RequestInit = {}, 
+  session: { accessToken: string; refreshToken: string }
+) {
+  const defaultHeaders = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${session.accessToken}`,
+  };
+
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      ...defaultHeaders,
+      ...options.headers,
+    },
+  });
+
+  // If token is expired, the backend will return 401
+  if (response.status === 401) {
+    throw new Error("Token expired - please refresh the page to get a new token");
+  }
+
+  return response;
+}

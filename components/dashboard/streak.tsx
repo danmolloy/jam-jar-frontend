@@ -2,8 +2,10 @@ import { DateTime } from "luxon";
 import { PracticeItem } from "../practice/detailView"
 
 
-export default function StreakIndex({practiceItems}: {
+export default function StreakIndex({practiceItems, selectedTag, selectedActivity}: {
   practiceItems: PracticeItem[]
+  selectedTag: string
+  selectedActivity: string
 }) {
 
   const currentStreak = () => {
@@ -50,7 +52,9 @@ export default function StreakIndex({practiceItems}: {
   
 
   return (
-    <div className="flex flex-col items-center justify-center shadow rounded bg-white p-4 m-4">
+    <div className="flex flex-col lg:w-full items-center justify-center shadow rounded  bg-white p-4 m-2">
+            <p className="self-start font-medium">{selectedActivity && `${selectedActivity} `}{selectedTag &&`#${selectedTag}`}</p>
+
       <p className="text-2xl font-bold font-mono  ">{currentStreak()}</p>
       <p>Your current streak is {currentStreak()} days.</p>
       {currentStreak() < longestStreak() && longestStreak() > 0

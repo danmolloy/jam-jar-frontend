@@ -12,10 +12,11 @@ import Link from "next/link";
 type Recording = components["schemas"]["AudioRecording"]
 type DiaryEntry = components["schemas"]["DiaryEntry"]
 
-export default function DaySelect({practiceItems, selectedActivity, dailyTarget=0, recordings, diaryEntries}: {
+export default function DaySelect({practiceItems, selectedTag, selectedActivity, dailyTarget=0, recordings, diaryEntries}: {
   recordings: Recording[]
   practiceItems: PracticeItem[]
   selectedActivity: string
+  selectedTag: string
   dailyTarget: number | undefined
   diaryEntries: DiaryEntry[]
 }) {
@@ -62,8 +63,8 @@ const progressPercent = (day: DateTime) =>
   Math.min((totalItemsForDay(day) / dailyTarget) * 100, 100);
 
   return (
-    <div className="flex flex-col">
-    <div className="flex flex-col  shadow m-4 rounded p-4 bg-white ">
+    <div className="flex flex-col lg:flex-row">
+    <div className="flex flex-col  shadow m-2 rounded p-4 bg-white ">
       <div className="flex flex-row justify-evenly">
       <button 
       className="text-black hover:text-slate-400 hover:cursor-pointer"
@@ -92,7 +93,8 @@ const progressPercent = (day: DateTime) =>
       </button>
       </div>
         {/* sm */}
-<div className="md:hidden flex flex-row justify-evenly my-4">
+        <p className="text-xs m-2 mt-4 self-center ">DAILY TARGET: {dailyTarget} mins</p>
+<div className="md:hidden flex flex-row justify-evenly ">
   {getWeekArray().map(i => (
     <div key={i.toISO()} className="relative flex flex-col items-center justify-center">
       <button
@@ -118,7 +120,7 @@ const progressPercent = (day: DateTime) =>
           cy="10"
         />
         <circle
-          className="text-blue-500 transition-all duration-1000 ease-in-out"
+          className="text-green-400 transition-all duration-1000 ease-in-out"
           strokeWidth="2"
           strokeDasharray="56.5"
           strokeDashoffset={`${
@@ -136,7 +138,7 @@ const progressPercent = (day: DateTime) =>
   ))}
 </div>
       {/* md */}
-      <div className="hidden md:flex flex-row justify-evenly my-4">
+      <div className="hidden md:flex flex-row justify-evenly ">
       {getWeekArray().map(i => (
         <div key={i.toISO()} className="relative w-20 h-20 m-2">
    <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90 ">
@@ -151,7 +153,7 @@ const progressPercent = (day: DateTime) =>
     />
     <circle
       className={
-        "text-blue-500  transition-all duration-1000 ease-in-out"
+        "text-green-400  transition-all duration-1000 ease-in-out"
       }
       strokeWidth="8"
       strokeDasharray="226.2" // 2πr where r=36
@@ -181,16 +183,18 @@ const progressPercent = (day: DateTime) =>
 </div>
       ))}
       </div>
-    <div className="p-2">
-      <h2>{selectedDay.toFormat('cccc dd LLL')}</h2>
-      <h3 className="text-xl">Practice</h3>
+    <div className="">
+      <h2 className="font-base text-base py-2">{selectedDay.toFormat('cccc dd LLL').toUpperCase()}<span className="font-medium">{selectedActivity && ` - ${selectedActivity}`}{selectedTag && ` #${selectedTag}`}</span></h2>
+      <div className="ml-2">
+
+      <h3 className="text-base font-semibold">Practice</h3>
       {practiceItems.filter((j) =>
               DateTime.fromISO(j.date).hasSame(selectedDay, "day")
             ).length > 0 
             ? practiceItems.filter((j) =>
               DateTime.fromISO(j.date).hasSame(selectedDay, "day")
             ).map((i, index) => (
-          <div key={i.id} className={`w-full flex flex-row justify-between items-center ${index % 2 === 0 && 'bg-slate-50'}`}>
+          <div key={i.id} className={` w-full flex flex-row justify-between items-center ${index % 2 === 1 && 'bg-slate-50'}`}>
               <div className="flex flex-col">
               <p>{i.activity} ({i.duration} mins)</p>
               <p>{i.notes}</p>
@@ -202,9 +206,13 @@ const progressPercent = (day: DateTime) =>
                 
               </div>
           </div>
-        )): <p>No practice on this day</p>}
-        <div>
-        <h3 className="text-xl">Recordings</h3>
+        )): <p className="">No practice on this day</p>}
+              </div>
+
+        <div className=" ml-2 mt-2">
+          
+        <h3 className="font-semibold">Recordings</h3>
+        <div className="">
         {recordings.filter(j => (
                         DateTime.fromISO(j.date).hasSame(selectedDay, "day")
         )).length > 0 ? recordings.filter(j => (
@@ -218,20 +226,21 @@ const progressPercent = (day: DateTime) =>
             </div>
             </div>
         )): <p>No recordings </p>}
-        </div>
+        </div></div>
     <div>
-      <h3 className="text-xl">Diary</h3>
+      <div className="ml-2 mt-2">
+
+      
+      <h3 className="font-semibold">Diary</h3>
       {dayDiaryEntries(selectedDay).length < 1 
       ? <p>No entries</p>
       : dayDiaryEntries(selectedDay).map(entry => (
         <DiaryEntry key={entry.id} diaryEntry={entry} />
       ))}
+    </div></div>
     </div>
     </div>
-    </div>
-    <div>
-      <WeekBarChart selectedActivity={selectedActivity} data={weekData} selectedWeek={selectedWeek} />
-    </div>
+      <WeekBarChart selectedTag={selectedTag} selectedActivity={selectedActivity} data={weekData} selectedWeek={selectedWeek} />
     </div>
   )
 }

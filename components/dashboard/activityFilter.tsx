@@ -10,7 +10,7 @@ export default function ActivityFilter({activities, selectedActivity, setSelecte
   const activitiesSet = new Set(activities.map(i => i !== undefined && i[0].toUpperCase() + i.slice(1).toLowerCase()))
 
   return (
-    <select value={selectedActivity} onChange={(e) => setSelectedActivity(e.target.value)}>
+    <select className=" rounded p-1 mx-1 bg-white " value={selectedActivity} onChange={(e) => setSelectedActivity(e.target.value)}>
       <option value={""}>All activities</option>
       {Array.from(activitiesSet).map((i, index) => (
         <option key={index} value={i || ""}>{i}</option>

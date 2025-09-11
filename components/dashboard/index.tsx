@@ -69,15 +69,15 @@ const [data, setData] = useState<UserData|null>(null)
 
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col p-4 bg-neutral-100">
       {data.subscription_status !== "active" && <div className="text-center bg-black text-white font-medium -mt-4 ">
         <Link href="/account" className="hover:underline">Unlock your potential with our premium subscription.</Link>
       </div>}
-      <div className="flex flex-row justify-between items-center p-4 font-medium">
-          <h1>Practice Overview{selectedActivity !== "" && ` - ${selectedActivity}`}</h1>
+      <div className="flex flex-row justify-between items-center p-2 font-medium">
+          <h1>Practice Overview{selectedActivity !== "" && ` - ${selectedActivity}`}{selectedTag !== "" && ` #${selectedTag}`}</h1>
         <AddPracticeBtn subscriptionStatus={data.subscription_status}/>
       </div>
-      <div>
+      <div className="m-2">
       <ActivityFilter selectedActivity={selectedActivity} setSelectedActivity={(a) => setSelectedActivity(a)} activities={data.practice_items.map((i) => i.activity)} />
       <TagFilter selectedTag={selectedTag} setSelectedTag={(tag) => setSelectedTag(tag)}   tags={data.practice_items.map(i => i.tags).flat().filter((t): t is string => typeof t === "string")}
       />
@@ -92,13 +92,18 @@ const [data, setData] = useState<UserData|null>(null)
         </div>
         </div>}
       
-      <DaySelect diaryEntries={data.diary_entries} recordings={data.recordings} dailyTarget={data.daily_target} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
-      
-      <HeatMap selectedActivity={selectedActivity} practiceItems={filteredPracticeItems} />
-      <StreakIndex practiceItems={filteredPracticeItems}/>
+      <DaySelect selectedTag={selectedTag} diaryEntries={data.diary_entries} recordings={data.recordings} dailyTarget={data.daily_target} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
+      <div className="flex flex-col lg:flex-row justify-between">
+
+      <HeatMap selectedTag={selectedTag} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems} />
+      <StreakIndex selectedTag={selectedTag} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
+      </div>
      </div>
+     <div className="flex flex-col lg:flex-row w-full justify-between ">
+
       <RecordingsTable recordings={data.recordings} />  
       <AllEntries entries={data.diary_entries} /> 
+     </div>
      </div>
   )
 }

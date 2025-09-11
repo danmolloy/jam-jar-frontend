@@ -79,16 +79,22 @@ export default function UpdateEmail({email}: {
         enableReinitialize={true}
       >
         {(props) => (
-          <Form className="flex flex-col p-4 font-mono">
-            <h1>Update Email</h1>
-            {error && <div className="text-red-500 mb-4">{error}</div>}
-            {success && <div className="text-green-500 mb-4">{success}</div>}
-            <InputField label="Email" name="email" type="email" error={props.errors.email} />
+          <Form className="flex flex-col p-4 items-start  justify-between lg:flex-row border-b border-neutral-300">
+            <div className="">
+
+            <h1 className="font-medium text-lg mx-2">Update Email</h1>
+            <InputField label="" name="email" type="email" error={props.errors.email} />
+            </div><div className="lg:self-end">
+
                        <ButtonPrimary
               type="submit" 
               label={isSubmitting ? "Updating..." : "Save Changes"} 
               handleClick={() => {}} 
             />
+
+            {error && <div className="text-red-500 mb-4">{error}</div>}
+            {success && <div className="text-green-500 mb-4">{success}</div>}
+            </div>
           </Form>
         )}
       </Formik>

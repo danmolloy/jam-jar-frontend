@@ -82,11 +82,11 @@ export default function Login() {
     >
       {(props) => (
         <Form 
-          className="flex flex-col p-4 font-mono items-center justify-center"
+          className="flex flex-col p-4 items-center justify-center "
           onChange={() => error && setError(null)}
         >
           <h1>Login</h1>
-          <p>Don&apos;t have an account? <Link href="/register" className="text-blue-500 hover:underline">Register</Link></p>
+          <p>Don&apos;t have an account? <Link href="/register" className="text-blue-600 hover:underline">Register</Link></p>
           
           {error && (
             <div className="text-red-500 mb-4 p-3 bg-red-50 border border-red-200 rounded">
@@ -109,12 +109,12 @@ export default function Login() {
           <button 
             type="submit" 
             disabled={isSubmitting}
-            className="flex flex-row items-center hover:underline border p-1 m-2 hover:cursor-pointer rounded disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-row items-center bg-dark text-white hover:underline border p-1 m-2 hover:cursor-pointer rounded disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <p>{isSubmitting ? "Signing in..." : "Sign in"}</p>
             <IoIosArrowRoundForward size={24}/>
           </button>
-          <Link href="/reset-password" className="hover:underline text-sm text-blue-500 mt-4">Forgot your password?</Link>
+          <Link href="/reset-password" className="hover:underline text-sm text-blue-600 mt-4">Forgot your password?</Link>
         </Form>
       )}
     </Formik>

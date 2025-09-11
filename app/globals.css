@@ -10,7 +10,7 @@
     font-size: var(--text-2xl);
   }
   h2 {
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
   }
 }
 
@@ -25,6 +25,8 @@
 
 @theme {
   --color-primary: oklch(0.7919 0.14 220.16);
+  --color-dark: #171717;
+  --color-light: "#f4f3ed";
 }
 
 @media (prefers-color-scheme: dark) {

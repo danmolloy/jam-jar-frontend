@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { PracticeItem } from "./detailView";
 
 
-export default function HeatMap({practiceItems, selectedActivity}: {
+export default function HeatMap({practiceItems, selectedActivity, selectedTag}: {
   selectedActivity: string;
   practiceItems: PracticeItem[]
+  selectedTag: string
 }) {
   const [selectedDate, setSelectedDate] = useState<DateTime|null>(null)
   const heatmapRef = useRef<HTMLDivElement>(null);
@@ -22,8 +23,8 @@ useEffect(() => {
 
 
   return (
-    <div className="shadow m-4 rounded p-4 flex flex-col bg-white">
-  <h2>Activity{selectedActivity && ` - ${selectedActivity}`}</h2>
+    <div className="shadow m-2 rounded p-4 flex flex-col bg-white">
+  <h2 className="text-base mb-2">ACTIVITY<span className="font-medium">{selectedActivity && ` - ${selectedActivity}`}{selectedTag && ` #${selectedTag}`}</span></h2>
 
   {/* Horizontal scroll wrapper */}
   <div ref={heatmapRef} className="overflow-x-auto w-full">

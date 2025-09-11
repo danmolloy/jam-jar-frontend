@@ -17,9 +17,9 @@ export default function InputField({
 }) {
   return (
     <div className="flex flex-col m-2 my-4">
-      <label className="flex flex-col w-60 font">
+      <label className="flex flex-col w-60 ">
         {label}
-      <Field min={min} max={max} name={name} type={type} className="border rounded my-2 p-1"/>
+      <Field min={min} max={max} name={name} type={type} className="border border-neutral-400 rounded shadow-xs my-1 p-1"/>
       {error && <div id="feedback">{error}</div>}
       </label>
     </div>

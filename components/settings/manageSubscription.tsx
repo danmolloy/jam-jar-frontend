@@ -38,21 +38,25 @@ export default function ManageSubscription() {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Manage Subscription</h2>
-      {error && (
-        <div className="text-red-500 mb-4">{error}</div>
-      )}
-      <button
-        onClick={handleManageSubscription}
-        disabled={loading}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {loading ? 'Loading...' : 'Manage Billing'}
-      </button>
-      <p className="text-sm text-gray-600 mt-2">
-        Update payment methods, view invoices, and manage your subscription.
-      </p>
+    <div className="flex flex-col p-4 items-start  justify-between lg:flex-row border-b border-neutral-300">
+      <div className="mx-2">
+        <h2 className="font-medium text-lg">Manage Subscription</h2>
+        <p className="">
+          Update payment methods, view invoices, and manage your subscription.
+        </p>
+      </div>
+      <div>
+        <button
+          onClick={handleManageSubscription}
+          disabled={loading}
+          className="rounded p-1 m-2 px-2  text-white hover:cursor-pointer bg-blue-600 hover:bg-blue-500 text-sm mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+          {loading ? 'Loading...' : 'Manage Billing'}
+        </button>
+          {error && (
+            <div className="text-red-500 mb-4">{error}</div>
+          )}
+        </div>
     </div>
   );
 } 

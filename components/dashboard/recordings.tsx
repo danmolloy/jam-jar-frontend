@@ -2,6 +2,7 @@ import { components } from "@/types/api"
 import { DateTime } from "luxon"
 import MusicPlayer from "./musicPlayer"
 import { useState } from "react"
+import Link from "next/link"
 
 type Recording = components['schemas']['AudioRecording']
 
@@ -11,11 +12,15 @@ export default function RecordingsTable({recordings}: {
   const [selectedRecording, setSelectedRecording] = useState<number|null>(null);
 
   return (
-    <div className=" rounded p-4  shadow m-2 bg-white">
-      <h2>All Recordings</h2>
+    <div className="lg:w-1/2 rounded p-4  shadow m-2 bg-white">
+      <h2>ALL RECORDINGS</h2>
       <div className="border-t border-gray-300">
         {recordings.length === 0 
-        ? <p>No recordings</p> 
+        ? <div className="flex flex-col items-center justify-center px-2 py-4">
+          <p className="font-semibold">No recordings.</p>
+          <p>You haven't saved any recordings.</p>
+          <Link className="text-blue-600 hover:underline" href="/audio/create/">Upload a recording</Link>
+          </div>
         : recordings.map(i => (
           <div key={i.id} className="text-sm border-b border-gray-300 transition-all duration-700">
             <button onClick={() => setSelectedRecording(i.id)} className="p-1 w-full hover:cursor-pointer">

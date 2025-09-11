@@ -203,9 +203,9 @@ export default function Register() {
       onSubmit={handleRegister}
     >
       {(props) => (
-        <Form className="flex flex-col p-4 font-mono justify-center items-start">
+        <Form className="flex flex-col p-4  justify-center items-center">
           <h1>Register</h1>
-          <p>Already have an account? <Link href="/login" className="hover:underline text-blue-500">Login</Link></p>
+          <p>Already have an account? <Link href="/login" className="hover:underline text-blue-600">Login</Link></p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           {success && <div className="text-green-500 mb-4">{success}</div>}
           <UsernameField 
@@ -221,7 +221,7 @@ export default function Register() {
           <InputField label="First Name" name="first_name" type="text" error={props.errors.first_name}/>
           <InputField label="Last Name" name="last_name" type="text" error={props.errors.last_name}/>
           
-          <button type="submit" className="flex  flex-row items-center hover:underline border p-1 m-2 hover:cursor-pointer rounded">
+          <button type="submit" className="flex  flex-row items-center hover:underline border bg-dark text-white  p-1 m-2 hover:cursor-pointer rounded">
                       <p>{isSubmitting ? "Creating Account..." : "Register"}</p>
                       <IoIosArrowRoundForward size={24}/>
                     </button>

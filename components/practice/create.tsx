@@ -5,6 +5,8 @@ import InputField from "../form/inputField";
 import ButtonPrimary from "../form/buttonPrimary";
 import { PracticeItem } from "./detailView";
 import { useRouter } from "next/navigation";
+import { authenticatedFetch } from "../../app/lib/api";
+import { DateTime } from "luxon";
 
 
 export default function CreateSession({
@@ -24,6 +26,7 @@ export default function CreateSession({
     duration: 0,
     tags: [""],
     rating: 1,
+    date: new Date(),
   } 
   : {
     activity: practiceItem!.activity ?  practiceItem!.activity : "",
@@ -31,6 +34,7 @@ export default function CreateSession({
     duration: practiceItem!.duration ? practiceItem!.duration : 0,
     tags: practiceItem!.tags ? practiceItem!.tags : [""],
     rating: practiceItem!.rating ? practiceItem!.rating : 3,
+    date: practiceItem!.date ? practiceItem!.date : new Date()
   }
 
   const handleCreate = async (values: {
@@ -41,40 +45,34 @@ export default function CreateSession({
     duration: number
   }) => {
     values.tags = values.tags.filter(tag => tag.length > 0);
-try {
-    const res = mode === "create" 
-    ?  await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/practice-items/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session?.accessToken}`, 
-      },
-      body: JSON.stringify(values),
-    })
-    : await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${practiceItem!.id}/`,
-      {
-        method: "PATCH", // or PUT
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session?.accessToken}`,
-        },
-        body: JSON.stringify(values),
-      }
-    );
-
-    if (!res.ok) {
-       const errorData = await res.json();
-  throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
-    } else {
-
-      router.push("/");
-    }
     
-   
-          } catch (err) {
-            console.error(err)
-          }
+    try {
+      const url = mode === "create" 
+        ? `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/`
+        : `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${practiceItem!.id}/`;
+      
+      const method = mode === "create" ? "POST" : "PATCH";
+      
+      const res = await authenticatedFetch(url, {
+        method,
+        body: JSON.stringify(values),
+      }, session);
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
+      } else {
+        router.push("/");
+      }
+    } catch (err) {
+      console.error(err);
+      // Show user-friendly error message
+      if (err instanceof Error && err.message.includes("Token expired")) {
+        alert("Your session has expired. Please refresh the page and try again.");
+      } else {
+        alert("Failed to save practice item. Please try again.");
+      }
+    }
   }
 
   const handleDelete = async () => {
@@ -83,29 +81,30 @@ try {
     }
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${practiceItem!.id}/`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session?.accessToken}`, 
-      },
-    })
-    if (!res.ok) {
-       const errorData = await res.json();
-  throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
-    } else {
-
-      router.push("/");
-    }
-    
+      const res = await authenticatedFetch(
+        `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${practiceItem!.id}/`, 
+        { method: "DELETE" }, 
+        session
+      );
+      
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
+      } else {
+        router.push("/");
+      }
     } catch(e) {
       console.log(e);
-
+      if (e instanceof Error && e.message.includes("Token expired")) {
+        alert("Your session has expired. Please refresh the page and try again.");
+      } else {
+        alert("Failed to delete practice item. Please try again.");
+      }
     }
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col p-4 ">
       <h1>{mode === "create" ? "Add" : "Update"} Practice</h1>
       <Formik 
         initialValues={initialVals}
@@ -117,7 +116,7 @@ try {
         {props => (
          <form onSubmit={props.handleSubmit}>
                         <InputField label="Activity" type="text" name="activity" error={props.errors.activity} />
-
+            <InputField label="Date" type="date" name="date" error={props.errors.date} />
             <InputField label="Notes" type="text" name="notes" error={props.errors.notes} />
             
             <InputField 
@@ -130,13 +129,14 @@ try {
             render={arrayHelpers => (
               <div>
                 <div>
-            <div className="flex flex-wrap gap-2 mb-2">
+            <div className="flex flex-wrap flex-col  mx-2 my-4">
+              <label>Tags</label>
               {props.values.tags.map((tag, index) => (
-                <div key={index} className="flex items-center gap-1">
+                <div key={index} className="flex items-center gap-1 ">
                   <Field
                     name={`tags[${index}]`}
-                    placeholder="#hashtag"
-                    className="border p-1 rounded"
+                    //placeholder="#hashtag"
+                    className="border border-neutral-400 rounded shadow-xs my-1 p-1"
                   />
                   <button
                     type="button"
@@ -152,7 +152,7 @@ try {
             <button
               type="button"
               onClick={() => arrayHelpers.push('')}
-              className="text-blue-500 underline"
+              className="text-blue-600 underline"
             >
               Add Hashtag
             </button>

@@ -42,7 +42,7 @@ export default function DeleteAccount() {
 
   if (showConfirmation) {
     return (
-      <div className="p-4 border border-red-300 bg-red-50 rounded-lg">
+      <div className="p-4 border  bg-red-50 ">
         <h2 className="text-xl font-semibold text-red-800 mb-4">Confirm Account Deletion</h2>
         <p className="text-red-700 mb-4">
           This action cannot be undone. All your data including audio recordings, practice sessions, 
@@ -72,14 +72,17 @@ export default function DeleteAccount() {
   }
 
   return (
-    <div className="p-4 border border-red-300 bg-red-50 rounded-lg">
-      <h2 className="text-xl font-semibold text-red-800 mb-4">Delete Account</h2>
-      <p className="text-red-700 mb-4">
-        Once you delete your account, there is no going back. Please be certain.
-      </p>
+    <div className="p-4   bg-red-50 flex flex-col lg:flex-row items-start  justify-between">
+      <div className="mx-2">
+        <h2 className="font-medium text-lg text-red-800 mb-4">Delete Account</h2>
+        <p className="text-red-800 mb-4">
+          Once you delete your account, there is no going back. Please be certain.
+        </p>
+
+      </div>
       <button
         onClick={() => setShowConfirmation(true)}
-        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+        className="rounded p-1 m-2 px-2 lg:self-end text-white hover:cursor-pointer bg-red-600 hover:bg-red-500 text-sm mt-4"
       >
         Delete Account
       </button>

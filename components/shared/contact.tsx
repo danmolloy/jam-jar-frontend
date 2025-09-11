@@ -15,9 +15,9 @@ export default function Contact() {
   const sendingMsg = (<div><h2 className="text-2xl">Message sending...</h2></div>)
 
   return (
-    <section id="contact" className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-neutral-100 border-t">
+    <section id="contact" className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-slate-50 bg-[url(/background.png)]  bg-size-[300px] bg-center bg-repeat ">
 
-      <h1 className='font-semibold font-mono text-4xl self-start'>CONTACT</h1>
+      <h1 className='font-semibold font-mono text-4xl self-start'>Contact</h1>
     <Formik    
     initialValues={{
       name: '',
@@ -102,8 +102,8 @@ export default function Contact() {
           </ErrorMessage>
           </div>
           </div>
-        <button disabled={props.isSubmitting || (sendStatus === "sending")} id="submit-button" type='submit' className=" disabled:opacity-30 hover:underline hover:cursor-pointer flex flex-row m-2 p-1 w-20  border font-medium border-black self-end  text-sm">
-          <p>SUBMIT</p>
+        <button disabled={props.isSubmitting || (sendStatus === "sending")} id="submit-button" type='submit' className=" disabled:opacity-30 hover:underline hover:cursor-pointer flex text-blue-600 border-blue-600 flex-row m-2 py-1 px-2 w-20  border rounded font-medium  self-end  text-sm">
+          <p className='text-sm'>Submit</p>
           <IoIosArrowRoundForward size={20} />
         </button>
         <div>

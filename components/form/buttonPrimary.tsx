@@ -9,7 +9,7 @@ export default function ButtonPrimary({
   handleClick: () => void
 }) {
   return (
-    <button className=" rounded p-1 m-2 px-2  text-white hover:cursor-pointer bg-blue-500 hover:bg-blue-600" type={type} onClick={() => handleClick()}>
+    <button className=" rounded p-1 m-2 px-2  text-white hover:cursor-pointer bg-blue-600 hover:bg-blue-500 text-sm" type={type} onClick={() => handleClick()}>
       {label}
     </button>
   )
