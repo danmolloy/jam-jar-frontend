@@ -6,7 +6,6 @@ import ButtonPrimary from "../form/buttonPrimary";
 import { PracticeItem } from "./detailView";
 import { useRouter } from "next/navigation";
 import { authenticatedFetch } from "../../app/lib/api";
-import { DateTime } from "luxon";
 
 
 export default function CreateSession({
@@ -20,13 +19,27 @@ export default function CreateSession({
 }) {
   const router = useRouter();
 
+  // Helper function to format date for HTML input
+  const formatDateForInput = (date: string | Date) => {
+    if (!date) return new Date().toISOString().split('T')[0];
+    
+    // If it's already a string in YYYY-MM-DD format, return it
+    if (typeof date === 'string' && date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      return date;
+    }
+    
+    // If it's an ISO string or Date object, convert to YYYY-MM-DD
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+    return dateObj.toISOString().split('T')[0];
+  };
+
   const initialVals = mode === "create" ? {
     activity: "",
     notes: "",
     duration: 0,
     tags: [""],
     rating: 1,
-    date: new Date(),
+    date: formatDateForInput(new Date()),
   } 
   : {
     activity: practiceItem!.activity ?  practiceItem!.activity : "",
@@ -34,7 +47,7 @@ export default function CreateSession({
     duration: practiceItem!.duration ? practiceItem!.duration : 0,
     tags: practiceItem!.tags ? practiceItem!.tags : [""],
     rating: practiceItem!.rating ? practiceItem!.rating : 3,
-    date: practiceItem!.date ? practiceItem!.date : new Date()
+    date: formatDateForInput(practiceItem!.date || new Date())
   }
 
   const handleCreate = async (values: {
@@ -42,9 +55,16 @@ export default function CreateSession({
     notes: string;
     rating: number;
     tags: string[]
-    duration: number
+    duration: number;
+    date: string;
   }) => {
     values.tags = values.tags.filter(tag => tag.length > 0);
+    
+    // Ensure date is in the correct format for the backend
+    const submissionData = {
+      ...values,
+      date: values.date // Already in YYYY-MM-DD format from the input
+    };
     
     try {
       const url = mode === "create" 
@@ -55,7 +75,7 @@ export default function CreateSession({
       
       const res = await authenticatedFetch(url, {
         method,
-        body: JSON.stringify(values),
+        body: JSON.stringify(submissionData),
       }, session);
 
       if (!res.ok) {

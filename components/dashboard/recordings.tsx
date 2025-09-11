@@ -18,7 +18,7 @@ export default function RecordingsTable({recordings}: {
         {recordings.length === 0 
         ? <div className="flex flex-col items-center justify-center px-2 py-4">
           <p className="font-semibold">No recordings.</p>
-          <p>You haven't saved any recordings.</p>
+          <p>You haven&apos;t saved any recordings.</p>
           <Link className="text-blue-600 hover:underline" href="/audio/create/">Upload a recording</Link>
           </div>
         : recordings.map(i => (

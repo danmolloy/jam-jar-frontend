@@ -1,7 +1,5 @@
 import { components } from "@/types/api"
-import { DateTime } from "luxon"
 import Link from "next/link";
-import {  MdEdit } from "react-icons/md";
 import DiaryEntry from "./diaryEntry";
 
 
@@ -17,7 +15,7 @@ export default function AllEntries({entries}: {
         {entries.length < 1 
         ?  <div className="flex flex-col items-center justify-center px-2 py-4">
           <p className="font-semibold">No entries.</p>
-          <p>You haven't saved any diary entries.</p>
+          <p>You haven&apos;t saved any diary entries.</p>
           <Link className="text-blue-600 hover:underline" href="/diary/create/">Create an entry</Link>
           </div>
         : entries.map(i => (

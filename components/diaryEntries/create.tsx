@@ -1,13 +1,16 @@
 'use client'
 
 import { components } from "@/types/api"
-import { Formik } from "formik"
+import { Field, Formik } from "formik"
 import { Session } from "next-auth"
 import { useRouter } from "next/navigation"
 import ButtonPrimary from "../form/buttonPrimary"
 import InputField from "../form/inputField"
+import { useEffect, useState } from "react"
 
 type DiaryEntry = components["schemas"]["DiaryEntry"]
+type UserData = components["schemas"]["User"]
+
 
 export default function CreateDiaryEntry({
   session,
@@ -18,12 +21,54 @@ export default function CreateDiaryEntry({
   mode: "create"|"update"
   diaryEntry?: DiaryEntry|undefined
 }) {
+  const [data, setData] = useState<UserData|null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
   const router = useRouter();
 
   const initialVals = {
     title: mode === "update" ? diaryEntry!.title : "",
     body:  mode === "update" ? diaryEntry!.body : "",
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!session?.accessToken) {
+        setError("No access token")
+        setLoading(false)
+        return
+      }
+
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/user/me/`, {
+          headers: {
+            Authorization: `Bearer ${session.accessToken}`,
+          },
+        })
+
+        if (!res.ok) {
+          setError(`Error: ${res.status}`)
+          setLoading(false)
+          return
+        }
+
+        const result = await res.json()
+        setData(result)
+      } catch (err) {
+        console.log(err)
+        setError("Failed to fetch user data")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [session])
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>{error}</p>
+  if (!data) return null
 
   const handleCreate = async (values: {
     title: string;
@@ -92,7 +137,7 @@ try {
     }
   }
   return (
-    <div>
+    <div className="p-4">
       <h1>Create Entry</h1>
       <Formik
         initialValues={initialVals}
@@ -101,8 +146,21 @@ try {
         }}>
           {props => (
             <form onSubmit={props.handleSubmit}>
-              <InputField label="Title" type="text" name="title" error={props.errors.title}/>
-              <InputField label="Body" type="textarea" name="body" error={props.errors.body} />
+              <Field placeholder="Title" className="border-b  my-4 rounded-t p-1" type="text" name="title" error={props.errors.title}/>
+              {/* <InputField label="Body" type="textarea" name="body" error={props.errors.body} /> */}
+              <div>
+                <Field 
+                  as="textarea" 
+                  className="border rounded w-full p-2 text-sm" 
+                  name="body" 
+                  rows={5}
+                  maxLength={data.subscription_status !== "active" ? 150 : 2000}
+                  placeholder="Write your diary entry..."
+                />
+                {props.values.body.length > 0 && data.subscription_status !== "active" && <p className="text-sm m-2">{props.values.body.length}/150</p>}
+                {props.values.body.length > 0 && data.subscription_status === "active" && <p className="text-sm m-2">{props.values.body.length}/2000</p>}
+
+              </div>
               <ButtonPrimary type="submit" label="Submit" handleClick={() => {}} />
             </form>
           )}
