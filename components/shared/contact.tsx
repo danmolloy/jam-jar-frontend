@@ -8,11 +8,11 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 export default function Contact() {
   const [sendStatus, setSendStatus] = useState<"success"|"sending"|"err"|null>(null)
 
-  const sendFail = (<div><h2 className="text-2xl">Message failed to send.</h2> <p>Please try again or <a href='mailto:danielmolloy_6@icloud.com' className='text-blue-500'>send an email</a>.</p></div>)
+  const sendFail = (<div className='flex flex-col items-center '><h2 className="text-xl">Message failed to send.</h2> <p>Please try again or <a href='mailto:danielmolloy_6@icloud.com' className='text-blue-500'>send an email</a>.</p></div>)
 
-  const sendSuccess = (<div><h2 className="text-2xl">Message recieved!</h2><p>I will get back to you as soon as possible.</p></div>)
+  const sendSuccess = (<div className='flex flex-col items-center '><h2 className="text-xl">Message recieved!</h2><p>I will get back to you as soon as possible.</p></div>)
 
-  const sendingMsg = (<div><h2 className="text-2xl">Message sending...</h2></div>)
+  const sendingMsg = (<div className='flex flex-col items-center '><h2 className="text-xl">Message sending...</h2></div>)
 
   return (
     <section id="contact" className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-slate-50 bg-[url(/background.png)]  bg-size-[300px] bg-center bg-repeat ">

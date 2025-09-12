@@ -1,42 +1,33 @@
 import { NextResponse } from "next/server";
-import SgMail from '@sendgrid/mail'
+import { sendContactFormEmail } from '@/lib/ses';
 
-const TO_EMAIL = process.env.TO_EMAIL
-
+const TO_EMAIL = process.env.TO_EMAIL;
 
 export async function POST(
   request: Request 
 ) {
   const req = await request.json();
 
-
-  const emailData = {
-    to: TO_EMAIL!,
-  from: process.env.FROM_EMAIL!,
-  templateId: "d-b9231cb1c21e4462af1d2da00dcb6827",
-  dynamic_template_data: {
-    toName: "Daniel",
-    name: req.name as string,
-    email: req.email as string,
-    message: req.message as string,
-  },
-  };
-  if (!process.env.SENDGRID_API_KEY) {
-  throw new Error('SENDGRID_API_KEY is not set');
-}
-
-SgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-try {
-    const data = await SgMail.send(emailData);
-    return NextResponse.json({ ...data, success: true }, { status: 201 });
-  } catch (e: unknown) {
-    const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred';
-    console.log(e);
+  try {
+    const data = await sendContactFormEmail(
+      {
+        name: req.name,
+        email: req.email,
+        message: req.message
+      },
+      TO_EMAIL!,
+      process.env.FROM_EMAIL! // This should be a verified email address
+    );
+    
+    return NextResponse.json({ 
+      messageId: data.MessageId,
+      success: true 
+    }, { status: 201 });
+  } catch (e: any) {
+    console.log('SES Error:', e);
     return NextResponse.json(
-      { error: errorMessage, success: false },
+      { error: e.message || 'An unexpected error occurred', success: false },
       { status: 500 }
     );
   }
 }
-
