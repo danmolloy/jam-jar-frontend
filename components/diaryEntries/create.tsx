@@ -5,7 +5,6 @@ import { Field, Formik } from "formik"
 import { Session } from "next-auth"
 import { useRouter } from "next/navigation"
 import ButtonPrimary from "../form/buttonPrimary"
-import InputField from "../form/inputField"
 import { useEffect, useState } from "react"
 
 type DiaryEntry = components["schemas"]["DiaryEntry"]
@@ -157,8 +156,11 @@ try {
                   maxLength={data.subscription_status !== "active" ? 150 : 2000}
                   placeholder="Write your diary entry..."
                 />
-                {props.values.body.length > 0 && data.subscription_status !== "active" && <p className="text-sm m-2">{props.values.body.length}/150</p>}
-                {props.values.body.length > 0 && data.subscription_status === "active" && <p className="text-sm m-2">{props.values.body.length}/2000</p>}
+                {props.values.body.length < 1 
+                ? null 
+                : data.subscription_status !== "active" 
+                ? <p className="text-sm m-2">{props.values.body.length}/150</p> 
+                : <p className="text-sm m-2">{props.values.body.length}/2000</p>}
 
               </div>
               <ButtonPrimary type="submit" label="Submit" handleClick={() => {}} />
