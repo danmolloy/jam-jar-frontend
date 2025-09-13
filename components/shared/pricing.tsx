@@ -32,12 +32,12 @@ const pricingTiers = [
 
 export default function PricingIndex({landing}: {landing: boolean}) {
   return (
-    <div id="pricing" className={`bg-blue-950  py-16 px-4 font-medium flex w-screen flex-col items-center `}>
+    <div id="pricing" className={`bg-blue-950 mx-4 mb-4 py-16 px-4 font-medium flex  flex-col items-center `}>
       <h2 className="font-semibold font-mono text-4xl self-start text-white">Pricing</h2>
       <div className="flex flex-col md:flex-row items-start justify-center">
 
       {pricingTiers.map((i, index) => (
-        <div key={index} className="border rounded shadow m-2 p-4 bg-white w-[90vw] md:w-[45vw]  min-h-[300px]">
+        <div key={index} className="border rounded shadow m-2 p-4 bg-white w-[80vw] md:w-[40vw]  min-h-[300px]">
           <h2 className="font-semibold text-2xl">{i.name}</h2>
           <p>{i.byline}</p>
           <h3 className="font-bold text-xl my-4 text-center">{i.price}{i.frequency && <span className="font-medium">/{i.frequency}</span>}</h3>
@@ -52,7 +52,7 @@ export default function PricingIndex({landing}: {landing: boolean}) {
         </div>
       ))}
       </div>
-      {landing && <div className=" w-screen flex flex-col items-center pt-24">
+      {landing && <div className=" w-screen flex flex-col items-center pt-16">
               <Link href={"/register"} className="text-xl flex flex-row items-center   border   bg-black text-white rounded py-1 px-2 hover:underline ">
               <p className="text-sm">Get started</p>
               <IoIosArrowRoundForward size={24}/>
