@@ -30,8 +30,7 @@ export default auth((req) => {
   // Skip middleware for API routes and static files
   if (nextUrl.pathname.startsWith('/api/') || 
       nextUrl.pathname.startsWith('/_next/') || 
-      nextUrl.pathname.startsWith('/favicon.ico') ||
-      nextUrl.pathname.startsWith('/public/')) {
+      nextUrl.pathname.startsWith('/favicon.ico')) {
     return NextResponse.next();
   }
   
@@ -40,23 +39,11 @@ export default auth((req) => {
     nextUrl.pathname.startsWith(route)
   );
 
-  // Check if the current path is a public route
-  const isPublicRoute = publicRoutes.some(route => 
-    nextUrl.pathname === route || nextUrl.pathname.startsWith(route + '/')
-  );
-
   // If user is not logged in and trying to access a protected route
   if (!isLoggedIn && isProtectedRoute) {
     const loginUrl = new URL('/login', nextUrl.origin);
-    loginUrl.searchParams.set('callbackUrl', nextUrl.pathname + nextUrl.search);
+    loginUrl.searchParams.set('callbackUrl', nextUrl.pathname);
     return NextResponse.redirect(loginUrl);
-  }
-
-  // If user is logged in and trying to access login/register pages, redirect to dashboard
-  if (isLoggedIn && (nextUrl.pathname === '/login' || nextUrl.pathname === '/register')) {
-    const callbackUrl = nextUrl.searchParams.get('callbackUrl');
-    const redirectUrl = callbackUrl && callbackUrl !== '/login' ? callbackUrl : '/';
-    return NextResponse.redirect(new URL(redirectUrl, nextUrl.origin));
   }
 
   // Allow the request to continue

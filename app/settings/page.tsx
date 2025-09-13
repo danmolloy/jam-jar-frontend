@@ -15,10 +15,7 @@ export default function SettingsPage() {
         },
       })
         .then((res) => res.json())
-        .then((data) => setUser(data))
-        .catch((error) => {
-          console.error('Failed to fetch user data:', error);
-        });
+        .then((data) => setUser(data));
     }
   }, [session]);
 
