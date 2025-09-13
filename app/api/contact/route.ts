@@ -23,10 +23,11 @@ export async function POST(
       messageId: data.MessageId,
       success: true 
     }, { status: 201 });
-  } catch (e: any) {
+  } catch (e) {
     console.log('SES Error:', e);
+    const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred';
     return NextResponse.json(
-      { error: e.message || 'An unexpected error occurred', success: false },
+      { error: errorMessage, success: false },
       { status: 500 }
     );
   }

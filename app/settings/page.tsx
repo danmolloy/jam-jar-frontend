@@ -1,10 +1,10 @@
 'use client'
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import SettingsIndex from "@/components/settings";
+import { useRequireAuth } from "@/lib/use-auth";
 
 export default function SettingsPage() {
-  const { data: session, status } = useSession();
+  const { session, isLoading } = useRequireAuth();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -15,14 +15,14 @@ export default function SettingsPage() {
         },
       })
         .then((res) => res.json())
-        .then((data) => setUser(data));
+        .then((data) => setUser(data))
+        .catch((error) => {
+          console.error('Failed to fetch user data:', error);
+        });
     }
   }, [session]);
 
-  if (status === "loading") return <div>Loading...</div>;
-  if (!session?.accessToken) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
   if (!user) return <div>Loading user data...</div>;
 
   return <SettingsIndex user={user} />;
