@@ -77,7 +77,7 @@ export default function Register() {
 
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}api/check-username/?username=${encodeURIComponent(username)}`,
+          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/'}api/check-username/?username=${encodeURIComponent(username)}`,
           {
             method: 'GET',
             headers: {
@@ -154,7 +154,7 @@ export default function Register() {
     setSuccess("");
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/register/`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/'}api/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
