@@ -32,7 +32,7 @@ const pricingTiers = [
 
 export default function PricingIndex({landing}: {landing: boolean}) {
   return (
-    <div id="pricing" className={`bg-blue-950 mx-4 mb-4 py-16 px-4 font-medium flex  flex-col items-center `}>
+    <div id="pricing" className={`bg-blue-950  py-16 px-4 font-medium flex  flex-col items-center `}>
       <h2 className="font-semibold font-mono text-4xl self-start text-white">Pricing</h2>
       <div className="flex flex-col md:flex-row items-start justify-center">
 
