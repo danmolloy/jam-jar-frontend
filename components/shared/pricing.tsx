@@ -11,7 +11,7 @@ const pricingTiers = [
     features: [
       "Track daily practice minutes target",
       "Log unlimited amount of practice sessions",
-      "Journal 140 characters per day",
+      "Journal 40 characters per day",
       "Basic data visualizations",
     ]
   },
@@ -23,7 +23,7 @@ const pricingTiers = [
     features: [
       "All basic features",
       "Advanced data visualizations",
-      "Unlimited journaling",
+      "Journal 5000 characters per day",
       "Filter practice data by activity and hashtags",
       "Audio record your practice",
     ]

@@ -8,6 +8,7 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import * as Yup from "yup";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { getApiUrl } from "../../app/lib/api";
 
 // Validation schema
 const RegisterSchema = Yup.object().shape({
@@ -77,7 +78,7 @@ export default function Register() {
 
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/'}api/check-username/?username=${encodeURIComponent(username)}`,
+          `${getApiUrl()}api/check-username/?username=${encodeURIComponent(username)}`,
           {
             method: 'GET',
             headers: {
@@ -154,7 +155,7 @@ export default function Register() {
     setSuccess("");
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/'}api/register/`, {
+      const response = await fetch(`${getApiUrl()}api/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,15 +1,18 @@
 'use client'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputField from "@/components/form/inputField";
 import { components } from "@/types/api";
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation"
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 
 
 type Recording = components["schemas"]['AudioRecording']
+type UserData = components["schemas"]["User"]
 
 
 const AudioSchema = Yup.object().shape({
@@ -21,14 +24,60 @@ const AudioSchema = Yup.object().shape({
   date: Yup.string(),
 });
 
-export default function AudioForm({mode, audioRecording, session}: {
-  session: Session
+export default function AudioForm({mode, audioRecording}: {
   mode: "create"|"update"
   audioRecording?: Recording
 }) {
+  const { data: session, status } = useSession();
+  const [data, setData] = useState<UserData|null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [message, setMessage] = useState('');
   const [submitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // Wait for session to load
+      if (status === "loading") {
+        return;
+      }
+      
+      if (status === "unauthenticated" || !session?.accessToken) {
+        setError("No access token")
+        setLoading(false)
+        return
+      }
+  
+        try {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/user/me/`, {
+            headers: {
+              Authorization: `Bearer ${session.accessToken}`,
+            },
+          })
+  
+          if (!res.ok) {
+            setError(`Error: ${res.status}`)
+            setLoading(false)
+            return
+          }
+  
+          const result = await res.json()
+          setData(result)
+        } catch (err) {
+          console.log(err)
+          setError("Failed to fetch user data")
+        } finally {
+          setLoading(false)
+        }
+      }
+  
+      fetchData()
+    }, [session, status])
+  
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>{error}</p>
+    if (!data) return null
 
   const handleUpdate = async (values: {
     title: string;
@@ -94,8 +143,9 @@ body: JSON.stringify({
   }
 
   return (
-    <div>
+    <div className="relative">
       <h1>{mode === "create" ? "Upload" : "Update"} Audio</h1>
+      
       <Formik
         initialValues={{
           //file: null as File | null,

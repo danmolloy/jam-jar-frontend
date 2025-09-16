@@ -1,11 +1,14 @@
 'use client'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "@/components/form/inputField";
 import { useSession } from "next-auth/react";
 import { saveRecordingMetadata, uploadAudioFile } from "./lib";
+import Link from "next/link";
+import { components } from "@/types/api";
 
+type UserData = components["schemas"]["User"]
 
 
 // Maximum file size: 50MB (50 * 1024 * 1024 bytes)
@@ -69,10 +72,52 @@ export default function CreateAudioPage() {
   const [submitting, setIsSubmitting] = useState(false);
   const [dailyUploadCount, setDailyUploadCount] = useState<number | null>(null);
   const [checkingUploads, setCheckingUploads] = useState(true);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+    const [userData, setUserData] = useState<UserData|null>(null)
+      const [loading, setLoading] = useState(true)
+      const [error, setError] = useState<string | null>(null)
+  
+      useEffect(() => {
+        const fetchData = async () => {
+          if (status === "loading") {
+            return;
+          }
+          
+          if (status === "unauthenticated" || !session?.accessToken) {
+            setError("No access token")
+            setLoading(false)
+            return
+          }
+    
+          try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/user/me/`, {
+              headers: {
+                Authorization: `Bearer ${session.accessToken}`,
+              },
+            })
+    
+            if (!res.ok) {
+              setError(`Error: ${res.status}`)
+              setLoading(false)
+              return
+            }
+    
+            const result = await res.json()
+            setUserData(result)
+          } catch (err) {
+            console.log(err)
+            setError("Failed to fetch user data")
+          } finally {
+            setLoading(false)
+          }
+        }
+    
+        fetchData()
+      }, [session, status])
 
   // Check daily upload count on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     const checkDailyUploads = async () => {
       if (session?.accessToken) {
         try {
@@ -88,13 +133,24 @@ export default function CreateAudioPage() {
     checkDailyUploads();
   }, [session?.accessToken]);
 
+  // Early returns after all hooks have been called
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>{error}</p>
+  if (!userData) return null
+
   // Check if daily limit is reached
   const isDailyLimitReached = dailyUploadCount !== null && dailyUploadCount >= MAX_DAILY_UPLOADS;
 
   return (
-    <div>
+    <div className="relative">
       <h1>Upload Audio</h1>
-      
+      {<div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
+        <div className="bg-white self-center mt-12 p-4 shadow text-center">
+          <h2 className="font-bold">Audio uploading is available for premium users only.</h2>
+                  <Link href="/account" className="hover:underline text-blue-600 ">Upgrade now</Link>
+
+        </div>
+      </div>}
       {/* Daily upload count display */}
       {!checkingUploads && dailyUploadCount !== null && (
         <div className={`p-3 rounded-md mb-4 ${isDailyLimitReached ? 'bg-red-50 border border-red-200' : 'bg-blue-50 border border-blue-200'}`}>

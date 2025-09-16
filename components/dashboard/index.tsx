@@ -70,7 +70,8 @@ const [data, setData] = useState<UserData|null>(null)
 
   return (
     <div className="flex flex-col p-4 bg-neutral-100">
-      {data.subscription_status !== "active" && <div className="text-center bg-black text-white font-medium -mt-4 ">
+      {data.subscription_status !== "active" 
+      && <div className="text-center bg-white text-blue-600 font-medium mb-4 p-4 ">
         <Link href="/account" className="hover:underline">Unlock your potential with our premium subscription.</Link>
       </div>}
       <div className="flex flex-row justify-between items-center p-2 font-medium">
@@ -83,14 +84,15 @@ const [data, setData] = useState<UserData|null>(null)
       />
       </div>
       <div className="relative flex flex-col">
-               
+      
       { (selectedActivity !== "" || selectedTag !== "") && data.subscription_status !== "active" 
-      &&  <div className={`z-10 absolute flex flex-col items-center  backdrop-blur-xs right-4 left-4 top-4 bottom-4`}>
-        <div className="text-center mt-24 mx-8 shadow bg-white border max-w-[300px] ">
-          <p className="font-bold text-xl">Filters are available for Premium users only.</p>
-          <Link href="/account" className="my-4 hover:underline text-blue-500">Get Premium</Link>
+      &&  <div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
+        <div className="bg-white self-center mt-12 p-4 shadow text-center">
+          <h2 className="font-bold">Filters are available for premium users only.</h2>
+                  <Link href="/account" className="hover:underline text-blue-600 ">Upgrade now</Link>
+
         </div>
-        </div>}
+      </div>}
       
       <DaySelect selectedTag={selectedTag} diaryEntries={data.diary_entries} recordings={data.recordings} dailyTarget={data.daily_target} selectedActivity={selectedActivity} practiceItems={filteredPracticeItems}/>
       <div className="flex flex-col lg:flex-row justify-between">
@@ -101,8 +103,8 @@ const [data, setData] = useState<UserData|null>(null)
      </div>
      <div className="flex flex-col lg:flex-row w-full justify-between ">
 
-      <RecordingsTable recordings={data.recordings} />  
-      <AllEntries entries={data.diary_entries} /> 
+      <RecordingsTable isPremium={data.subscription_status === "active" ? true : false} recordings={data.recordings} />  
+      <AllEntries isPremium={data.subscription_status === "active" ? true : false} entries={data.diary_entries} /> 
      </div>
      </div>
   )

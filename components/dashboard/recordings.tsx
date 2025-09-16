@@ -6,16 +6,23 @@ import Link from "next/link"
 
 type Recording = components['schemas']['AudioRecording']
 
-export default function RecordingsTable({recordings}: {
+export default function RecordingsTable({recordings, isPremium}: {
   recordings: Recording[]
+  isPremium: boolean
 }) {
   const [selectedRecording, setSelectedRecording] = useState<number|null>(null);
 
   return (
     <div className="lg:w-1/2 rounded p-4  shadow m-2 bg-white">
       <h2>ALL RECORDINGS</h2>
-      <div className="border-t border-gray-300">
-        {recordings.length === 0 
+      <div className=" border-t border-gray-300">
+
+        {!isPremium ? 
+          <div className="bg-white self-center my-4 p-4  text-center">
+          <h2 className="font-bold">Audio recording is available for premium users only.</h2>
+                  <Link href="/account" className="hover:underline text-blue-600 ">Upgrade now</Link>
+        </div>
+        : recordings.length === 0 
         ? <div className="flex flex-col items-center justify-center px-2 py-4">
           <p className="font-semibold">No recordings.</p>
           <p>You haven&apos;t saved any recordings.</p>

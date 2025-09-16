@@ -26,6 +26,6 @@ export default async function AudioUpdatePage({ params }: { params: Promise<{ id
 
   const data: Recording = await res.json();
 
-  return <AudioForm mode={"update"} session={session!}  audioRecording={data}  
+  return <AudioForm mode={"update"} audioRecording={data}  
   />;
 }

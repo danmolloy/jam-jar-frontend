@@ -153,14 +153,14 @@ try {
                   className="border rounded w-full p-2 text-sm" 
                   name="body" 
                   rows={5}
-                  maxLength={data.subscription_status !== "active" ? 150 : 2000}
+                  maxLength={data.subscription_status !== "active" ? 40 : 5000}
                   placeholder="Write your diary entry..."
                 />
                 {props.values.body.length < 1 
                 ? null 
                 : data.subscription_status !== "active" 
-                ? <p className="text-sm m-2">{props.values.body.length}/150</p> 
-                : <p className="text-sm m-2">{props.values.body.length}/2000</p>}
+                ? <p className="text-sm m-2">{props.values.body.length}/40</p> 
+                : <p className="text-sm m-2">{props.values.body.length}/5000</p>}
 
               </div>
               <ButtonPrimary type="submit" label="Submit" handleClick={() => {}} />
