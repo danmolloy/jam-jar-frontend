@@ -104,7 +104,7 @@ const [data, setData] = useState<UserData|null>(null)
      <div className="flex flex-col lg:flex-row w-full justify-between ">
 
       <RecordingsTable isPremium={data.subscription_status === "active" ? true : false} recordings={data.recordings} />  
-      <AllEntries isPremium={data.subscription_status === "active" ? true : false} entries={data.diary_entries} /> 
+      <AllEntries  entries={data.diary_entries} /> 
      </div>
      </div>
   )

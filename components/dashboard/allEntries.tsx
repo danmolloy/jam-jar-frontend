@@ -5,9 +5,8 @@ import DiaryEntry from "./diaryEntry";
 
 type Entry = components['schemas']['DiaryEntry']
 
-export default function AllEntries({entries, isPremium}: {
+export default function AllEntries({entries}: {
   entries: Entry[]
-  isPremium: boolean
 }) {
   return (
     <div className=" rounded p-4  shadow m-2 bg-white lg:w-1/2 ">

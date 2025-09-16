@@ -4,9 +4,7 @@ import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import InputField from "@/components/form/inputField";
 import { components } from "@/types/api";
-import { Session } from "next-auth";
 import { useRouter } from "next/navigation"
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 
 
