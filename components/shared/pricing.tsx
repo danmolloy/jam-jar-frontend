@@ -12,7 +12,7 @@ const pricingTiers = [
       "Track daily practice minutes target",
       "Log unlimited amount of practice sessions",
       "Journal 40 characters per day",
-      "Basic data visualizations",
+      "Data visualizations, including heatmap, charts and more",
     ]
   },
   {
@@ -22,10 +22,9 @@ const pricingTiers = [
     frequency: "3 months",
     features: [
       "All basic features",
-      "Advanced data visualizations",
       "Journal 5000 characters per day",
       "Filter practice data by activity and hashtags",
-      "Audio record your practice",
+      "Audio record your practice (5 recordings per day, 50MB max each)",
     ]
   }
 ]
