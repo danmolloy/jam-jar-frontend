@@ -36,7 +36,7 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
-      <link rel="icon" href="/jar.png" sizes="any" />
+      <link rel="icon" href="/jar-favicon.png" sizes="any" />
 
       <body className={`${geistSans.variable} ${geistMono.variable} ${barriecito.variable} antialiased flex flex-col  min-h-screen`}>
           <SessionProviderWrapper>
