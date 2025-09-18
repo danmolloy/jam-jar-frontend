@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className=" text-sm flex flex-col items-start justify-start w-full  bg-dark font-mono text-white p-8 ">
+    <footer className=" text-sm flex flex-col items-start justify-start w-full  bg-dark font-mono text-white p-8 py-16">
   <div className="flex flex-col justify-between  w-full text-xs py-2">
     <Link href="/privacy" className="hover:underline ">Privacy Policy</Link> 
     <Link href="/terms" className="hover:underline ">Terms of Service</Link>
