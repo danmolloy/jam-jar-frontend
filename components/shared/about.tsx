@@ -46,26 +46,33 @@ const featuresArr: {
 
 export default function AboutIndex() {
   return (
-    <div id="about" className="flex font-medium flex-col p-4 py-16 text-dark ">
-      <div className="flex flex-col bg-white text-dark border rounded">
-      <div className="pb-8 p-4 flex flex-col items-center justify-center md:mx-4 self-center ">
-                <h3 className="font-bold font-mono text-4xl self-start">About</h3>
-
-      <p className="text-lg py-2">Jam Jar brings structure and motivation to your music practice. Whether you&apos;re a student, professional or amateur, Jam Jar will help you see improvements.</p>
+    <div>
+      <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-xl ">
+        <div className="flex flex-col items-center justify-center w-1/2 ">
+        <h1>Practice makes perfect.</h1>
+        <p className="text-sm">But it isn't just about repitition - it's about attention and decisions. Each note played, each phrase repeated builds not only skill but awareness. The real progress hides in the small, consistent steps. Practice is about the journey taken.</p>
+        </div>
       </div>
-      <div className="flex flex-row flex-wrap items-start justify-start lg:justify-evenly   rounded  ">
-        {featuresArr.map((i, index) => (
-          <div key={index} className=" lg:w-2/5 rounded p-4 m-4">
-            <div className="flex flex-row items-center justify-start">
-              <div className="w-8 text-blue-500">
-              {i.icon}
-              </div>
-            <h3 className="font-semibold text-xl ">{i.title}</h3>
-            </div>
-            <p className="text-lg font-normal ml-8">{i.body}</p>
-          </div>
-        ))}
-      </div></div>
+      <div className="bg-gray-100  flex flex-col pb-4 min-h-screen items-center justify-center">
+  <h1 className="font-serif md:text-7xl text-6xl m-4">Capture your practice</h1>
+
+  <div className="m-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+    {featuresArr.map((i, index) => (
+      <div
+        key={index}
+        className={` border rounded-xl bg-white p-6 flex flex-col
+          ${index === 0 ? "md:col-span-2" : ""}
+          ${index === featuresArr.length - 1 ? "md:col-span-2" : ""}`}
+      >
+        <div className="flex items-center gap-4 mb-4">
+          <div className="text-3xl text-blue-700">{i.icon}</div>
+          <h2 className="text-2xl font-semibold">{i.title}</h2>
+        </div>
+        <p className="text-lg">{i.body}</p>
+      </div>
+    ))}
+  </div>
+</div>
     </div>
   )
 }

@@ -15,9 +15,9 @@ export default function Contact() {
   const sendingMsg = (<div className='flex flex-col items-center '><h2 className="text-xl">Message sending...</h2></div>)
 
   return (
-    <section id="contact" className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-slate-50 bg-[url(/background.png)]  bg-size-[300px] bg-center bg-repeat ">
+    <section id="contact" className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-neutral-100  ">
 
-      <h1 className='font-semibold font-mono text-4xl self-start'>Contact</h1>
+      <h1 className='font-serif md:text-7xl text-6xl '>Get in touch</h1>
     <Formik    
     initialValues={{
       name: '',

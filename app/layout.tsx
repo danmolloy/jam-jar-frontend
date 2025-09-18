@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Barriecito } from 'next/font/google';
+import { Geist, Geist_Mono, Barriecito, Barrio, Coiny, Nunito, Poppins } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import SessionProviderWrapper from '@/components/SessionProviderWrapper';
 
-const geistSans = Geist({
+const geistSans = Nunito({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800']
 });
 
 const geistMono = Geist_Mono({
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 
-const barriecito = Barriecito({
+const barriecito = Coiny({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-barriecito'
