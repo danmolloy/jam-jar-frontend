@@ -50,7 +50,7 @@ export default function AboutIndex() {
       <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-xl ">
         <div className="flex flex-col items-center justify-center w-1/2 ">
         <h1>Practice makes perfect.</h1>
-        <p className="text-sm">But it isn't just about repitition - it's about attention and decisions. Each note played, each phrase repeated builds not only skill but awareness. The real progress hides in the small, consistent steps. Practice is about the journey taken.</p>
+        <p className="text-sm">But it isn&apos;t just about repitition - it&apos;s about attention and decisions. Each note played, each phrase repeated builds not only skill but awareness. The real progress hides in the small, consistent steps. Practice is about the journey taken.</p>
         </div>
       </div>
       <div className="bg-gray-100  flex flex-col pb-4 min-h-screen items-center justify-center">

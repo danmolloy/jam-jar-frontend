@@ -1,8 +1,6 @@
-import Link from "next/link";
 import AboutIndex from "./about";
 import PricingIndex from "./pricing";
 import Contact from "./contact";
-import { IoIosArrowRoundForward } from "react-icons/io";
 import Hero from "./hero";
 
 export default function LandingPage() {

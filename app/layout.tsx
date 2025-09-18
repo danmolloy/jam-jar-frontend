@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Barriecito, Barrio, Coiny, Nunito, Poppins } from 'next/font/google';
+import { Geist_Mono,Coiny, Nunito,  } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
