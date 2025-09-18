@@ -31,7 +31,7 @@ const pricingTiers = [
 
 export default function PricingIndex({landing}: {landing: boolean}) {
   return (
-    <div id="pricing" className={` p-4 font-medium flex  flex-col items-center justify-center min-h-screen`}>
+    <div id="pricing" className={` p-4 font-medium flex  flex-col items-center justify-center min-h-screen bg-dark`}>
       <h2 className=" font-serif md:text-7xl text-6xl m-4 text-white">Start for free and upgrade for more insight.</h2>
       <div className="flex flex-col md:flex-row items-start justify-center p-4">
 

@@ -11,8 +11,8 @@ export default function ExternalMenu() {
   return (
      <div className=" flex flex-col items-center justify-center ">
         <button 
-          className="hover:underline hover:cursor-pointer p-2 rounded"
-         //onBlur={() => setTimeout(() => setShowMenu(false), 250)}
+          className=" hover:border hover:cursor-pointer p-1 rounded-full"
+         onBlur={() => setTimeout(() => setShowMenu(false), 250)}
           onClick={(e) => {
             e.preventDefault();
             focus();
