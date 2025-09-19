@@ -31,8 +31,8 @@ const barriecito = Coiny({
 })
 
 export const metadata: Metadata = {
-  title: 'Jam Jar',
-  description: 'The music practice studio.',
+  title: 'Jam Jar - Music Practice Journal',
+  description: 'Jam Jar brings structure and motivation to music practice. Keep track of your music practice analytics with our digital journal.',
 };
 
 export default async function RootLayout({
