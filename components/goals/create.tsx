@@ -77,7 +77,7 @@ try {
   console.error("API Error Response:", errorData);
   throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
     }
-    const data = await res.json();
+   // const data = await res.json();
           } catch (err) {
             console.error(err)
           }

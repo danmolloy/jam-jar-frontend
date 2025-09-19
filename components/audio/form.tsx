@@ -30,7 +30,7 @@ export default function AudioForm({mode, audioRecording}: {
   const [data, setData] = useState<UserData|null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [message, setMessage] = useState('');
+  //const [message, setMessage] = useState('');
   const [submitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
@@ -205,7 +205,7 @@ body: JSON.stringify({
             <button type="submit" disabled={submitting} className="bg-blue-600 text-white rounded px-4 py-2 mt-2">
               {submitting ? 'Updating...' : 'Update'}
             </button>
-            {message && <div className="mt-2 text-green-600">{message}</div>}
+            {/* {message && <div className="mt-2 text-green-600">{message}</div>} */}
           </Form>
         )}
       </Formik>
