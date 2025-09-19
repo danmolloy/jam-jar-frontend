@@ -13,33 +13,33 @@ const featuresArr: {
   icon: React.ReactNode
 }[] = [
   {
-    title: "Daily Targets",
-    body: "Set daily practice goals and get a feel for how you're tracking over time.",
-    icon: <BiTargetLock />
-  },
-  {
     title: "Practice Logging",
-    body: "Keep a record of what you practiced, when and how it went.",
+    body: "Keep a record of what you practiced, for how long and when. You can add notes and hashtags to your session.",
     icon: <CiBoxList />
   },
   {
-    title: "Audio Recording",
-    body: "Record your jams, listen back anytime, and hear how far you've come.",
-    icon: <RiRecordMailLine />
+    title: "Daily Targets",
+    body: "Set a target duration to practice each day. At a quick glance, you can see how you've done across the week.",
+    icon: <BiTargetLock />
   },
   {
     title: "Journaling",
-    body: "Drop in your thoughts, track your wins, and figure out what’s clicking.",
+    body: "Write about anything - what you're aiming towards, lesson notes or just some thoughts you've had that day.",
     icon: <IoIosJournal />
   },
   {
+    title: "Audio Recording",
+    body: "Record your practice and listen back to how your playing has developed over time.",
+    icon: <RiRecordMailLine />
+  },
+  {
     title: "Visual Insights",
-    body: "Spot trends in your practice with easy-to-read charts and heatmaps.",
+    body: "Spot trends in your practice with easy-to-read data displays including a week bar chart, annual heat map and daily rings.",
     icon: <IoBarChartSharp />
   },
   {
     title: "Tags and Advanced Filtering",
-    body: "Sort and filter by hashtag or vibe to see what you’re really putting time into.",
+    body: "Sort and filter your data by activity or hashtag to see what you’re putting time into.",
     icon: <FaHashtag />
   }
 ]
@@ -48,12 +48,12 @@ export default function AboutIndex() {
   return (
     <div>
       <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-full bg-dark">
-        <div className="flex flex-col items-center justify-center w-1/2 ">
+        <div className="flex flex-col items-center justify-center lg:w-1/2 p-4 text-center">
         <h1 className="font-serif text-4xl ">Practice makes perfect.</h1>
         <p className="mt-4">But it isn&apos;t just about repitition - it&apos;s about attention and decisions. Each note played, each phrase repeated builds not only skill but awareness. The real progress hides in the small, consistent steps. Practice is about the journey taken.</p>
         </div>
       </div>
-      <div className="bg-gray-100  flex flex-col pb-4 min-h-screen items-center justify-center">
+      <div id="about" className="bg-gray-100  flex flex-col pb-4 min-h-screen items-center justify-center">
   <h1 className="font-serif md:text-7xl text-6xl m-4">Capture your practice</h1>
 
   <div className="m-4 grid grid-cols-1 md:grid-cols-4 gap-4">

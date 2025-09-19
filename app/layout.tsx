@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import SessionProviderWrapper from '@/components/SessionProviderWrapper';
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Nunito({
   variable: '--font-geist-sans',
@@ -52,6 +53,7 @@ export default async function RootLayout({
         </div>
         <Footer />
             </SessionProviderWrapper>
+            <Analytics />
       </body>
     </html>
   );

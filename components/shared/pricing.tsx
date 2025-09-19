@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundForward, IoIosCheckmark } from "react-icons/io";
 
 
 const pricingTiers = [
@@ -9,10 +9,10 @@ const pricingTiers = [
     price: "Free",
     frequency: null,
     features: [
-      "Track daily practice minutes target",
       "Log unlimited amount of practice sessions",
+      "Track daily practice minutes target",
       "Journal 40 characters per day",
-      "Data visualizations, including heatmap, charts and more",
+      "Data visualizations, including heatmap, bar charts and rings",
     ]
   },
   {
@@ -22,9 +22,9 @@ const pricingTiers = [
     frequency: "3 months",
     features: [
       "All basic features",
+      "Audio record your practice (5 recordings per day, 50MB max each)",
       "Journal 5000 characters per day",
       "Filter practice data by activity and hashtags",
-      "Audio record your practice (5 recordings per day, 50MB max each)",
     ]
   }
 ]
@@ -36,16 +36,16 @@ export default function PricingIndex({landing}: {landing: boolean}) {
       <div className="flex flex-col md:flex-row items-start justify-center p-4">
 
       {pricingTiers.map((i, index) => (
-        <div key={index} className="border rounded shadow m-2 p-4 bg-white w-[80vw] md:w-[40vw]  min-h-[300px]">
+        <div key={index} className="border-2 rounded shadow m-2 p-4  border-blue-600 bg-white w-[80vw] md:w-[40vw]  min-h-[300px]">
           <h2 className="font-semibold text-2xl">{i.name}</h2>
           <p>{i.byline}</p>
           <h3 className="font-bold text-3xl my-4 text-center">{i.price}{i.frequency && <span className="text-base font-medium">/{i.frequency}</span>}</h3>
           <div>
             
           {i.features.map((j, jndex) => (
-            <p key={jndex}>
-              - {j}
-            </p>
+            <div key={jndex} className="flex flex-row items-start justify-start">
+              <IoIosCheckmark size={24}/> <p>{j}</p>
+            </div>
           ))}
         </div>
         </div>
