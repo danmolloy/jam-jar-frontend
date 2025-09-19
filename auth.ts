@@ -76,11 +76,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             token.error = null;
             console.log('JWT callback - token refreshed successfully');
           } else {
-            console.error("Token refresh failed", refreshed);
+            console.log("Token refresh failed", refreshed);
             token.error = "RefreshAccessTokenError";
           }
         } catch (err) {
-          console.error("Refresh error", err);
+          console.log("Refresh error", err);
           token.error = "RefreshAccessTokenError";
         }
       }
