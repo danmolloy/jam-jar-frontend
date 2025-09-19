@@ -9,11 +9,11 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
 const ProductDisplay = ({ onCheckout, loading }: { onCheckout: () => void, loading: boolean }) => (
-  <section className="flex flex-col items-center justify-center font-mono mb-16">
+  <section className="flex flex-col items-center justify-center bg-neutral-100 pb-16">
 
     <PricingIndex landing={false}/>
     <button
-      className="text-xl flex flex-row items-center hover:cursor-pointer text-black rounded p-2 hover:underline "
+      className="text-xl flex flex-row items-center  border-2 hover:cursor-pointer text-white bg-black rounded p-2 hover:underline "
       id="checkout-and-portal-button"
       onClick={onCheckout}
       disabled={loading}
@@ -114,7 +114,6 @@ export default function Premium() {
     setLoading(true);
     setMessage('');
     try {
-      console.log('Creating checkout session...');
       const res = await fetch('/api/subscriptions/create-checkout-session/', {
         method: 'POST',
         headers: {
@@ -124,13 +123,10 @@ export default function Premium() {
         body: JSON.stringify({}),
       });
       const data = await res.json();
-      console.log('Checkout session response:', data);
       
       if (data.sessionId) {
-        console.log('Loading Stripe...');
         const stripe = await stripePromise;
         if (stripe) {
-          console.log('Redirecting to checkout with session ID:', data.sessionId);
           const result = await stripe.redirectToCheckout({ sessionId: data.sessionId });
           if (result.error) {
             console.error('Stripe redirect error:', result.error);

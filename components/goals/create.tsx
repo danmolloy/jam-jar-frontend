@@ -78,7 +78,6 @@ try {
   throw new Error(`Submission failed: ${JSON.stringify(errorData)}`);
     }
     const data = await res.json();
-    console.log("Created:", data);
           } catch (err) {
             console.error(err)
           }

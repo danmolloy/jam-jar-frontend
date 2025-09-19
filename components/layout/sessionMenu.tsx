@@ -20,14 +20,14 @@ export default function SessionMenu() {
           }}>
                 <IoIosMenu size={20}/>
               </button>
-    {showMenu && <div className="fixed bg-white right-0 top-12  pb-24  flex flex-col justify-between  w-screen h-[95vh] z-10 py-8">
-      <Link href={"/"} className="p-3   text-start hover:underline">Home</Link>
+    {showMenu && <div className="fixed right-0 top-12 pb-32 text-white flex flex-col justify-evenly bg-dark  w-screen h-[95vh]  z-10 py-8 text-2xl font-bold  font-serif">
+      <Link href={"/"} className="px-4 mx-4 hover:underline text-start rounded">Home</Link>
 {/*       <Link href="/items" className="p-3 py-6 hover:bg-amber-200 text-start">Practice</Link>
  */}      {/* <Link href="/achievements" className="p-3 py-6 hover:bg-amber-200 text-start">Achievements</Link> */}
 
 {/*       <Link href={'/goals/create'} className="p-3 py-6 hover:bg-amber-200 text-start">Create Goal</Link>
- */}            <Link href={'/settings'} className="p-3   text-start hover:underline">Settings</Link>
-      <button onClick={() => signOut()} className="p-3   text-start hover:cursor-pointer hover:underline">Log Out</button>
+ */}            <Link href={'/settings'} className="px-4 mx-4 hover:underline text-start rounded">Settings</Link>
+      <button onClick={() => signOut()} className="px-4 mx-4 hover:underline text-start rounded">Log Out</button>
     </div>}
     </div>
   )

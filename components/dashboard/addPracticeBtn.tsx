@@ -12,7 +12,7 @@ export default function AddPracticeBtn({subscriptionStatus}: {
   
   return (
     <div className="relative z-10">
-      <button onClick={() => setShowMenu(!showMenu)} className=" hover:cursor-pointer px-2 py-1 bg-white  text-black mt-1 hover:text-blue-500  flex flex-row  rounded items-center justify-center">
+      <button onClick={() => setShowMenu(!showMenu)} className=" hover:cursor-pointer px-2 py-1 bg-white border text-black mt-1 hover:text-blue-600  flex flex-row  rounded items-center justify-center">
         <p className="mr-1">New</p><IoMdAdd />
       </button>
       {showMenu &&<div className="absolute  flex flex-col bg-white shadow right-0 w-32">

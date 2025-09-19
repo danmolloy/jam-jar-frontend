@@ -50,18 +50,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     
     async jwt({ token, user }) {
-      console.log('JWT callback - user:', user);
-      console.log('JWT callback - token:', token);
-      
+          
       if (user) {
         token.id = user.id;
         token.accessToken = user.accessToken; 
         token.refreshToken = user.refreshToken; 
-        console.log('JWT callback - set user data:', { id: user.id, hasAccessToken: !!user.accessToken });
       } 
       
       if (token.accessToken && isTokenExpired(token.accessToken as string)) {
-        console.log('JWT callback - token expired, refreshing...');
         try {
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/token/refresh/`, {
             method: "POST",
@@ -74,7 +70,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           if (res.ok) {
             token.accessToken = refreshed.access;
             token.error = null;
-            console.log('JWT callback - token refreshed successfully');
           } else {
             console.log("Token refresh failed", refreshed);
             token.error = "RefreshAccessTokenError";
@@ -88,15 +83,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      console.log('Session callback - token:', token);
-      console.log('Session callback - session before:', session);
-      
+            
       if (token) {
         session.user.id = String(token.id);
         session.accessToken = token.accessToken as string;
         session.refreshToken = token.refreshToken as string;
         session.error = token.error as string;
-        console.log('Session callback - session after:', session);
       }
       return session;
     },

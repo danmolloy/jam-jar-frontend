@@ -135,7 +135,6 @@ body: JSON.stringify({
     }
 
     } catch(e) {
-      console.log(setMessage(String(e)))
       console.error(e)
     }
   }

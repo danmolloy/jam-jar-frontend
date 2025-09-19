@@ -40,7 +40,6 @@ export default function Contact() {
       await new Promise(resolve => setTimeout(resolve, 1000))
       axios.post("/api/contact", values)
       .then((res) => {
-        console.log('Response received')
         if (res.status === 201) {
           setSendStatus("success")
           actions.setSubmitting(false)
