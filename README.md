@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jam Jar - Frontend
+## Overview
+Jam Jar is a full-stack web application that helps musicians track practice sessions, record audio, set goals, and visualize progress through an analytics dashboard.
 
-## Getting Started
+The frontend demonstrates modern architecture, performance optimization, UI/UX design, authentication flows, API integration, and third-party services (Stripe, NextAuth, analytics, email).
 
-First, run the development server:
+Check out the [Django Rest Framework backend](https://github.com/danmolloy/jam-jar-backend).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+### User Experience
+* Practice Tracking: Log sessions with metadata (duration, instrument, tags, notes).
+* Audio Recording & Playback: Record practice sessions directly in the app.
+* Analytics Dashboard: Charts, heatmaps, and streak tracking for actionable insights.
+* Responsive & Accessible UI: Mobile-first, dark/light themes, smooth transitions, and WCAG-conscious design.
+* Interactive Feedback: Loading states and error handling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Technical Highlights
+* Authentication Flow: NextAuth.js with JWT tokens, email verification, and password reset.
+* Subscription Management: Stripe integration for premium features.
+* RESTful API Integration: Strongly typed requests/responses with TypeScript and Axios queries.
+* Error Monitoring: Sentry integration for real-time error tracking.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies
+* Framework & Language: Next.js 15, TypeScript
+* Styling: Tailwind CSS, Google Font integration
+* Authentication: NextAuth.js integrated with Django backend
+* Forms & Email: Formik, Yup, AWS SES
+* Charts & Data: Recharts
+* Payments: Stripe
+* Analytics & Monitoring: Vercel Analytics, Google Analytics, Sentry
+* HTTP Client: Axios
+* Code Quality: ESLint, Prettier, Github Actions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Under Development
+* Dashboard interactivity 
+* Accessibility
+* Test coverage (Jest, Playwright)
+* CI/CD pipelines
 
-## Learn More
+## License
+Please respect the intellectual property and don't use this code for commercial purposes without permission.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Credits
+Designed and developed by Daniel Molloy.
