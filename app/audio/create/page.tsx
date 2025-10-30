@@ -144,7 +144,7 @@ export default function CreateAudioPage() {
   return (
     <div className="relative">
       <h1>Upload Audio</h1>
-      {<div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
+      {userData.subscription_status !== "active" && <div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
         <div className="bg-white self-center mt-12 p-4 shadow text-center">
           <h2 className="font-bold">Audio uploading is available for premium users only.</h2>
                   <Link href="/account" className="hover:underline text-blue-600 ">Upgrade now</Link>
