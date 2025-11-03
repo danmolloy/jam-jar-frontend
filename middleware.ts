@@ -4,12 +4,12 @@ import { auth } from '@/auth';
 // Define protected routes that require authentication
 const protectedRoutes = [
   '/account',
-  '/achievements', 
+  '/achievements',
   '/audio',
   '/diary',
   '/goals',
   '/items',
-  '/settings'
+  '/settings',
 ];
 
 // Define public routes that don't require authentication
@@ -20,24 +20,24 @@ const publicRoutes = [
   '/reset-password',
   '/confirm-email',
   '/privacy',
-  '/terms'
+  '/terms',
 ];
 
 export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
-  
+
   // Skip middleware for API routes and static files
-  if (nextUrl.pathname.startsWith('/api/') || 
-      nextUrl.pathname.startsWith('/_next/') || 
-      nextUrl.pathname.startsWith('/favicon.ico')) {
+  if (
+    nextUrl.pathname.startsWith('/api/') ||
+    nextUrl.pathname.startsWith('/_next/') ||
+    nextUrl.pathname.startsWith('/favicon.ico')
+  ) {
     return NextResponse.next();
   }
-  
+
   // Check if the current path is a protected route
-  const isProtectedRoute = protectedRoutes.some(route => 
-    nextUrl.pathname.startsWith(route)
-  );
+  const isProtectedRoute = protectedRoutes.some((route) => nextUrl.pathname.startsWith(route));
 
   // If user is not logged in and trying to access a protected route
   if (!isLoggedIn && isProtectedRoute) {

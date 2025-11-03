@@ -4,2026 +4,2125 @@
  */
 
 export interface paths {
-    "/api/diary-entries/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_diary_entries_list"];
-        put?: never;
-        post: operations["api_diary_entries_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+  '/api/diary-entries/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/diary-entries/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_diary_entries_retrieve"];
-        put: operations["api_diary_entries_update"];
-        post?: never;
-        delete: operations["api_diary_entries_destroy"];
-        options?: never;
-        head?: never;
-        patch: operations["api_diary_entries_partial_update"];
-        trace?: never;
+    get: operations['api_diary_entries_list'];
+    put?: never;
+    post: operations['api_diary_entries_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/diary-entries/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/goals/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_goals_list"];
-        put?: never;
-        post: operations["api_goals_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['api_diary_entries_retrieve'];
+    put: operations['api_diary_entries_update'];
+    post?: never;
+    delete: operations['api_diary_entries_destroy'];
+    options?: never;
+    head?: never;
+    patch: operations['api_diary_entries_partial_update'];
+    trace?: never;
+  };
+  '/api/goals/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/goals/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_goals_retrieve"];
-        put: operations["api_goals_update"];
-        post?: never;
-        delete: operations["api_goals_destroy"];
-        options?: never;
-        head?: never;
-        patch: operations["api_goals_partial_update"];
-        trace?: never;
+    get: operations['api_goals_list'];
+    put?: never;
+    post: operations['api_goals_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/goals/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/practice-items/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_practice_items_list"];
-        put?: never;
-        post: operations["api_practice_items_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['api_goals_retrieve'];
+    put: operations['api_goals_update'];
+    post?: never;
+    delete: operations['api_goals_destroy'];
+    options?: never;
+    head?: never;
+    patch: operations['api_goals_partial_update'];
+    trace?: never;
+  };
+  '/api/practice-items/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/practice-items/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_practice_items_retrieve"];
-        put: operations["api_practice_items_update"];
-        post?: never;
-        delete: operations["api_practice_items_destroy"];
-        options?: never;
-        head?: never;
-        patch: operations["api_practice_items_partial_update"];
-        trace?: never;
+    get: operations['api_practice_items_list'];
+    put?: never;
+    post: operations['api_practice_items_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/practice-items/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/protected/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_protected_retrieve"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['api_practice_items_retrieve'];
+    put: operations['api_practice_items_update'];
+    post?: never;
+    delete: operations['api_practice_items_destroy'];
+    options?: never;
+    head?: never;
+    patch: operations['api_practice_items_partial_update'];
+    trace?: never;
+  };
+  '/api/protected/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/recordings/save-recording/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["api_recordings_save_recording_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['api_protected_retrieve'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/recordings/save-recording/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/recordings/upload-url/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["api_recordings_upload_url_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    post: operations['api_recordings_save_recording_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/recordings/upload-url/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/register/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** @description View for user registration */
-        post: operations["api_register_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    post: operations['api_recordings_upload_url_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/register/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/schema/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description OpenApi3 schema for this API. Format can be selected via content negotiation.
-         *
-         *     - YAML: application/vnd.oai.openapi
-         *     - JSON: application/vnd.oai.openapi+json */
-        get: operations["api_schema_retrieve"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    /** @description View for user registration */
+    post: operations['api_register_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/schema/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/token/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** @description Takes a set of user credentials and returns an access and refresh JSON web
-         *     token pair to prove the authentication of those credentials. */
-        post: operations["api_token_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** @description OpenApi3 schema for this API. Format can be selected via content negotiation.
+     *
+     *     - YAML: application/vnd.oai.openapi
+     *     - JSON: application/vnd.oai.openapi+json */
+    get: operations['api_schema_retrieve'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/token/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/token/refresh/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** @description Takes a refresh type JSON web token and returns an access type JSON web
-         *     token if the refresh token is valid. */
-        post: operations["api_token_refresh_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    /** @description Takes a set of user credentials and returns an access and refresh JSON web
+     *     token pair to prove the authentication of those credentials. */
+    post: operations['api_token_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/token/refresh/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/user/me/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["api_user_me_retrieve"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    /** @description Takes a refresh type JSON web token and returns an access type JSON web
+     *     token if the refresh token is valid. */
+    post: operations['api_token_refresh_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/user/me/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/users/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description API endpoint that allows users to be viewed or edited. */
-        get: operations["api_users_list"];
-        put?: never;
-        /** @description API endpoint that allows users to be viewed or edited. */
-        post: operations["api_users_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['api_user_me_retrieve'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/users/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/users/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description API endpoint that allows users to be viewed or edited. */
-        get: operations["api_users_retrieve"];
-        /** @description Update user information */
-        put: operations["api_users_update"];
-        post?: never;
-        /** @description API endpoint that allows users to be viewed or edited. */
-        delete: operations["api_users_destroy"];
-        options?: never;
-        head?: never;
-        /** @description API endpoint that allows users to be viewed or edited. */
-        patch: operations["api_users_partial_update"];
-        trace?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    get: operations['api_users_list'];
+    put?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    post: operations['api_users_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/users/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/diary-entries/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["diary_entries_list"];
-        put?: never;
-        post: operations["diary_entries_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    get: operations['api_users_retrieve'];
+    /** @description Update user information */
+    put: operations['api_users_update'];
+    post?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    delete: operations['api_users_destroy'];
+    options?: never;
+    head?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    patch: operations['api_users_partial_update'];
+    trace?: never;
+  };
+  '/diary-entries/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/diary-entries/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["diary_entries_retrieve"];
-        put: operations["diary_entries_update"];
-        post?: never;
-        delete: operations["diary_entries_destroy"];
-        options?: never;
-        head?: never;
-        patch: operations["diary_entries_partial_update"];
-        trace?: never;
+    get: operations['diary_entries_list'];
+    put?: never;
+    post: operations['diary_entries_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/diary-entries/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/goals/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["goals_list"];
-        put?: never;
-        post: operations["goals_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['diary_entries_retrieve'];
+    put: operations['diary_entries_update'];
+    post?: never;
+    delete: operations['diary_entries_destroy'];
+    options?: never;
+    head?: never;
+    patch: operations['diary_entries_partial_update'];
+    trace?: never;
+  };
+  '/goals/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/goals/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["goals_retrieve"];
-        put: operations["goals_update"];
-        post?: never;
-        delete: operations["goals_destroy"];
-        options?: never;
-        head?: never;
-        patch: operations["goals_partial_update"];
-        trace?: never;
+    get: operations['goals_list'];
+    put?: never;
+    post: operations['goals_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/goals/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/payments/confirm-subscription/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["payments_confirm_subscription_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['goals_retrieve'];
+    put: operations['goals_update'];
+    post?: never;
+    delete: operations['goals_destroy'];
+    options?: never;
+    head?: never;
+    patch: operations['goals_partial_update'];
+    trace?: never;
+  };
+  '/payments/confirm-subscription/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/payments/create-checkout-session/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["payments_create_checkout_session_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    post: operations['payments_confirm_subscription_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/payments/create-checkout-session/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/payments/stripe/webhook/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: operations["payments_stripe_webhook_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    post: operations['payments_create_checkout_session_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/payments/stripe/webhook/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/practice-items/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["practice_items_list"];
-        put?: never;
-        post: operations["practice_items_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    post: operations['payments_stripe_webhook_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/practice-items/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/practice-items/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["practice_items_retrieve"];
-        put: operations["practice_items_update"];
-        post?: never;
-        delete: operations["practice_items_destroy"];
-        options?: never;
-        head?: never;
-        patch: operations["practice_items_partial_update"];
-        trace?: never;
+    get: operations['practice_items_list'];
+    put?: never;
+    post: operations['practice_items_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/practice-items/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/users/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description API endpoint that allows users to be viewed or edited. */
-        get: operations["users_list"];
-        put?: never;
-        /** @description API endpoint that allows users to be viewed or edited. */
-        post: operations["users_create"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get: operations['practice_items_retrieve'];
+    put: operations['practice_items_update'];
+    post?: never;
+    delete: operations['practice_items_destroy'];
+    options?: never;
+    head?: never;
+    patch: operations['practice_items_partial_update'];
+    trace?: never;
+  };
+  '/users/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/users/{id}/": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** @description API endpoint that allows users to be viewed or edited. */
-        get: operations["users_retrieve"];
-        /** @description Update user information */
-        put: operations["users_update"];
-        post?: never;
-        /** @description API endpoint that allows users to be viewed or edited. */
-        delete: operations["users_destroy"];
-        options?: never;
-        head?: never;
-        /** @description API endpoint that allows users to be viewed or edited. */
-        patch: operations["users_partial_update"];
-        trace?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    get: operations['users_list'];
+    put?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    post: operations['users_create'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/users/{id}/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    /** @description API endpoint that allows users to be viewed or edited. */
+    get: operations['users_retrieve'];
+    /** @description Update user information */
+    put: operations['users_update'];
+    post?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    delete: operations['users_destroy'];
+    options?: never;
+    head?: never;
+    /** @description API endpoint that allows users to be viewed or edited. */
+    patch: operations['users_partial_update'];
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        AudioRecording: {
-            readonly id: number;
-            readonly user: number;
-            s3_key: string;
-            /** Format: uri */
-            readonly url: string;
-            title: string;
-            notes?: string;
-            tags?: string[];
-            location?: string;
-            /** Format: date */
-            readonly date: string;
-            /** Format: date-time */
-            readonly created_at: string;
-        };
-        /**
-         * @description * `streak` - Streak
-         *     * `time` - Time Spent
-         *     * `sessions` - Session Count
-         * @enum {string}
-         */
-        CategoryEnum: "streak" | "time" | "sessions";
-        DiaryEntry: {
-            /** Format: date */
-            readonly date: string;
-            title: string;
-            body: string;
-            readonly id: number;
-            /** Format: date-time */
-            readonly created_at: string;
-            readonly author: number;
-        };
-        Goal: {
-            readonly id: number;
-            category?: components["schemas"]["CategoryEnum"];
-            title: string;
-            description: string;
-            /** @description Target number of days, minutes, or sessions */
-            target_count: number;
-            /** Format: date */
-            readonly start_date: string;
-            /** Format: date */
-            end_date: string;
-            assigned_to: number;
-            /** @description Null means user created this goal for themselves */
-            assigned_by?: number | null;
-            /** Format: date */
-            readonly creation_date: string;
-        };
-        PatchedDiaryEntry: {
-            /** Format: date */
-            readonly date?: string;
-            title?: string;
-            body?: string;
-            readonly id?: number;
-            /** Format: date-time */
-            readonly created_at?: string;
-            readonly author?: number;
-        };
-        PatchedGoal: {
-            readonly id?: number;
-            category?: components["schemas"]["CategoryEnum"];
-            title?: string;
-            description?: string;
-            /** @description Target number of days, minutes, or sessions */
-            target_count?: number;
-            /** Format: date */
-            readonly start_date?: string;
-            /** Format: date */
-            end_date?: string;
-            assigned_to?: number;
-            /** @description Null means user created this goal for themselves */
-            assigned_by?: number | null;
-            /** Format: date */
-            readonly creation_date?: string;
-        };
-        PatchedPracticeItem: {
-            readonly id?: number;
-            /** Format: date */
-            readonly date?: string;
-            activity?: string;
-            notes?: string;
-            rating?: number;
-            duration?: number;
-            /** @description List of hashtags */
-            tags?: string[];
-        };
-        PatchedUserUpdate: {
-            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-            username?: string;
-            /**
-             * Email address
-             * Format: email
-             */
-            email?: string;
-            first_name?: string;
-            last_name?: string;
-            is_teacher?: boolean;
-            current_password?: string;
-            new_password?: string;
-            new_password_confirm?: string;
-            daily_target?: number;
-        };
-        PracticeItem: {
-            readonly id: number;
-            /** Format: date */
-            readonly date: string;
-            activity?: string;
-            notes?: string;
-            rating?: number;
-            duration?: number;
-            /** @description List of hashtags */
-            tags?: string[];
-        };
-        TokenObtainPair: {
-            username: string;
-            password: string;
-            readonly access: string;
-            readonly refresh: string;
-        };
-        TokenRefresh: {
-            readonly access: string;
-            refresh: string;
-        };
-        User: {
-            /** Format: uri */
-            readonly url: string;
-            readonly id: number;
-            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-            username: string;
-            readonly recordings: components["schemas"]["AudioRecording"][];
-            /**
-             * Email address
-             * Format: email
-             */
-            email?: string;
-            is_teacher?: boolean;
-            points?: number;
-            timezone?: string;
-            daily_target?: number;
-            subscription_id?: string | null;
-            subscription_status?: string | null;
-            readonly diary_entries: components["schemas"]["DiaryEntry"][];
-            readonly practice_items: components["schemas"]["PracticeItem"][];
-            readonly full_achievements: string;
-            readonly goals: components["schemas"]["Goal"][];
-        };
-        /** @description Serializer for user registration */
-        UserRegistration: {
-            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-            username: string;
-            /**
-             * Email address
-             * Format: email
-             */
-            email?: string;
-            password: string;
-            password_confirm: string;
-            first_name?: string;
-            last_name?: string;
-            is_teacher?: boolean;
-        };
-        UserUpdate: {
-            /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-            username?: string;
-            /**
-             * Email address
-             * Format: email
-             */
-            email?: string;
-            first_name?: string;
-            last_name?: string;
-            is_teacher?: boolean;
-            current_password?: string;
-            new_password?: string;
-            new_password_confirm?: string;
-            daily_target?: number;
-        };
+  schemas: {
+    AudioRecording: {
+      readonly id: number;
+      readonly user: number;
+      s3_key: string;
+      /** Format: uri */
+      readonly url: string;
+      title: string;
+      notes?: string;
+      tags?: string[];
+      location?: string;
+      /** Format: date */
+      readonly date: string;
+      /** Format: date-time */
+      readonly created_at: string;
     };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+    /**
+     * @description * `streak` - Streak
+     *     * `time` - Time Spent
+     *     * `sessions` - Session Count
+     * @enum {string}
+     */
+    CategoryEnum: 'streak' | 'time' | 'sessions';
+    DiaryEntry: {
+      /** Format: date */
+      readonly date: string;
+      title: string;
+      body: string;
+      readonly id: number;
+      /** Format: date-time */
+      readonly created_at: string;
+      readonly author: number;
+    };
+    Goal: {
+      readonly id: number;
+      category?: components['schemas']['CategoryEnum'];
+      title: string;
+      description: string;
+      /** @description Target number of days, minutes, or sessions */
+      target_count: number;
+      /** Format: date */
+      readonly start_date: string;
+      /** Format: date */
+      end_date: string;
+      assigned_to: number;
+      /** @description Null means user created this goal for themselves */
+      assigned_by?: number | null;
+      /** Format: date */
+      readonly creation_date: string;
+    };
+    PatchedDiaryEntry: {
+      /** Format: date */
+      readonly date?: string;
+      title?: string;
+      body?: string;
+      readonly id?: number;
+      /** Format: date-time */
+      readonly created_at?: string;
+      readonly author?: number;
+    };
+    PatchedGoal: {
+      readonly id?: number;
+      category?: components['schemas']['CategoryEnum'];
+      title?: string;
+      description?: string;
+      /** @description Target number of days, minutes, or sessions */
+      target_count?: number;
+      /** Format: date */
+      readonly start_date?: string;
+      /** Format: date */
+      end_date?: string;
+      assigned_to?: number;
+      /** @description Null means user created this goal for themselves */
+      assigned_by?: number | null;
+      /** Format: date */
+      readonly creation_date?: string;
+    };
+    PatchedPracticeItem: {
+      readonly id?: number;
+      /** Format: date */
+      readonly date?: string;
+      activity?: string;
+      notes?: string;
+      rating?: number;
+      duration?: number;
+      /** @description List of hashtags */
+      tags?: string[];
+    };
+    PatchedUserUpdate: {
+      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+      username?: string;
+      /**
+       * Email address
+       * Format: email
+       */
+      email?: string;
+      first_name?: string;
+      last_name?: string;
+      is_teacher?: boolean;
+      current_password?: string;
+      new_password?: string;
+      new_password_confirm?: string;
+      daily_target?: number;
+    };
+    PracticeItem: {
+      readonly id: number;
+      /** Format: date */
+      readonly date: string;
+      activity?: string;
+      notes?: string;
+      rating?: number;
+      duration?: number;
+      /** @description List of hashtags */
+      tags?: string[];
+    };
+    TokenObtainPair: {
+      username: string;
+      password: string;
+      readonly access: string;
+      readonly refresh: string;
+    };
+    TokenRefresh: {
+      readonly access: string;
+      refresh: string;
+    };
+    User: {
+      /** Format: uri */
+      readonly url: string;
+      readonly id: number;
+      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+      username: string;
+      readonly recordings: components['schemas']['AudioRecording'][];
+      /**
+       * Email address
+       * Format: email
+       */
+      email?: string;
+      is_teacher?: boolean;
+      points?: number;
+      timezone?: string;
+      daily_target?: number;
+      subscription_id?: string | null;
+      subscription_status?: string | null;
+      readonly diary_entries: components['schemas']['DiaryEntry'][];
+      readonly practice_items: components['schemas']['PracticeItem'][];
+      readonly full_achievements: string;
+      readonly goals: components['schemas']['Goal'][];
+    };
+    /** @description Serializer for user registration */
+    UserRegistration: {
+      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+      username: string;
+      /**
+       * Email address
+       * Format: email
+       */
+      email?: string;
+      password: string;
+      password_confirm: string;
+      first_name?: string;
+      last_name?: string;
+      is_teacher?: boolean;
+    };
+    UserUpdate: {
+      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+      username?: string;
+      /**
+       * Email address
+       * Format: email
+       */
+      email?: string;
+      first_name?: string;
+      last_name?: string;
+      is_teacher?: boolean;
+      current_password?: string;
+      new_password?: string;
+      new_password_confirm?: string;
+      daily_target?: number;
+    };
+  };
+  responses: never;
+  parameters: never;
+  requestBodies: never;
+  headers: never;
+  pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    api_diary_entries_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"][];
-                };
-            };
-        };
+  api_diary_entries_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    api_diary_entries_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DiaryEntry"];
-                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
-                "multipart/form-data": components["schemas"]["DiaryEntry"];
-            };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'][];
         };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+      };
     };
-    api_diary_entries_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+  };
+  api_diary_entries_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    api_diary_entries_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DiaryEntry"];
-                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
-                "multipart/form-data": components["schemas"]["DiaryEntry"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DiaryEntry'];
+        'application/x-www-form-urlencoded': components['schemas']['DiaryEntry'];
+        'multipart/form-data': components['schemas']['DiaryEntry'];
+      };
     };
-    api_diary_entries_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
         };
+      };
     };
-    api_diary_entries_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedDiaryEntry"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedDiaryEntry"];
-                "multipart/form-data": components["schemas"]["PatchedDiaryEntry"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+  };
+  api_diary_entries_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_goals_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"][];
-                };
-            };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
         };
+      };
     };
-    api_goals_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Goal"];
-                "application/x-www-form-urlencoded": components["schemas"]["Goal"];
-                "multipart/form-data": components["schemas"]["Goal"];
-            };
-        };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+  };
+  api_diary_entries_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_goals_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DiaryEntry'];
+        'application/x-www-form-urlencoded': components['schemas']['DiaryEntry'];
+        'multipart/form-data': components['schemas']['DiaryEntry'];
+      };
     };
-    api_goals_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Goal"];
-                "application/x-www-form-urlencoded": components["schemas"]["Goal"];
-                "multipart/form-data": components["schemas"]["Goal"];
-            };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
         };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+      };
     };
-    api_goals_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_diary_entries_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_goals_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedGoal"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedGoal"];
-                "multipart/form-data": components["schemas"]["PatchedGoal"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+        content?: never;
+      };
     };
-    api_practice_items_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"][];
-                };
-            };
-        };
+  };
+  api_diary_entries_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_practice_items_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PracticeItem"];
-                "application/x-www-form-urlencoded": components["schemas"]["PracticeItem"];
-                "multipart/form-data": components["schemas"]["PracticeItem"];
-            };
-        };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedDiaryEntry'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedDiaryEntry'];
+        'multipart/form-data': components['schemas']['PatchedDiaryEntry'];
+      };
     };
-    api_practice_items_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
         };
+      };
     };
-    api_practice_items_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PracticeItem"];
-                "application/x-www-form-urlencoded": components["schemas"]["PracticeItem"];
-                "multipart/form-data": components["schemas"]["PracticeItem"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+  };
+  api_goals_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    api_practice_items_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content: {
+          'application/json': components['schemas']['Goal'][];
         };
+      };
     };
-    api_practice_items_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedPracticeItem"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedPracticeItem"];
-                "multipart/form-data": components["schemas"]["PatchedPracticeItem"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+  };
+  api_goals_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    api_protected_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['Goal'];
+        'application/x-www-form-urlencoded': components['schemas']['Goal'];
+        'multipart/form-data': components['schemas']['Goal'];
+      };
     };
-    api_recordings_save_recording_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content: {
+          'application/json': components['schemas']['Goal'];
         };
+      };
     };
-    api_recordings_upload_url_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_goals_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_register_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["UserRegistration"];
-                "application/x-www-form-urlencoded": components["schemas"]["UserRegistration"];
-                "multipart/form-data": components["schemas"]["UserRegistration"];
-            };
+        content: {
+          'application/json': components['schemas']['Goal'];
         };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserRegistration"];
-                };
-            };
-        };
+      };
     };
-    api_schema_retrieve: {
-        parameters: {
-            query?: {
-                format?: "json" | "yaml";
-                lang?: "af" | "ar" | "ar-dz" | "ast" | "az" | "be" | "bg" | "bn" | "br" | "bs" | "ca" | "ckb" | "cs" | "cy" | "da" | "de" | "dsb" | "el" | "en" | "en-au" | "en-gb" | "eo" | "es" | "es-ar" | "es-co" | "es-mx" | "es-ni" | "es-ve" | "et" | "eu" | "fa" | "fi" | "fr" | "fy" | "ga" | "gd" | "gl" | "he" | "hi" | "hr" | "hsb" | "hu" | "hy" | "ia" | "id" | "ig" | "io" | "is" | "it" | "ja" | "ka" | "kab" | "kk" | "km" | "kn" | "ko" | "ky" | "lb" | "lt" | "lv" | "mk" | "ml" | "mn" | "mr" | "ms" | "my" | "nb" | "ne" | "nl" | "nn" | "os" | "pa" | "pl" | "pt" | "pt-br" | "ro" | "ru" | "sk" | "sl" | "sq" | "sr" | "sr-latn" | "sv" | "sw" | "ta" | "te" | "tg" | "th" | "tk" | "tr" | "tt" | "udm" | "ug" | "uk" | "ur" | "uz" | "vi" | "zh-hans" | "zh-hant";
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/vnd.oai.openapi": {
-                        [key: string]: unknown;
-                    };
-                    "application/yaml": {
-                        [key: string]: unknown;
-                    };
-                    "application/vnd.oai.openapi+json": {
-                        [key: string]: unknown;
-                    };
-                    "application/json": {
-                        [key: string]: unknown;
-                    };
-                };
-            };
-        };
+  };
+  api_goals_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_token_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["TokenObtainPair"];
-                "application/x-www-form-urlencoded": components["schemas"]["TokenObtainPair"];
-                "multipart/form-data": components["schemas"]["TokenObtainPair"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["TokenObtainPair"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['Goal'];
+        'application/x-www-form-urlencoded': components['schemas']['Goal'];
+        'multipart/form-data': components['schemas']['Goal'];
+      };
     };
-    api_token_refresh_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["TokenRefresh"];
-                "application/x-www-form-urlencoded": components["schemas"]["TokenRefresh"];
-                "multipart/form-data": components["schemas"]["TokenRefresh"];
-            };
+        content: {
+          'application/json': components['schemas']['Goal'];
         };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["TokenRefresh"];
-                };
-            };
-        };
+      };
     };
-    api_user_me_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_goals_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_users_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["User"][];
-                };
-            };
-        };
+        content?: never;
+      };
     };
-    api_users_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["User"];
-                "application/x-www-form-urlencoded": components["schemas"]["User"];
-                "multipart/form-data": components["schemas"]["User"];
-            };
-        };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["User"];
-                };
-            };
-        };
+  };
+  api_goals_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
     };
-    api_users_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["User"];
-                };
-            };
-        };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedGoal'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedGoal'];
+        'multipart/form-data': components['schemas']['PatchedGoal'];
+      };
     };
-    api_users_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["UserUpdate"];
-                "application/x-www-form-urlencoded": components["schemas"]["UserUpdate"];
-                "multipart/form-data": components["schemas"]["UserUpdate"];
-            };
+        content: {
+          'application/json': components['schemas']['Goal'];
         };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserUpdate"];
-                };
-            };
-        };
+      };
     };
-    api_users_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_practice_items_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    api_users_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedUserUpdate"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedUserUpdate"];
-                "multipart/form-data": components["schemas"]["PatchedUserUpdate"];
-            };
+        content: {
+          'application/json': components['schemas']['PracticeItem'][];
         };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserUpdate"];
-                };
-            };
-        };
+      };
     };
-    diary_entries_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"][];
-                };
-            };
-        };
+  };
+  api_practice_items_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    diary_entries_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DiaryEntry"];
-                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
-                "multipart/form-data": components["schemas"]["DiaryEntry"];
-            };
-        };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PracticeItem'];
+        'application/x-www-form-urlencoded': components['schemas']['PracticeItem'];
+        'multipart/form-data': components['schemas']['PracticeItem'];
+      };
     };
-    diary_entries_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
         };
+      };
     };
-    diary_entries_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DiaryEntry"];
-                "application/x-www-form-urlencoded": components["schemas"]["DiaryEntry"];
-                "multipart/form-data": components["schemas"]["DiaryEntry"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+  };
+  api_practice_items_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
     };
-    diary_entries_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
         };
+      };
     };
-    diary_entries_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this diary entry. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedDiaryEntry"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedDiaryEntry"];
-                "multipart/form-data": components["schemas"]["PatchedDiaryEntry"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["DiaryEntry"];
-                };
-            };
-        };
+  };
+  api_practice_items_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
     };
-    goals_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"][];
-                };
-            };
-        };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PracticeItem'];
+        'application/x-www-form-urlencoded': components['schemas']['PracticeItem'];
+        'multipart/form-data': components['schemas']['PracticeItem'];
+      };
     };
-    goals_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Goal"];
-                "application/x-www-form-urlencoded": components["schemas"]["Goal"];
-                "multipart/form-data": components["schemas"]["Goal"];
-            };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
         };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+      };
     };
-    goals_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+  };
+  api_practice_items_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
     };
-    goals_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Goal"];
-                "application/x-www-form-urlencoded": components["schemas"]["Goal"];
-                "multipart/form-data": components["schemas"]["Goal"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+        content?: never;
+      };
     };
-    goals_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_practice_items_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
     };
-    goals_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this goal. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedGoal"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedGoal"];
-                "multipart/form-data": components["schemas"]["PatchedGoal"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Goal"];
-                };
-            };
-        };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedPracticeItem'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedPracticeItem'];
+        'multipart/form-data': components['schemas']['PatchedPracticeItem'];
+      };
     };
-    payments_confirm_subscription_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
         };
+      };
     };
-    payments_create_checkout_session_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_protected_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    payments_stripe_webhook_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+        content?: never;
+      };
     };
-    practice_items_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"][];
-                };
-            };
-        };
+  };
+  api_recordings_save_recording_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    practice_items_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PracticeItem"];
-                "application/x-www-form-urlencoded": components["schemas"]["PracticeItem"];
-                "multipart/form-data": components["schemas"]["PracticeItem"];
-            };
-        };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+        content?: never;
+      };
     };
-    practice_items_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+  };
+  api_recordings_upload_url_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    practice_items_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PracticeItem"];
-                "application/x-www-form-urlencoded": components["schemas"]["PracticeItem"];
-                "multipart/form-data": components["schemas"]["PracticeItem"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+        content?: never;
+      };
     };
-    practice_items_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  api_register_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    practice_items_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this practice item. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedPracticeItem"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedPracticeItem"];
-                "multipart/form-data": components["schemas"]["PatchedPracticeItem"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PracticeItem"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UserRegistration'];
+        'application/x-www-form-urlencoded': components['schemas']['UserRegistration'];
+        'multipart/form-data': components['schemas']['UserRegistration'];
+      };
     };
-    users_list: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["User"][];
-                };
-            };
+        content: {
+          'application/json': components['schemas']['UserRegistration'];
         };
+      };
     };
-    users_create: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["User"];
-                "application/x-www-form-urlencoded": components["schemas"]["User"];
-                "multipart/form-data": components["schemas"]["User"];
-            };
-        };
-        responses: {
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["User"];
-                };
-            };
-        };
+  };
+  api_schema_retrieve: {
+    parameters: {
+      query?: {
+        format?: 'json' | 'yaml';
+        lang?:
+          | 'af'
+          | 'ar'
+          | 'ar-dz'
+          | 'ast'
+          | 'az'
+          | 'be'
+          | 'bg'
+          | 'bn'
+          | 'br'
+          | 'bs'
+          | 'ca'
+          | 'ckb'
+          | 'cs'
+          | 'cy'
+          | 'da'
+          | 'de'
+          | 'dsb'
+          | 'el'
+          | 'en'
+          | 'en-au'
+          | 'en-gb'
+          | 'eo'
+          | 'es'
+          | 'es-ar'
+          | 'es-co'
+          | 'es-mx'
+          | 'es-ni'
+          | 'es-ve'
+          | 'et'
+          | 'eu'
+          | 'fa'
+          | 'fi'
+          | 'fr'
+          | 'fy'
+          | 'ga'
+          | 'gd'
+          | 'gl'
+          | 'he'
+          | 'hi'
+          | 'hr'
+          | 'hsb'
+          | 'hu'
+          | 'hy'
+          | 'ia'
+          | 'id'
+          | 'ig'
+          | 'io'
+          | 'is'
+          | 'it'
+          | 'ja'
+          | 'ka'
+          | 'kab'
+          | 'kk'
+          | 'km'
+          | 'kn'
+          | 'ko'
+          | 'ky'
+          | 'lb'
+          | 'lt'
+          | 'lv'
+          | 'mk'
+          | 'ml'
+          | 'mn'
+          | 'mr'
+          | 'ms'
+          | 'my'
+          | 'nb'
+          | 'ne'
+          | 'nl'
+          | 'nn'
+          | 'os'
+          | 'pa'
+          | 'pl'
+          | 'pt'
+          | 'pt-br'
+          | 'ro'
+          | 'ru'
+          | 'sk'
+          | 'sl'
+          | 'sq'
+          | 'sr'
+          | 'sr-latn'
+          | 'sv'
+          | 'sw'
+          | 'ta'
+          | 'te'
+          | 'tg'
+          | 'th'
+          | 'tk'
+          | 'tr'
+          | 'tt'
+          | 'udm'
+          | 'ug'
+          | 'uk'
+          | 'ur'
+          | 'uz'
+          | 'vi'
+          | 'zh-hans'
+          | 'zh-hant';
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    users_retrieve: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["User"];
-                };
-            };
+        content: {
+          'application/vnd.oai.openapi': {
+            [key: string]: unknown;
+          };
+          'application/yaml': {
+            [key: string]: unknown;
+          };
+          'application/vnd.oai.openapi+json': {
+            [key: string]: unknown;
+          };
+          'application/json': {
+            [key: string]: unknown;
+          };
         };
+      };
     };
-    users_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["UserUpdate"];
-                "application/x-www-form-urlencoded": components["schemas"]["UserUpdate"];
-                "multipart/form-data": components["schemas"]["UserUpdate"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserUpdate"];
-                };
-            };
-        };
+  };
+  api_token_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    users_destroy: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description No response body */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['TokenObtainPair'];
+        'application/x-www-form-urlencoded': components['schemas']['TokenObtainPair'];
+        'multipart/form-data': components['schemas']['TokenObtainPair'];
+      };
     };
-    users_partial_update: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description A unique integer value identifying this user. */
-                id: number;
-            };
-            cookie?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["PatchedUserUpdate"];
-                "application/x-www-form-urlencoded": components["schemas"]["PatchedUserUpdate"];
-                "multipart/form-data": components["schemas"]["PatchedUserUpdate"];
-            };
+        content: {
+          'application/json': components['schemas']['TokenObtainPair'];
         };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserUpdate"];
-                };
-            };
-        };
+      };
     };
+  };
+  api_token_refresh_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['TokenRefresh'];
+        'application/x-www-form-urlencoded': components['schemas']['TokenRefresh'];
+        'multipart/form-data': components['schemas']['TokenRefresh'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['TokenRefresh'];
+        };
+      };
+    };
+  };
+  api_user_me_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  api_users_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['User'][];
+        };
+      };
+    };
+  };
+  api_users_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['User'];
+        'application/x-www-form-urlencoded': components['schemas']['User'];
+        'multipart/form-data': components['schemas']['User'];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['User'];
+        };
+      };
+    };
+  };
+  api_users_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['User'];
+        };
+      };
+    };
+  };
+  api_users_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['UserUpdate'];
+        'application/x-www-form-urlencoded': components['schemas']['UserUpdate'];
+        'multipart/form-data': components['schemas']['UserUpdate'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserUpdate'];
+        };
+      };
+    };
+  };
+  api_users_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  api_users_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedUserUpdate'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedUserUpdate'];
+        'multipart/form-data': components['schemas']['PatchedUserUpdate'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserUpdate'];
+        };
+      };
+    };
+  };
+  diary_entries_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'][];
+        };
+      };
+    };
+  };
+  diary_entries_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DiaryEntry'];
+        'application/x-www-form-urlencoded': components['schemas']['DiaryEntry'];
+        'multipart/form-data': components['schemas']['DiaryEntry'];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
+        };
+      };
+    };
+  };
+  diary_entries_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
+        };
+      };
+    };
+  };
+  diary_entries_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DiaryEntry'];
+        'application/x-www-form-urlencoded': components['schemas']['DiaryEntry'];
+        'multipart/form-data': components['schemas']['DiaryEntry'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
+        };
+      };
+    };
+  };
+  diary_entries_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  diary_entries_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this diary entry. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedDiaryEntry'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedDiaryEntry'];
+        'multipart/form-data': components['schemas']['PatchedDiaryEntry'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DiaryEntry'];
+        };
+      };
+    };
+  };
+  goals_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['Goal'][];
+        };
+      };
+    };
+  };
+  goals_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['Goal'];
+        'application/x-www-form-urlencoded': components['schemas']['Goal'];
+        'multipart/form-data': components['schemas']['Goal'];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['Goal'];
+        };
+      };
+    };
+  };
+  goals_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['Goal'];
+        };
+      };
+    };
+  };
+  goals_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['Goal'];
+        'application/x-www-form-urlencoded': components['schemas']['Goal'];
+        'multipart/form-data': components['schemas']['Goal'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['Goal'];
+        };
+      };
+    };
+  };
+  goals_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  goals_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this goal. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedGoal'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedGoal'];
+        'multipart/form-data': components['schemas']['PatchedGoal'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['Goal'];
+        };
+      };
+    };
+  };
+  payments_confirm_subscription_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  payments_create_checkout_session_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  payments_stripe_webhook_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  practice_items_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PracticeItem'][];
+        };
+      };
+    };
+  };
+  practice_items_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PracticeItem'];
+        'application/x-www-form-urlencoded': components['schemas']['PracticeItem'];
+        'multipart/form-data': components['schemas']['PracticeItem'];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
+        };
+      };
+    };
+  };
+  practice_items_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
+        };
+      };
+    };
+  };
+  practice_items_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PracticeItem'];
+        'application/x-www-form-urlencoded': components['schemas']['PracticeItem'];
+        'multipart/form-data': components['schemas']['PracticeItem'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
+        };
+      };
+    };
+  };
+  practice_items_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  practice_items_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this practice item. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedPracticeItem'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedPracticeItem'];
+        'multipart/form-data': components['schemas']['PatchedPracticeItem'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PracticeItem'];
+        };
+      };
+    };
+  };
+  users_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['User'][];
+        };
+      };
+    };
+  };
+  users_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['User'];
+        'application/x-www-form-urlencoded': components['schemas']['User'];
+        'multipart/form-data': components['schemas']['User'];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['User'];
+        };
+      };
+    };
+  };
+  users_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['User'];
+        };
+      };
+    };
+  };
+  users_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['UserUpdate'];
+        'application/x-www-form-urlencoded': components['schemas']['UserUpdate'];
+        'multipart/form-data': components['schemas']['UserUpdate'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserUpdate'];
+        };
+      };
+    };
+  };
+  users_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  users_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description A unique integer value identifying this user. */
+        id: number;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedUserUpdate'];
+        'application/x-www-form-urlencoded': components['schemas']['PatchedUserUpdate'];
+        'multipart/form-data': components['schemas']['PatchedUserUpdate'];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserUpdate'];
+        };
+      };
+    };
+  };
 }

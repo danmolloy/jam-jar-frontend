@@ -1,4 +1,4 @@
-import { Field } from "formik";
+import { Field } from 'formik';
 
 export default function InputField({
   label,
@@ -6,22 +6,28 @@ export default function InputField({
   type,
   error,
   min,
-  max
+  max,
 }: {
   name: string;
   label: string;
   type: string;
-  error: string|undefined;
-  min?: number
-  max?: number
+  error: string | undefined;
+  min?: number;
+  max?: number;
 }) {
   return (
     <div className="flex flex-col m-2 my-4">
       <label className="flex flex-col w-60 ">
         {label}
-      <Field min={min} max={max} name={name} type={type} className="border border-neutral-400 rounded shadow-xs my-1 p-1"/>
-      {error && <div id="feedback">{error}</div>}
+        <Field
+          min={min}
+          max={max}
+          name={name}
+          type={type}
+          className="border border-neutral-400 rounded shadow-xs my-1 p-1"
+        />
+        {error && <div id="feedback">{error}</div>}
       </label>
     </div>
-  )
+  );
 }

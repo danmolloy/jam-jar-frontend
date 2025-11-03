@@ -1,15 +1,14 @@
-'use client'
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import React, { useEffect, useState } from "react";
-import InputField from "@/components/form/inputField";
-import { useSession } from "next-auth/react";
-import { saveRecordingMetadata, uploadAudioFile } from "./lib";
-import Link from "next/link";
-import { components } from "@/types/api";
+'use client';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import React, { useEffect, useState } from 'react';
+import InputField from '@/components/form/inputField';
+import { useSession } from 'next-auth/react';
+import { saveRecordingMetadata, uploadAudioFile } from './lib';
+import Link from 'next/link';
+import { components } from '@/types/api';
 
-type UserData = components["schemas"]["User"]
-
+type UserData = components['schemas']['User'];
 
 // Maximum file size: 50MB (50 * 1024 * 1024 bytes)
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
@@ -29,14 +28,14 @@ async function getTodayUploadCount(accessToken: string): Promise<number> {
     });
 
     if (!res.ok) {
-      console.error('Failed to fetch today\'s uploads');
+      console.error("Failed to fetch today's uploads");
       return 0;
     }
 
     const recordings = await res.json();
     return Array.isArray(recordings) ? recordings.length : 0;
   } catch (error) {
-    console.error('Error checking today\'s uploads:', error);
+    console.error("Error checking today's uploads:", error);
     return 0;
   }
 }
@@ -52,14 +51,23 @@ const AudioSchema = Yup.object().shape({
       }
       return false;
     })
-    .test('fileSize', `File size must be less than ${Math.round(MAX_FILE_SIZE / (1024 * 1024))}MB`, (value) => {
-      if (!value) return false;
-      // Check if value has a size property (File or Blob)
-      if (value && typeof value === 'object' && 'size' in value && typeof value.size === 'number') {
-        return value.size <= MAX_FILE_SIZE;
-      }
-      return false;
-    }),
+    .test(
+      'fileSize',
+      `File size must be less than ${Math.round(MAX_FILE_SIZE / (1024 * 1024))}MB`,
+      (value) => {
+        if (!value) return false;
+        // Check if value has a size property (File or Blob)
+        if (
+          value &&
+          typeof value === 'object' &&
+          'size' in value &&
+          typeof value.size === 'number'
+        ) {
+          return value.size <= MAX_FILE_SIZE;
+        }
+        return false;
+      },
+    ),
   title: Yup.string().required('Title is required'),
   notes: Yup.string(),
   tags: Yup.string(),
@@ -74,47 +82,47 @@ export default function CreateAudioPage() {
   const [checkingUploads, setCheckingUploads] = useState(true);
   const { data: session, status } = useSession();
 
-    const [userData, setUserData] = useState<UserData|null>(null)
-      const [loading, setLoading] = useState(true)
-      const [error, setError] = useState<string | null>(null)
-  
-      useEffect(() => {
-        const fetchData = async () => {
-          if (status === "loading") {
-            return;
-          }
-          
-          if (status === "unauthenticated" || !session?.accessToken) {
-            setError("No access token")
-            setLoading(false)
-            return
-          }
-    
-          try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/user/me/`, {
-              headers: {
-                Authorization: `Bearer ${session.accessToken}`,
-              },
-            })
-    
-            if (!res.ok) {
-              setError(`Error: ${res.status}`)
-              setLoading(false)
-              return
-            }
-    
-            const result = await res.json()
-            setUserData(result)
-          } catch (err) {
-            console.log(err)
-            setError("Failed to fetch user data")
-          } finally {
-            setLoading(false)
-          }
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (status === 'loading') {
+        return;
+      }
+
+      if (status === 'unauthenticated' || !session?.accessToken) {
+        setError('No access token');
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/user/me/`, {
+          headers: {
+            Authorization: `Bearer ${session.accessToken}`,
+          },
+        });
+
+        if (!res.ok) {
+          setError(`Error: ${res.status}`);
+          setLoading(false);
+          return;
         }
-    
-        fetchData()
-      }, [session, status])
+
+        const result = await res.json();
+        setUserData(result);
+      } catch (err) {
+        console.log(err);
+        setError('Failed to fetch user data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [session, status]);
 
   // Check daily upload count on component mount
   useEffect(() => {
@@ -134,9 +142,9 @@ export default function CreateAudioPage() {
   }, [session?.accessToken]);
 
   // Early returns after all hooks have been called
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>{error}</p>
-  if (!userData) return null
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!userData) return null;
 
   // Check if daily limit is reached
   const isDailyLimitReached = dailyUploadCount !== null && dailyUploadCount >= MAX_DAILY_UPLOADS;
@@ -144,16 +152,21 @@ export default function CreateAudioPage() {
   return (
     <div className="relative">
       <h1>Upload Audio</h1>
-      {userData.subscription_status !== "active" && <div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
-        <div className="bg-white self-center mt-12 p-4 shadow text-center">
-          <h2 className="font-bold">Audio uploading is available for premium users only.</h2>
-                  <Link href="/account" className="hover:underline text-blue-600 ">Upgrade now</Link>
-
+      {userData.subscription_status !== 'active' && (
+        <div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
+          <div className="bg-white self-center mt-12 p-4 shadow text-center">
+            <h2 className="font-bold">Audio uploading is available for premium users only.</h2>
+            <Link href="/account" className="hover:underline text-blue-600 ">
+              Upgrade now
+            </Link>
+          </div>
         </div>
-      </div>}
+      )}
       {/* Daily upload count display */}
       {!checkingUploads && dailyUploadCount !== null && (
-        <div className={`p-3 rounded-md mb-4 ${isDailyLimitReached ? 'bg-red-50 border border-red-200' : 'bg-blue-50 border border-blue-200'}`}>
+        <div
+          className={`p-3 rounded-md mb-4 ${isDailyLimitReached ? 'bg-red-50 border border-red-200' : 'bg-blue-50 border border-blue-200'}`}
+        >
           <p className={`text-sm ${isDailyLimitReached ? 'text-red-700' : 'text-blue-700'}`}>
             Daily uploads: {dailyUploadCount} / {MAX_DAILY_UPLOADS}
             {isDailyLimitReached && (
@@ -193,22 +206,28 @@ export default function CreateAudioPage() {
 
             // Check daily upload limit
             if (dailyUploadCount !== null && dailyUploadCount >= MAX_DAILY_UPLOADS) {
-              setMessage(`Daily upload limit reached (${MAX_DAILY_UPLOADS} uploads per day). Please try again tomorrow.`);
+              setMessage(
+                `Daily upload limit reached (${MAX_DAILY_UPLOADS} uploads per day). Please try again tomorrow.`,
+              );
               setIsSubmitting(false);
               return;
             }
 
             const key = await uploadAudioFile(values.file!, session.accessToken);
-            await saveRecordingMetadata(key, {
-              title: values.title,
-              notes: values.notes,
-              tags: values.tags ? values.tags.split(',').map(t => t.trim()) : [],
-              location: values.location,
-              date: values.date,
-            }, session.accessToken);
-            
+            await saveRecordingMetadata(
+              key,
+              {
+                title: values.title,
+                notes: values.notes,
+                tags: values.tags ? values.tags.split(',').map((t) => t.trim()) : [],
+                location: values.location,
+                date: values.date,
+              },
+              session.accessToken,
+            );
+
             // Update the daily upload count
-            setDailyUploadCount(prev => (prev !== null ? prev + 1 : 1));
+            setDailyUploadCount((prev) => (prev !== null ? prev + 1 : 1));
             setMessage('Audio uploaded successfully!');
             resetForm();
           } catch (err: unknown) {
@@ -216,7 +235,8 @@ export default function CreateAudioPage() {
               setMessage('Upload failed: ' + err.message);
             } else {
               setMessage('Upload failed: ' + String(err));
-            }          } finally {
+            }
+          } finally {
             setIsSubmitting(false);
           }
         }}
@@ -228,7 +248,9 @@ export default function CreateAudioPage() {
               <input
                 type="file"
                 accept="audio/*"
-                onChange={e => setFieldValue('file', e.currentTarget.files ? e.currentTarget.files[0] : null)}
+                onChange={(e) =>
+                  setFieldValue('file', e.currentTarget.files ? e.currentTarget.files[0] : null)
+                }
               />
               {errors.file && touched.file && (
                 <div className="text-red-500 text-sm">{errors.file as string}</div>
@@ -238,38 +260,38 @@ export default function CreateAudioPage() {
               label="Title*"
               name="title"
               type="text"
-              error={touched.title ? errors.title as string : undefined}
+              error={touched.title ? (errors.title as string) : undefined}
             />
             <InputField
               label="Notes"
               name="notes"
               type="text"
-              error={touched.notes ? errors.notes as string : undefined}
+              error={touched.notes ? (errors.notes as string) : undefined}
             />
             <InputField
               label="Tags (comma separated)"
               name="tags"
               type="text"
-              error={touched.tags ? errors.tags as string : undefined}
+              error={touched.tags ? (errors.tags as string) : undefined}
             />
             <InputField
               label="Location"
               name="location"
               type="text"
-              error={touched.location ? errors.location as string : undefined}
+              error={touched.location ? (errors.location as string) : undefined}
             />
             <InputField
               label="Date"
               name="date"
               type="date"
-              error={touched.date ? errors.date as string : undefined}
+              error={touched.date ? (errors.date as string) : undefined}
             />
-            <button 
-              type="submit" 
-              disabled={submitting || isDailyLimitReached} 
+            <button
+              type="submit"
+              disabled={submitting || isDailyLimitReached}
               className={`rounded px-4 py-2 mt-2 ${
-                submitting || isDailyLimitReached 
-                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+                submitting || isDailyLimitReached
+                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
                   : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
@@ -280,5 +302,5 @@ export default function CreateAudioPage() {
         )}
       </Formik>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-'use client'
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import SettingsIndex from "@/components/settings";
+'use client';
+import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import SettingsIndex from '@/components/settings';
 
 export default function SettingsPage() {
   const { data: session, status } = useSession();
@@ -19,7 +19,7 @@ export default function SettingsPage() {
     }
   }, [session]);
 
-  if (status === "loading") return <div>Loading...</div>;
+  if (status === 'loading') return <div>Loading...</div>;
   if (!session?.accessToken) {
     return <div>Loading...</div>;
   }

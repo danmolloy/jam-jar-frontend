@@ -7,8 +7,8 @@ export async function uploadAudioFile(file: File, accessToken: string): Promise<
     },
     body: JSON.stringify({
       file_name: file.name,
-      content_type: file.type
-    })
+      content_type: file.type,
+    }),
   });
 
   if (!res.ok) {
@@ -21,22 +21,26 @@ export async function uploadAudioFile(file: File, accessToken: string): Promise<
   await fetch(upload_url, {
     method: 'PUT',
     headers: { 'Content-Type': file.type },
-    body: file
+    body: file,
   });
 
   return key; // use this to save metadata
 }
 
-export async function saveRecordingMetadata(key: string, metadata: {
-  title: string
-  notes?: string
-  tags?: string[]
-  location?: string
-  date?: string 
-}, accessToken: string) {
+export async function saveRecordingMetadata(
+  key: string,
+  metadata: {
+    title: string;
+    notes?: string;
+    tags?: string[];
+    location?: string;
+    date?: string;
+  },
+  accessToken: string,
+) {
   const body = {
-    s3_key: key,  
-    ...metadata
+    s3_key: key,
+    ...metadata,
   };
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/recordings/save-recording/`, {
@@ -45,7 +49,7 @@ export async function saveRecordingMetadata(key: string, metadata: {
       'Content-Type': 'application/json',
       ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 
   if (!res.ok) {

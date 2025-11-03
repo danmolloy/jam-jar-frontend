@@ -1,6 +1,6 @@
-import { Field, useFormikContext } from "formik";
-import { useEffect } from "react";
-import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5";
+import { Field, useFormikContext } from 'formik';
+import { useEffect } from 'react';
+import { IoCheckmarkCircle, IoCloseCircle } from 'react-icons/io5';
 
 interface UsernameFieldProps {
   label: string;
@@ -19,7 +19,7 @@ export default function UsernameField({
   name,
   error,
   onUsernameChange,
-  usernameStatus
+  usernameStatus,
 }: UsernameFieldProps) {
   const { values } = useFormikContext<{ username: string }>();
 
@@ -29,7 +29,9 @@ export default function UsernameField({
 
   const getStatusIcon = () => {
     if (usernameStatus.checking) {
-      return <div className="animate-spin w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>;
+      return (
+        <div className="animate-spin w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+      );
     }
     if (usernameStatus.available === true) {
       return <IoCheckmarkCircle className="text-green-500" size={20} />;
@@ -42,22 +44,22 @@ export default function UsernameField({
 
   const getStatusMessage = () => {
     if (usernameStatus.checking) {
-      return "Checking availability...";
+      return 'Checking availability...';
     }
     if (usernameStatus.available === true) {
-      return "Username is available";
+      return 'Username is available';
     }
     if (usernameStatus.available === false) {
-      return "Username is already taken";
+      return 'Username is already taken';
     }
-    return "";
+    return '';
   };
 
   const getStatusColor = () => {
-    if (usernameStatus.checking) return "text-blue-500";
-    if (usernameStatus.available === true) return "text-green-500";
-    if (usernameStatus.available === false) return "text-red-500";
-    return "";
+    if (usernameStatus.checking) return 'text-blue-500';
+    if (usernameStatus.available === true) return 'text-green-500';
+    if (usernameStatus.available === false) return 'text-red-500';
+    return '';
   };
 
   return (
@@ -65,22 +67,16 @@ export default function UsernameField({
       <label className="flex flex-col w-60 font">
         {label}
         <div className="relative">
-          <Field 
-            name={name} 
-            type="text" 
-            className="border rounded my-2 p-1 pr-8 w-full"
-          />
+          <Field name={name} type="text" className="border rounded my-2 p-1 pr-8 w-full" />
           <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
             {getStatusIcon()}
           </div>
         </div>
         {error && <div className="text-red-500 text-sm">{error}</div>}
         {usernameStatus.message && !error && (
-          <div className={`text-sm ${getStatusColor()}`}>
-            {getStatusMessage()}
-          </div>
+          <div className={`text-sm ${getStatusColor()}`}>{getStatusMessage()}</div>
         )}
       </label>
     </div>
   );
-} 
+}

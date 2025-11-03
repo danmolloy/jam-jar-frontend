@@ -1,20 +1,30 @@
+export type Activity = string | undefined;
 
-export type Activity = string|undefined;
-
-export default function ActivityFilter({activities, selectedActivity, setSelectedActivity}: {
+export default function ActivityFilter({
+  activities,
+  selectedActivity,
+  setSelectedActivity,
+}: {
   activities: Activity[];
   selectedActivity: string;
-  setSelectedActivity: (arg: string) => void
+  setSelectedActivity: (arg: string) => void;
 }) {
-
-  const activitiesSet = new Set(activities.map(i => i !== undefined && i[0].toUpperCase() + i.slice(1).toLowerCase()))
+  const activitiesSet = new Set(
+    activities.map((i) => i !== undefined && i[0].toUpperCase() + i.slice(1).toLowerCase()),
+  );
 
   return (
-    <select className=" rounded p-1 mx-1 bg-white " value={selectedActivity} onChange={(e) => setSelectedActivity(e.target.value)}>
-      <option value={""}>All activities</option>
+    <select
+      className=" rounded p-1 mx-1 bg-white "
+      value={selectedActivity}
+      onChange={(e) => setSelectedActivity(e.target.value)}
+    >
+      <option value={''}>All activities</option>
       {Array.from(activitiesSet).map((i, index) => (
-        <option key={index} value={i || ""}>{i}</option>
+        <option key={index} value={i || ''}>
+          {i}
+        </option>
       ))}
     </select>
-  )
+  );
 }

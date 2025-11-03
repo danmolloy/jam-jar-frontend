@@ -1,32 +1,29 @@
-'use client'
+'use client';
 
-import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import PricingIndex from "@/components/shared/pricing";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { useSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import PricingIndex from '@/components/shared/pricing';
+import { IoIosArrowRoundForward } from 'react-icons/io';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
-const ProductDisplay = ({ onCheckout, loading }: { onCheckout: () => void, loading: boolean }) => (
+const ProductDisplay = ({ onCheckout, loading }: { onCheckout: () => void; loading: boolean }) => (
   <section className="flex flex-col items-center justify-center bg-neutral-100 pb-16">
-
-    <PricingIndex landing={false}/>
+    <PricingIndex landing={false} />
     <button
       className="text-xl flex flex-row items-center  border-2 hover:cursor-pointer text-white bg-black rounded p-2 hover:underline "
       id="checkout-and-portal-button"
       onClick={onCheckout}
       disabled={loading}
     >
-      {loading ? "Redirecting..." : "Get Premium"}
-      <IoIosArrowRoundForward size={24}/>
+      {loading ? 'Redirecting...' : 'Get Premium'}
+      <IoIosArrowRoundForward size={24} />
     </button>
   </section>
 );
 
-const SuccessDisplay = ({ sessionId }: {
-  sessionId: string
-}) => (
+const SuccessDisplay = ({ sessionId }: { sessionId: string }) => (
   <section>
     <div className="product Box-root">
       <div className="description Box-root">
@@ -34,12 +31,7 @@ const SuccessDisplay = ({ sessionId }: {
       </div>
     </div>
     <form action="/create-portal-session" method="POST">
-      <input
-        type="hidden"
-        id="session-id"
-        name="session_id"
-        value={sessionId}
-      />
+      <input type="hidden" id="session-id" name="session_id" value={sessionId} />
       <button id="checkout-and-portal-button" type="submit">
         Manage your billing information
       </button>
@@ -47,14 +39,11 @@ const SuccessDisplay = ({ sessionId }: {
   </section>
 );
 
-const Message = ({ message, onRetry }: {
-  message: string
-  onRetry?: () => void
-}) => (
+const Message = ({ message, onRetry }: { message: string; onRetry?: () => void }) => (
   <section className="text-center">
     <p className="mb-4">{message}</p>
     {onRetry && (
-      <button 
+      <button
         onClick={onRetry}
         className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700"
       >
@@ -82,12 +71,12 @@ export default function Premium() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.accessToken}`,
+          Authorization: `Bearer ${session.accessToken}`,
         },
         body: JSON.stringify({ session_id }),
       })
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           if (data.success) {
             setSuccess(true);
             setMessage('Subscription confirmed!');
@@ -123,7 +112,7 @@ export default function Premium() {
         body: JSON.stringify({}),
       });
       const data = await res.json();
-      
+
       if (data.sessionId) {
         const stripe = await stripePromise;
         if (stripe) {
@@ -134,14 +123,14 @@ export default function Premium() {
           }
           // No need to set success here; Stripe will redirect if successful
         } else {
-          setMessage("Stripe.js failed to load.");
+          setMessage('Stripe.js failed to load.');
         }
       } else {
-        setMessage(data.error || "Failed to create checkout session.");
+        setMessage(data.error || 'Failed to create checkout session.');
       }
     } catch (err) {
       console.error('Checkout error:', err);
-      setMessage("Network error. Please try again.");
+      setMessage('Network error. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -152,6 +141,11 @@ export default function Premium() {
   } else if (success && sessionId !== '') {
     return <SuccessDisplay sessionId={sessionId} />;
   } else {
-    return <Message message={message} onRetry={message.includes('Failed to confirm') ? handleCheckout : undefined} />;
+    return (
+      <Message
+        message={message}
+        onRetry={message.includes('Failed to confirm') ? handleCheckout : undefined}
+      />
+    );
   }
 }

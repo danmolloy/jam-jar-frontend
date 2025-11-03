@@ -15,7 +15,11 @@ export interface EmailData {
   message: string;
 }
 
-export async function sendContactFormEmail(emailData: EmailData, toEmail: string, fromEmail: string) {
+export async function sendContactFormEmail(
+  emailData: EmailData,
+  toEmail: string,
+  fromEmail: string,
+) {
   const emailParams: SendEmailCommandInput = {
     Source: fromEmail,
     ReplyToAddresses: [emailData.email], // Add reply-to so you can reply directly to the contact form email
@@ -55,4 +59,4 @@ Message: ${emailData.message}
 
   const command = new SendEmailCommand(emailParams);
   return await sesClient.send(command);
-} 
+}

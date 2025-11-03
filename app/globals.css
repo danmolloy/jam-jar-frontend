@@ -26,7 +26,7 @@
 @theme {
   --color-primary: oklch(0.7919 0.14 220.16);
   --color-dark: #171717;
-  --color-light: "#f4f3ed";
+  --color-light: '#f4f3ed';
 }
 
 @media (prefers-color-scheme: dark) {

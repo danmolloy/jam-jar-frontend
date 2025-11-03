@@ -1,22 +1,14 @@
-import Link from "next/link"
-import { PracticeItem } from "./detailView"
+import Link from 'next/link';
+import { PracticeItem } from './detailView';
 
-
-export default function PracticeItemList({
-  items
-}: {
-  items: PracticeItem[]
-}) {
-
-  
-
+export default function PracticeItemList({ items }: { items: PracticeItem[] }) {
   return (
     <div>
-      {items.map(i => (
+      {items.map((i) => (
         <Link href={`/items/${i.id}`} key={i.id}>
-        {i.id}
+          {i.id}
         </Link>
       ))}
     </div>
-  )
+  );
 }

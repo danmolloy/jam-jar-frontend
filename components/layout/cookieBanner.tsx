@@ -1,9 +1,8 @@
-'use client'
-import { useConsent } from '@/lib/useConsent'
-import { useEffect, useState } from 'react'
+'use client';
+import { useConsent } from '@/lib/useConsent';
 
 export default function CookieBanner() {
-  const { analyticsAccepted, consentChecked, accept, decline } = useConsent()
+  const { accept, decline } = useConsent();
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white shadow-md border-t border-gray-200 p-4 flex flex-col md:flex-row items-center justify-between z-50">
@@ -13,7 +12,7 @@ export default function CookieBanner() {
       <div className="flex gap-2">
         <button
           onClick={() => {
-            accept()
+            accept();
           }}
           className="bg-blue-600 text-white text-sm px-3 py-1 rounded hover:underline cursor-pointer"
         >
@@ -21,7 +20,7 @@ export default function CookieBanner() {
         </button>
         <button
           onClick={() => {
-            decline()
+            decline();
           }}
           className="bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded hover:underline cursor-pointer"
         >
@@ -29,5 +28,5 @@ export default function CookieBanner() {
         </button>
       </div>
     </div>
-  )
+  );
 }
