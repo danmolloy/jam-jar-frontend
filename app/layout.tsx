@@ -5,7 +5,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import SessionProviderWrapper from '@/components/SessionProviderWrapper';
 import { Analytics } from "@vercel/analytics/next"
-import { GoogleAnalytics } from '@next/third-parties/google'
+import ConsentWrapper from '@/components/layout/consentWrapper';
 
 const geistSans = Nunito({
   variable: '--font-geist-sans',
@@ -55,7 +55,7 @@ export default async function RootLayout({
         <Footer />
             </SessionProviderWrapper>
             <Analytics />
-            <GoogleAnalytics gaId={'G-1QBV74SESQ'}/>
+            <ConsentWrapper />
       </body>
     </html>
   );
