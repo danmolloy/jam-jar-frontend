@@ -65,8 +65,8 @@ export default function DaySelect({
     Math.min((totalItemsForDay(day) / dailyTarget) * 100, 100);
 
   return (
-    <div className="flex flex-col lg:flex-row">
-      <div className="flex flex-col  shadow m-2 rounded p-4 bg-white ">
+    <div className="flex flex-col lg:flex-row ">
+      <div className="flex flex-col  shadow m-2 rounded p-4 bg-white w-full lg:max-w-[60%]">
         <div className="flex flex-row justify-evenly">
           <button
             className="text-black hover:text-slate-400 hover:cursor-pointer"
