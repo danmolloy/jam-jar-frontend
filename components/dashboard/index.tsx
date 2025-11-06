@@ -11,6 +11,7 @@ import TagFilter from './tagFilter';
 import RecordingsTable from './recordings';
 import Link from 'next/link';
 import AllEntries from './allEntries';
+import { DateTime } from 'luxon';
 
 type UserData = components['schemas']['User'];
 
@@ -20,6 +21,8 @@ export default function Dashboard({ session }: { session: Session | null }) {
   const [error, setError] = useState<string | null>(null);
   const [selectedActivity, setSelectedActivity] = useState<string>('');
   const [selectedTag, setSelectedTag] = useState<string>('');
+  const [selectedDay, setSelectedDay] = useState<DateTime>(DateTime.now().startOf('day'));
+  const [selectedWeek, setSelectedWeek] = useState(DateTime.now().startOf('week'));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,6 +118,10 @@ export default function Dashboard({ session }: { session: Session | null }) {
           )}
 
         <DaySelect
+          selectedDay={selectedDay}
+          setSelectedDay={(day) => setSelectedDay(day)}
+          selectedWeek={selectedWeek}
+          setSelectedWeek={(week) => setSelectedWeek(week)}
           selectedTag={selectedTag}
           diaryEntries={data.diary_entries}
           recordings={data.recordings}
@@ -124,6 +131,11 @@ export default function Dashboard({ session }: { session: Session | null }) {
         />
         <div className="flex flex-col lg:flex-row justify-between">
           <HeatMap
+            selectedDate={selectedDay}
+            setSelectedDate={(day) => {
+              setSelectedDay(day);
+              setSelectedWeek(day.startOf('week'));
+            }}
             selectedTag={selectedTag}
             selectedActivity={selectedActivity}
             practiceItems={filteredPracticeItems}

@@ -1,18 +1,21 @@
 'use client';
 import { DateTime } from 'luxon';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { PracticeItem } from './detailView';
 
 export default function HeatMap({
   practiceItems,
   selectedActivity,
   selectedTag,
+  selectedDate,
+  setSelectedDate,
 }: {
   selectedActivity: string;
   practiceItems: PracticeItem[];
   selectedTag: string;
+  selectedDate: DateTime;
+  setSelectedDate: (arg: DateTime) => void;
 }) {
-  const [selectedDate, setSelectedDate] = useState<DateTime | null>(null);
   const heatmapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,9 +81,9 @@ export default function HeatMap({
 
       {/* Heatmap */}
       <div ref={heatmapRef} className="overflow-x-auto w-full ">
-        <div className="flex flex-row items-start gap-[2px] min-w-max ">
+        <div className="flex flex-row items-start gap-[2px] min-w-max mr-2 ">
           {Array.from({ length: 53 }).map((_, weekIndex) => (
-            <div key={weekIndex} className="flex flex-col gap-[2px] mt-5">
+            <div key={weekIndex} className="flex flex-col gap-[2px] mt-5 ">
               {(() => {
                 const weekStart = DateTime.now()
                   .startOf('week')
@@ -104,12 +107,14 @@ export default function HeatMap({
 
                 const dateKey = day.toISODate();
                 const totalMins = totalsByDate[dateKey] || 0;
-                const isSelected = selectedDate?.hasSame(day, 'day');
+                const isSelected = selectedDate.hasSame(day, 'day');
 
                 return (
                   <button
                     key={`${weekIndex}-${dayIndex}`}
-                    onClick={isSelected ? () => setSelectedDate(null) : () => setSelectedDate(day)}
+                    onClick={
+                      /* isSelected ? () => setSelectedDate(null) :  */ () => setSelectedDate(day)
+                    }
                     className={`w-[10px] h-[10px]  hover:cursor-pointer 
                       ${day > DateTime.now() && 'hidden'}
                       ${isSelected ? 'bg-orange-600' : getColorClass(totalMins)}`}
@@ -125,7 +130,7 @@ export default function HeatMap({
       {/* Legend */}
       <div className="flex flex-row items-center justify-end text-sm text-gray-800 mt-1">
         <p>Less</p>
-        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-slate-200 ml-0.5`} />
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-slate-200 ml-1`} />
 
         <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-300 ml-0.5`} />
         <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-400 ml-0.5`} />
@@ -133,7 +138,7 @@ export default function HeatMap({
         <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-600 ml-0.5`} />
         <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-800 ml-0.5`} />
 
-        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-900 mx-0.5 `} />
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-900 mx-0.5 mr-1 `} />
         <p>More</p>
       </div>
 

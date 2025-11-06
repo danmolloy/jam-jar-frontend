@@ -1,6 +1,5 @@
 'use client';
 import { DateTime } from 'luxon';
-import { useState } from 'react';
 import { PracticeItem } from '../practice/detailView';
 import { FaAngleLeft, FaAngleRight, FaRegCalendar } from 'react-icons/fa';
 import WeekBarChart from './barChart';
@@ -19,6 +18,10 @@ export default function DaySelect({
   dailyTarget = 0,
   recordings,
   diaryEntries,
+  selectedDay,
+  setSelectedDay,
+  selectedWeek,
+  setSelectedWeek,
 }: {
   recordings: Recording[];
   practiceItems: PracticeItem[];
@@ -26,10 +29,11 @@ export default function DaySelect({
   selectedTag: string;
   dailyTarget: number | undefined;
   diaryEntries: DiaryEntry[];
+  selectedDay: DateTime;
+  setSelectedDay: (arg: DateTime) => void;
+  selectedWeek: DateTime;
+  setSelectedWeek: (arg: DateTime) => void;
 }) {
-  const [selectedDay, setSelectedDay] = useState(DateTime.now().startOf('day'));
-  const [selectedWeek, setSelectedWeek] = useState(DateTime.now().startOf('week'));
-
   const getWeekArray = (): DateTime[] => {
     const arr = new Array(7).fill(null);
 
@@ -103,6 +107,7 @@ export default function DaySelect({
             <div key={i.toISO()} className="relative flex flex-col items-center justify-center">
               <button
                 onClick={() => setSelectedDay(i)}
+                disabled={i > DateTime.now()}
                 className={`hover:bg-neutral-50 rounded text-sm p-1 flex flex-col items-center justify-center hover:cursor-pointer
           ${selectedDay.hasSame(i, 'day') ? 'text-blue-500 font-medium' : ''}`}
               >
@@ -168,7 +173,8 @@ export default function DaySelect({
 
               <button
                 onClick={() => setSelectedDay(i)}
-                className={`absolute hidden hover:text-blue-500 top-0 left-0 w-full h-full rounded-full text-sm shadow p-2 md:flex flex-col items-center justify-center hover:cursor-pointer 
+                disabled={i > DateTime.now()}
+                className={`absolute hidden hover:text-blue-500 disabled:text-slate-500 disabled:cursor-auto top-0 left-0 w-full h-full rounded-full text-sm shadow p-2 md:flex flex-col items-center justify-center hover:cursor-pointer 
       ${selectedDay.hasSame(i, 'day') ? ' text-blue-500 font-medium' : ''}`}
               >
                 <p>{i.toFormat('ccc')}</p>
