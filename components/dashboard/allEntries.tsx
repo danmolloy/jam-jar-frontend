@@ -19,7 +19,13 @@ export default function AllEntries({ entries }: { entries: Entry[] }) {
             </Link>
           </div>
         ) : (
-          entries.sort((a, b) => Number(DateTime.fromJSDate(new Date(b.date))) - Number(DateTime.fromJSDate(new Date(a.date)))).map((i) => <DiaryEntry key={i.id} diaryEntry={i} />)
+          entries
+            .sort(
+              (a, b) =>
+                Number(DateTime.fromJSDate(new Date(b.date))) -
+                Number(DateTime.fromJSDate(new Date(a.date))),
+            )
+            .map((i) => <DiaryEntry key={i.id} diaryEntry={i} />)
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 'use client';
 import { DateTime } from 'luxon';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { PracticeItem } from './detailView';
 
 export default function HeatMap({
@@ -17,12 +17,54 @@ export default function HeatMap({
 
   useEffect(() => {
     if (heatmapRef.current) {
-      // Wait until layout is rendered
       requestAnimationFrame(() => {
         heatmapRef.current!.scrollLeft = heatmapRef.current!.scrollWidth;
       });
     }
   }, []);
+
+  const totalsByDate = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const item of practiceItems) {
+      const dateKey = DateTime.fromISO(item.date).toISODate() || '';
+      map[dateKey] = (map[dateKey] || 0) + (item.duration || 0);
+    }
+    return map;
+  }, [practiceItems]);
+
+  const thresholds = useMemo(() => {
+    const totals = Object.values(totalsByDate)
+      .filter((v) => v > 0)
+      .sort((a, b) => a - b);
+    if (totals.length === 0) return [];
+
+    const getPercentile = (p: number) => {
+      const idx = (p / 100) * (totals.length - 1);
+      const lower = Math.floor(idx);
+      const upper = Math.ceil(idx);
+      if (lower === upper) return totals[lower];
+      return totals[lower] + (totals[upper] - totals[lower]) * (idx - lower);
+    };
+
+    return [
+      getPercentile(16.6),
+      getPercentile(33.3),
+      getPercentile(50),
+      getPercentile(66.6),
+      getPercentile(83.3),
+    ];
+  }, [totalsByDate]);
+
+  // 3️⃣ Function to pick color based on percentile
+  const getColorClass = (mins: number) => {
+    if (mins === 0) return 'bg-slate-200';
+    if (mins > thresholds[4]) return 'bg-blue-900';
+    if (mins > thresholds[3]) return 'bg-blue-800';
+    if (mins > thresholds[2]) return 'bg-blue-600';
+    if (mins > thresholds[1]) return 'bg-blue-500';
+    if (mins > thresholds[0]) return 'bg-blue-400';
+    return 'bg-blue-300';
+  };
 
   return (
     <div className="shadow m-2 rounded p-4 flex flex-col bg-white">
@@ -34,58 +76,71 @@ export default function HeatMap({
         </span>
       </h2>
 
-      {/* Horizontal scroll wrapper */}
-      <div ref={heatmapRef} className="overflow-x-auto w-full">
-        <div className="flex flex-row items-start gap-[2px] min-w-max">
-          {
-            // group dates into columns (weeks)
-            Array.from({ length: 53 }).map((_, weekIndex) => {
-              // each week column contains 7 day "boxes"
-              return (
-                <div key={weekIndex} className="flex flex-col gap-[2px]">
-                  {Array.from({ length: 7 }).map((__, dayIndex) => {
-                    const day = DateTime.now()
-                      .startOf('week')
-                      .minus({ weeks: 52 - weekIndex }) // go back in time
-                      .plus({ days: dayIndex });
+      {/* Heatmap */}
+      <div ref={heatmapRef} className="overflow-x-auto w-full ">
+        <div className="flex flex-row items-start gap-[2px] min-w-max ">
+          {Array.from({ length: 53 }).map((_, weekIndex) => (
+            <div key={weekIndex} className="flex flex-col gap-[2px] mt-5">
+              {(() => {
+                const weekStart = DateTime.now()
+                  .startOf('week')
+                  .minus({ weeks: 52 - weekIndex });
+                const prevWeekStart = weekStart.minus({ weeks: 1 });
+                const monthStart = weekStart.startOf('month');
 
-                    const isActive = practiceItems.filter((j) =>
-                      DateTime.fromISO(j.date).hasSame(day, 'day'),
-                    );
-                    const isSelected = selectedDate?.hasSame(day, 'day');
+                const startsNewMonth = weekStart.month !== prevWeekStart.month;
 
-                    const getColorClass = (count: number) => {
-                      if (count > 9) return 'bg-blue-900';
-                      if (count >= 7) return 'bg-blue-800';
-                      if (count >= 5) return 'bg-blue-600';
-                      if (count >= 3) return 'bg-blue-500';
-                      if (count >= 2) return 'bg-blue-400';
-                      if (count > 0) return 'bg-blue-300';
-                      return 'bg-slate-200';
-                    };
+                return (
+                  startsNewMonth && (
+                    <p className="text-xs absolute -mt-5">{monthStart.toFormat('LLL')}</p>
+                  )
+                );
+              })()}
+              {Array.from({ length: 7 }).map((__, dayIndex) => {
+                const day = DateTime.now()
+                  .startOf('week')
+                  .minus({ weeks: 52 - weekIndex })
+                  .plus({ days: dayIndex });
 
-                    return (
-                      <button
-                        key={`${weekIndex}-${dayIndex}`}
-                        onClick={() => setSelectedDate(day)}
-                        className={`w-[10px] h-[10px] rounded-sm hover:cursor-pointer ${
-                          isSelected ? 'bg-green-400' : getColorClass(isActive.length)
-                        }`}
-                        title={`${day.toFormat('ccc dd LLL')}: ${isActive.length} activities`}
-                      />
-                    );
-                  })}
-                </div>
-              );
-            })
-          }
+                const dateKey = day.toISODate();
+                const totalMins = totalsByDate[dateKey] || 0;
+                const isSelected = selectedDate?.hasSame(day, 'day');
+
+                return (
+                  <button
+                    key={`${weekIndex}-${dayIndex}`}
+                    onClick={isSelected ? () => setSelectedDate(null) : () => setSelectedDate(day)}
+                    className={`w-[10px] h-[10px]  hover:cursor-pointer 
+                      ${day > DateTime.now() && 'hidden'}
+                      ${isSelected ? 'bg-orange-600' : getColorClass(totalMins)}`}
+                    title={`${day.toFormat('ccc dd LLL')}: ${totalMins} mins`}
+                  />
+                );
+              })}
+            </div>
+          ))}
         </div>
+      </div>
+
+      {/* Legend */}
+      <div className="flex flex-row items-center justify-end text-sm text-gray-800 mt-1">
+        <p>Less</p>
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-slate-200 ml-0.5`} />
+
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-300 ml-0.5`} />
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-400 ml-0.5`} />
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-500 ml-0.5`} />
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-600 ml-0.5`} />
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-800 ml-0.5`} />
+
+        <div className={`w-[10px] h-[10px]  hover:cursor-pointer bg-blue-900 mx-0.5 `} />
+        <p>More</p>
       </div>
 
       {/* Detail viewer */}
       {selectedDate && (
         <div className="mt-2">
-          <p>{selectedDate.toFormat('dd LLLL yyyy')}</p>
+          <p className="font-bold">{selectedDate.toFormat('dd LLLL yyyy')}</p>
           {practiceItems.filter((i) => DateTime.fromISO(i.date).hasSame(selectedDate, 'day'))
             .length > 0 ? (
             practiceItems
@@ -98,7 +153,7 @@ export default function HeatMap({
                 </div>
               ))
           ) : (
-            <p>No practice logged</p>
+            <p className="text-neutral-400">No practice logged</p>
           )}
         </div>
       )}
