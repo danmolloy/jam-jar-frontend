@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Coiny, Nunito, Playfair_Display, Geist, Inter } from 'next/font/google';
+import { Geist_Mono, Coiny, Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';

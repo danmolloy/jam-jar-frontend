@@ -4,7 +4,7 @@ export type ActivityFilterProps = {
   activities: Activity[];
   selectedActivity: string;
   setSelectedActivity: (arg: string) => void;
-}
+};
 
 export default function ActivityFilter({
   activities,
