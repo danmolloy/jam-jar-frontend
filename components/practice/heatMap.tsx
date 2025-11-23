@@ -83,7 +83,7 @@ export default function HeatMap({
       <div ref={heatmapRef} className="overflow-x-auto w-full ">
         <div className="flex flex-row items-start gap-[2px] min-w-max mr-2 ">
           {Array.from({ length: 53 }).map((_, weekIndex) => (
-            <div key={weekIndex} className="flex flex-col gap-[2px] mt-5 ">
+            <div key={weekIndex} className="relative flex flex-col gap-[2px] mt-5 ">
               {(() => {
                 const weekStart = DateTime.now()
                   .startOf('week')

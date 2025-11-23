@@ -8,7 +8,7 @@ import DiaryEntry from './diaryEntry';
 import { MdEdit } from 'react-icons/md';
 import Link from 'next/link';
 
-type Recording = components['schemas']['AudioRecording'];
+export type Recording = components['schemas']['AudioRecording'];
 type DiaryEntry = components['schemas']['DiaryEntry'];
 
 export default function DaySelect({

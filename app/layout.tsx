@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Coiny, Nunito, Playfair_Display } from 'next/font/google';
+import { Geist_Mono, Coiny, Nunito, Playfair_Display, Geist, Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -7,7 +7,7 @@ import SessionProviderWrapper from '@/components/SessionProviderWrapper';
 import { Analytics } from '@vercel/analytics/next';
 import ConsentWrapper from '@/components/layout/consentWrapper';
 
-const geistSans = Nunito({
+const geistSans = Inter({
   variable: '--font-geist-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],

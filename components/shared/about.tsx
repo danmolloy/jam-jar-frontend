@@ -4,41 +4,67 @@ import { IoIosJournal } from 'react-icons/io';
 import { IoBarChartSharp } from 'react-icons/io5';
 import { FaHashtag } from 'react-icons/fa6';
 import { CiBoxList } from 'react-icons/ci';
+import About from './about/index';
+import DonutMD from '../dashboard/donutMD';
+import { DateTime } from 'luxon';
+import TargetComponent from './about/targetComponent';
+import DiaryComponent from './about/diaryComponent';
+import AudioPreview from './about/audioPreview';
+import TagsPreview from './about/tagsPreview';
+import LogPreview from './about/logPreview';
+import HeatmapPreview from './about/heatmapPreview';
+import { FcHeatMap } from "react-icons/fc";
 
-const featuresArr: {
+
+export const featuresArr: {
   title: string;
   body: string;
   icon: React.ReactNode;
+  component?: React.ReactNode;
 }[] = [
   {
     title: 'Practice Logging',
     body: 'Keep a record of what you practiced, for how long and when. You can add notes and hashtags to your session.',
     icon: <CiBoxList />,
+    component: <LogPreview />
   },
   {
     title: 'Daily Targets',
     body: "Set a target duration to practice each day. At a quick glance, you can see how you've done across the week.",
     icon: <BiTargetLock />,
+    component: <TargetComponent />
   },
   {
     title: 'Journaling',
     body: "Write about anything - what you're aiming towards, lesson notes or just some thoughts you've had that day.",
     icon: <IoIosJournal />,
+    component: <DiaryComponent />
   },
   {
     title: 'Audio Recording',
     body: 'Record your practice and listen back to how your playing has developed over time.',
     icon: <RiRecordMailLine />,
+    component: <AudioPreview recordings={[{
+      id: "1",
+      title: "Franck Sonata",
+      location: "Maida Vale",
+      notes: "Take 3",
+      tags: [],
+      date: String(DateTime.now().toISO())
+    }]}/>
   },
+
   {
-    title: 'Visual Insights',
-    body: 'Spot trends in your practice with easy-to-read data displays including a week bar chart, annual heat map and daily rings.',
-    icon: <IoBarChartSharp />,
+    title: 'Year Heat Map',
+    body: 'Spot macro trends in your practice with a heat map data display.',
+    icon: <FcHeatMap />,
+    component: <HeatmapPreview />
   },
   {
     title: 'Tags and Advanced Filtering',
     body: 'Sort and filter your data by activity or hashtag to see what you’re putting time into.',
     icon: <FaHashtag />,
+    component: <TagsPreview />
   },
 ];
 
@@ -47,15 +73,16 @@ export default function AboutIndex() {
     <div>
       <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-full bg-dark">
         <div className="flex flex-col items-center justify-center lg:w-1/2 p-4 text-center">
-          <h1 className="font-serif text-4xl ">Practice makes perfect.</h1>
-          <p className="mt-4">
+          <h1 className="font-mono text-xl font-normal text-amber-50">Practice makes perfect.</h1>
+          {/* <p className="mt-4">
             But progress doesn&apos;t happen overnight. Progress happens over days, weeks and years
             in small, consistent steps and with constant reflection of the decisions you take.
             Practice is about the journey taken.
-          </p>
+          </p> */}
         </div>
       </div>
-      <div
+      <About />
+      {/* <div
         id="about"
         className="bg-gray-100  flex flex-col pb-4 min-h-screen items-center justify-center"
       >
@@ -77,7 +104,7 @@ export default function AboutIndex() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
