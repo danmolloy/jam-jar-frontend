@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon';
 import { PracticeItem } from '../practice/detailView';
+import Image from 'next/image';
 
 export default function StreakIndex({
   practiceItems,
@@ -57,8 +58,11 @@ export default function StreakIndex({
         {selectedActivity && `${selectedActivity} `}
         {selectedTag && `#${selectedTag}`}
       </p>
-
-      <p className="text-2xl font-bold font-mono  ">{currentStreak()}</p>
+      <div className='relative'>
+            <Image className="p-2 rotate-9" src="/jar-favicon.png" width={150} height={150} alt="Jam Jar" />
+        <p className="text-2xl font-bold font-mono absolute top-18 left-16 text-yellow-300">{currentStreak()}</p>
+        
+      </div>
       <p>Your current streak is {currentStreak()} days.</p>
       {currentStreak() < longestStreak() && longestStreak() > 0 ? (
         <p>Your longest streak is {longestStreak()} days.</p>

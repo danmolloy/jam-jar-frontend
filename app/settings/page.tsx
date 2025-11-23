@@ -2,6 +2,7 @@
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import SettingsIndex from '@/components/settings';
+import Loading from '../loading';
 
 export default function SettingsPage() {
   const { data: session, status } = useSession();
@@ -21,7 +22,7 @@ export default function SettingsPage() {
 
   if (status === 'loading') return <div>Loading...</div>;
   if (!session?.accessToken) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (!user) return <div>Loading user data...</div>;
 

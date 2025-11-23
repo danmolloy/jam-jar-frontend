@@ -6,6 +6,7 @@ import { Session } from 'next-auth';
 import { useRouter } from 'next/navigation';
 import ButtonPrimary from '../form/buttonPrimary';
 import { useEffect, useState } from 'react';
+import Loading from '@/app/loading';
 
 type DiaryEntry = components['schemas']['DiaryEntry'];
 type UserData = components['schemas']['User'];
@@ -64,7 +65,7 @@ export default function CreateDiaryEntry({
     fetchData();
   }, [session]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
   if (!data) return null;
 

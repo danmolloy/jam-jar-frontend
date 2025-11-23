@@ -12,6 +12,7 @@ import RecordingsTable from './recordings';
 import Link from 'next/link';
 import AllEntries from './allEntries';
 import { DateTime } from 'luxon';
+import Loading from '@/app/loading';
 
 type UserData = components['schemas']['User'];
 
@@ -58,7 +59,7 @@ export default function Dashboard({ session }: { session: Session | null }) {
     fetchData();
   }, [session]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
   if (!data) return null;
 

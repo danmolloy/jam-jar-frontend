@@ -6,6 +6,7 @@ import InputField from '@/components/form/inputField';
 import { components } from '@/types/api';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Loading from '@/app/loading';
 
 type Recording = components['schemas']['AudioRecording'];
 type UserData = components['schemas']['User'];
@@ -72,7 +73,7 @@ export default function AudioForm({
     fetchData();
   }, [session, status]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
   if (!data) return null;
 

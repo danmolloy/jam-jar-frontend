@@ -9,6 +9,7 @@ import Link from 'next/link';
 import * as Yup from 'yup';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { getApiUrl } from '../../app/lib/api';
+import Loading from '@/app/loading';
 
 // Validation schema
 const RegisterSchema = Yup.object().shape({
@@ -122,7 +123,7 @@ export default function Register() {
   );
 
   if (status === 'loading' || status === 'authenticated') {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const handleRegister = async (values: {

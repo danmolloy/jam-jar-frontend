@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import Loading from '@/app/loading';
 
 export default function Login() {
   const { data: session, status } = useSession();
@@ -42,7 +43,7 @@ export default function Login() {
   }, [searchParams]);
 
   if (status === 'loading' || status === 'authenticated') {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   return (
