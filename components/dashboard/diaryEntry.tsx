@@ -27,13 +27,13 @@ export default function DiaryEntry({ diaryEntry }: { diaryEntry: DiaryEntry }) {
       </div>
       {diaryEntry.body.length < 200 ? (
         <div className="flex flex-col">
-          <p>{diaryEntry.body}</p>
+          <p className="whitespace-pre-wrap">{diaryEntry.body}</p>
         </div>
       ) : (
         <div className="flex flex-row">
           {showAll ? (
             <div className="flex flex-row justify-between w-full">
-              <p>{diaryEntry.body}</p>
+              <p className="whitespace-pre-wrap">{diaryEntry.body}</p>
               <button
                 className="border rounded-lg self-end px-1 mx-1 border-blue-500 text-blue-600 hover:bg-blue-50"
                 onClick={() => setShowAll(!showAll)}
@@ -43,7 +43,7 @@ export default function DiaryEntry({ diaryEntry }: { diaryEntry: DiaryEntry }) {
             </div>
           ) : (
             <div className="flex flex-row justify-between w-full">
-              <p>{diaryEntry.body.slice(0, 200)}...</p>
+              <p className="whitespace-pre-wrap">{diaryEntry.body.slice(0, 200)}...</p>
               <button
                 className="border rounded-lg self-end px-1 mx-1 border-blue-500 text-blue-600 hover:bg-blue-50"
                 onClick={() => setShowAll(!showAll)}
