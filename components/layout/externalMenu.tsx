@@ -21,7 +21,7 @@ export default function ExternalMenu() {
         <IoIosMenu size={20} />
       </button>
       {showMenu && (
-        <div className="fixed right-0 top-12 pb-32 text-black flex flex-col justify-evenly bg-fuchsia-300 w-screen h-[95vh]  z-10 py-8 text-2xl font-bold  font-serif">
+        <div className="fixed right-0 top-12 pb-32 text-white flex flex-col justify-evenly bg-dark w-screen h-[95vh]  z-10 py-8 text-2xl font-base  font-mono">
           <Link
             href={'/'}
             onClick={() => setTimeout(() => setShowMenu(false), 250)}

@@ -5,7 +5,7 @@ import Hero from './hero';
 
 export default function LandingPage() {
   return (
-    <div className="w-screen  min-h-[80vh]  font-medium bg-fuchsia-300 ">
+    <div className="w-screen  min-h-[80vh]  font-medium bg-blue-200 ">
       {' '}
       {/* bg-[url(/background.png)] bg-size-[300px] bg-center bg-repeat */}
       <Hero />

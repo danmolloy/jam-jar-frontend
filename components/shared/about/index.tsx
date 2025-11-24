@@ -3,8 +3,8 @@ import { featuresArr } from '../about';
 
 export default function About() {
   return (
-    <div className="bg-white text-dark font-sans p-2 flex flex-col ">
-      <h1 className="font-sans font-medium md:text-6xl text-5xl m-4 mb-8 text-center">
+    <div id="about" className="bg-gray-50 text-dark font-sans pt-8 p-2 flex flex-col ">
+      <h1 className="font-sans font-semibold md:text-5xl text-4xl m-4 mb-8 text-center">
         Capture your practice
       </h1>
       <div className="flex flex-col md:flex-row flex-wrap  justify-center  lg:justify-evenly">
