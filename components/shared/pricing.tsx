@@ -32,14 +32,14 @@ export default function PricingIndex({ landing }: { landing: boolean }) {
   return (
     <div
       id="pricing"
-      className={` p-4 font-medium flex  flex-col items-center justify-center min-h-screen ${landing ? 'bg-dark' : 'bg-neutral-100 w-full'}`}
+      className={` p-4 font-medium flex  flex-col items-center justify-center min-h-[90vh] ${landing ? 'bg-dark' : 'bg-neutral-100 w-full'}`}
     >
       {landing ? (
-        <h2 className=" font-sans md:text-6xl text-6xl m-4 text-white">
+        <h2 className=" font-sans md:text-4xl text-4xl m-4 text-white">
           Start for free and upgrade for more insight.
         </h2>
       ) : (
-        <h2 className=" font-sans md:text-6xl text-6xl m-4 text-black">
+        <h2 className=" font-sans md:text-4xl text-4xl m-4 text-black">
           Upgrade for more insight.
         </h2>
       )}

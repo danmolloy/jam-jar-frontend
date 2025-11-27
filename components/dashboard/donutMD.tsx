@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon';
 import { Recording } from './daySelect';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 export type DonutMdProps = {
   day: DateTime;
@@ -12,6 +14,10 @@ export type DonutMdProps = {
 
 export default function DonutMD(props: DonutMdProps) {
   const { day, selectedDay, setSelectedDay, progressPercent, dayRecordings, preview } = props;
+  const circleRef = useRef<SVGCircleElement | null>(null);
+  const isInView = useInView(circleRef, { once: true, amount: 0.6 });
+  const dashArray = 226.2; // 2πr where r=36
+  const targetOffset = dashArray - (dashArray * progressPercent) / 100;
 
   return (
     <div key={day.toISO()} className="relative w-20 h-20 m-2">
@@ -25,11 +31,14 @@ export default function DonutMD(props: DonutMdProps) {
           cx="40"
           cy="40"
         />
-        <circle
-          className={'text-green-400  transition-all duration-1000 ease-in-out'}
+        <motion.circle
+          ref={circleRef}
+          initial={{ strokeDashoffset: dashArray }}
+          animate={{ strokeDashoffset: isInView ? targetOffset : dashArray }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="text-green-400 transition-all duration-500 ease-out"
           strokeWidth="8"
-          strokeDasharray="226.2" // 2πr where r=36
-          strokeDashoffset={`${226.2 - (226.2 * progressPercent) / 100}`}
+          strokeDasharray={dashArray}
           strokeLinecap="round"
           stroke="currentColor"
           fill="transparent"

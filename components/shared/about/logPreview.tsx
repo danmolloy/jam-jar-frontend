@@ -1,5 +1,6 @@
 import { PracticeItem } from '@/components/practice/detailView';
 import { DateTime } from 'luxon';
+import { motion } from 'framer-motion'
 
 const practice: PracticeItem[] = [
   {
@@ -37,9 +38,15 @@ export default function LogPreview() {
         <h2 className="font-base text-base p-2">{date.toFormat('cccc dd LLL').toUpperCase()}</h2>
         <div className="">
           {practice.map((i, index) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0}}
+              whileInView={{ opacity: 1}}
+              transition={{
+                delay: (index * .5) + 1
+                
+              }}
               key={i.id}
-              className={` w-full flex flex-col justify-between items-start px-4 pb-2 ${index % 2 === 1 && 'bg-slate-50'}`}
+              className={` w-full flex flex-col justify-between items-start px-4 pb-2 `}
             >
               <div className="flex flex-row justify-between items-center w-full">
                 <p>
@@ -47,12 +54,17 @@ export default function LogPreview() {
                 </p>
               </div>
               <p className="text-sm self-start py-1  whitespace-pre-wrap">{i.notes}</p>
-              <div className='text-xs flex flex-row gap-1 text-blue-500'>
+              <motion.div
+              transition={{
+                delay: (index * .5) + 3,
+                duration: .05
+              }}
+                 initial={{opacity: 0}} whileInView={{opacity: 1}} className='text-xs flex flex-row gap-1 text-blue-500'>
                 {i.tags?.map((i, ind) => 
                   <p key={ind} className='hover:underline cursor-pointer'>#{i}</p>
                 )}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

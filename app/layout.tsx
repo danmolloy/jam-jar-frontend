@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Coiny, Playfair_Display, Inter } from 'next/font/google';
+import { Geist_Mono, Coiny, Playfair_Display, Inter, Raleway } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -7,7 +7,7 @@ import SessionProviderWrapper from '@/components/SessionProviderWrapper';
 import { Analytics } from '@vercel/analytics/next';
 import ConsentWrapper from '@/components/layout/consentWrapper';
 
-const geistSans = Inter({
+const geistSans = Raleway({
   variable: '--font-geist-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
@@ -33,7 +33,7 @@ const barriecito = Coiny({
 export const metadata: Metadata = {
   title: 'Jam Jar - Music Practice Journal',
   description:
-    'Jam Jar brings structure and motivation to music practice. Keep track of your music practice analytics with our digital journal.',
+    'Jam Jar brings structure and motivation to music practice. Keep track of your music practice analytics with our digital journal.'
 };
 
 export default async function RootLayout({

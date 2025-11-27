@@ -3,8 +3,8 @@ import { featuresArr } from '../about';
 
 export default function About() {
   return (
-    <div id="about" className="bg-gray-50 text-dark font-sans pt-8 p-2 flex flex-col ">
-      <h1 className="font-sans font-semibold md:text-5xl text-4xl m-4 mb-8 text-center">
+    <div id="about" className="bg-gradient-to-b from-zinc-50 to-zinc-100  text-dark font-sans pt-8 p-2 flex flex-col ">
+      <h1 className="font-sans  md:text-4xl text-4xl m-4 mb-8 text-center">
         Capture your practice
       </h1>
       <div className="flex flex-col md:flex-row flex-wrap  justify-center  lg:justify-evenly">
@@ -20,9 +20,9 @@ export default function About() {
               <div className="flex items-center  gap-2">
                 {/*                 <div className="text-xl text-blue-700">{i.icon}</div>
                  */}{' '}
-                <h2 className="text-xl font-semibold">{i.title}</h2>
+                <h2 className="text-xl font-medium">{i.title}</h2>
               </div>
-              <p className="text-lg text-neutral-500">{i.body}</p>
+              <p className="text-base text-black font-light">{i.body}</p>
             </div>
           </div>
         ))}

@@ -59,7 +59,7 @@ export const featuresArr: {
 
   {
     title: 'Year Heat Map',
-    body: 'Spot macro trends in your practice with a heat map data display.',
+    body: 'Spot trends in your practice with a heat map data display.',
     icon: <FcHeatMap />,
     component: <HeatmapPreview />,
   },

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className="h-screen w-screen bg-blue-200 text-dark flex flex-col items-center pt-[30vh] -mt-12">
+    <div className="h-screen w-screen bg-blue-400 text-dark flex flex-col items-center pt-[30vh] -mt-12">
       <h1 className="text-6xl lg:text-8xl font-display">Jam Jar</h1>
       <p className="text-lg font-display">Practice diary for musicians</p>
       <div className="flex lg:flex-row flex-col items-center justify-center  w-1/2 lg:w-1/3">

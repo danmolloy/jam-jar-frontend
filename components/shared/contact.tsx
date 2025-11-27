@@ -39,7 +39,7 @@ export default function Contact() {
       id="contact"
       className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-neutral-100  "
     >
-      <h1 className="font-sans md:text-6xl text-5xl font-normal">Get in touch</h1>
+      <h1 className="font-sans md:text-4xl text-4xl font-normal">Get in touch</h1>
       <Formik
         initialValues={{
           name: '',
