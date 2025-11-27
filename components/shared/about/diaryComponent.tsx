@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { motion } from 'framer-motion';
 
-const text = `Today's practice focused on letting go of perfection and just perform. I concentrated on breathing deeply before each run through, visualising the audition space and playing through everything without stopping (regardless of mistakes). It was effective practice for the audition, and this is something I'm going to practice every day this week.`
+const text = `Today's practice focused on letting go of perfection and just perform. I concentrated on breathing deeply before each run through, visualising the audition space and playing through everything without stopping (regardless of mistakes). It was effective practice for the audition, and this is something I'm going to practice every day this week.`;
 
 export default function DiaryComponent() {
   return (

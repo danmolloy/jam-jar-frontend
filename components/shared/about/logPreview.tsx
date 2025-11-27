@@ -1,13 +1,14 @@
 import { PracticeItem } from '@/components/practice/detailView';
 import { DateTime } from 'luxon';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const practice: PracticeItem[] = [
   {
     date: DateTime.now().toISO(),
     id: 1,
     activity: 'Scales',
-    notes: 'C, G and Bb Major. \nExploring different contact points on the string and not focusing on intonation for once.',
+    notes:
+      'C, G and Bb Major. \nExploring different contact points on the string and not focusing on intonation for once.',
     tags: ['legatoAF'],
     duration: 15,
   },
@@ -39,11 +40,10 @@ export default function LogPreview() {
         <div className="">
           {practice.map((i, index) => (
             <motion.div
-              initial={{ opacity: 0}}
-              whileInView={{ opacity: 1}}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{
-                delay: (index * .5) + 1
-                
+                delay: index * 0.5 + 1,
               }}
               key={i.id}
               className={` w-full flex flex-col justify-between items-start px-4 pb-2 `}
@@ -55,14 +55,19 @@ export default function LogPreview() {
               </div>
               <p className="text-sm self-start py-1  whitespace-pre-wrap">{i.notes}</p>
               <motion.div
-              transition={{
-                delay: (index * .5) + 3,
-                duration: .05
-              }}
-                 initial={{opacity: 0}} whileInView={{opacity: 1}} className='text-xs flex flex-row gap-1 text-blue-500'>
-                {i.tags?.map((i, ind) => 
-                  <p key={ind} className='hover:underline cursor-pointer'>#{i}</p>
-                )}
+                transition={{
+                  delay: index * 0.5 + 3,
+                  duration: 0.05,
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                className="text-xs flex flex-row gap-1 text-blue-500"
+              >
+                {i.tags?.map((i, ind) => (
+                  <p key={ind} className="hover:underline cursor-pointer">
+                    #{i}
+                  </p>
+                ))}
               </motion.div>
             </motion.div>
           ))}

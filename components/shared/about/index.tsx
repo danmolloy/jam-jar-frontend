@@ -3,7 +3,10 @@ import { featuresArr } from '../about';
 
 export default function About() {
   return (
-    <div id="about" className="bg-gradient-to-b from-zinc-50 to-zinc-100  text-dark font-sans pt-8 p-2 flex flex-col ">
+    <div
+      id="about"
+      className="bg-gradient-to-b from-zinc-50 to-zinc-100  text-dark font-sans pt-8 p-2 flex flex-col "
+    >
       <h1 className="font-sans  md:text-4xl text-4xl m-4 mb-8 text-center">
         Capture your practice
       </h1>

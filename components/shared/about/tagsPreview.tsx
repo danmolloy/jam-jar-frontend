@@ -35,8 +35,8 @@ const animations = [
   },
   {
     y: [0, 4, -3, 0],
-  }
-]
+  },
+];
 
 export default function TagsPreview() {
   return (
@@ -48,18 +48,18 @@ export default function TagsPreview() {
         {words.map((word, i) => {
           const size = ['text-xs', 'text-sm', 'text-base', 'text-lg'][i % 4];
           const rotate = Math.random() < 0.3 ? '-rotate-90' : '';
-          const animationInd = Math.random() < .5 ? 1 : 0;
+          const animationInd = Math.random() < 0.5 ? 1 : 0;
 
           return (
             <div key={word} className="flex items-center justify-center min-h-[60px]">
               <motion.span
                 animate={{
                   ...animations[animationInd],
-                  
+
                   rotate: [rotate ? -5 : -1, rotate ? 0 : 1, rotate ? -5 : -1],
                 }}
                 transition={{
-                  duration: Math.random() < .5 ? 3 : 4,
+                  duration: Math.random() < 0.5 ? 3 : 4,
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}

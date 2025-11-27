@@ -43,7 +43,7 @@ export default function Login() {
   }, [searchParams]);
 
   if (status === 'loading' || status === 'authenticated') {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
