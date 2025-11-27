@@ -38,7 +38,7 @@ export default function RecordingsTable({
           recordings.map((i) => (
             <div
               key={i.id}
-              className="text-sm border-b border-gray-300 transition-all duration-700"
+              className="w-full items-start justify-start  h-full text-sm border-b border-gray-300 transition-all duration-700"
             >
               <button
                 onClick={() => setSelectedRecording(i.id)}

@@ -247,7 +247,7 @@ export default function CreateAudioPage() {
               Audio File*
               <input
                 type="file"
-                accept="audio/*"
+                accept="audio/mpeg,audio/mp3,audio/*"
                 onChange={(e) =>
                   setFieldValue('file', e.currentTarget.files ? e.currentTarget.files[0] : null)
                 }

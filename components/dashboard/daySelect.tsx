@@ -234,7 +234,6 @@ export default function DaySelect({
                     <div key={j.id}>
                       <p className="font-medium text-base text-start">{j.title}</p>
                       <div className="flex flex-row justify-between items-center ">
-                        <p>{DateTime.fromISO(j.date).toFormat('dd LLL yyyy')}</p>
                         <p>{j.location}</p>
                       </div>
                     </div>
