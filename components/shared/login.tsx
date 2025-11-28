@@ -83,7 +83,7 @@ export default function Login() {
     >
       {(props) => (
         <Form
-          className="flex flex-col p-4 items-center justify-center "
+          className="flex flex-col p-4 items-center justify-start pt-16 w-screen min-h-[80vh]   bg-gradient-to-b  from-zinc-50 to-zinc-100"
           onChange={() => error && setError(null)}
         >
           <h1>Login</h1>
@@ -99,7 +99,7 @@ export default function Login() {
               {error}
             </div>
           )}
-
+          <div className='flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 '>
           <InputField label="Username" name="username" type="text" error={props.errors.username} />
           <InputField
             label="Password"
@@ -118,6 +118,7 @@ export default function Login() {
           <Link href="/reset-password" className="hover:underline text-sm text-blue-600 mt-4">
             Forgot your password?
           </Link>
+          </div>
         </Form>
       )}
     </Formik>

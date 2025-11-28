@@ -37,8 +37,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-neutral-100  "
+      className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-gradient-to-b from-zinc-50 to-zinc-100  "
     >
+      
       <h1 className="font-sans md:text-4xl text-4xl font-normal">Get in touch</h1>
       <Formik
         initialValues={{
@@ -85,7 +86,7 @@ export default function Contact() {
               </label>
               <Field
                 id="name-input"
-                className=" text-dark border rounded border-dark bg-light  w-full p-1 dark:bg-zinc-300"
+                className=" text-dark border rounded border-dark bg-white  w-full p-1 dark:bg-zinc-300"
                 type="text"
                 name="name"
               />
@@ -101,7 +102,7 @@ export default function Contact() {
               </label>
               <Field
                 id="email"
-                className="text-dark border rounded border-dark bg-light w-full p-1 dark:bg-zinc-300"
+                className="text-dark border bg-white rounded border-dark  w-full p-1 dark:bg-zinc-300"
                 type="email"
                 name="email"
               />
@@ -121,7 +122,7 @@ export default function Contact() {
                 rows="4"
                 component="textarea"
                 id="msg-text"
-                className=" text-dark border border-dark bg-light rounded-sm w-full p-1 dark:bg-zinc-300"
+                className=" text-dark border bg-white border-dark  rounded-sm w-full p-1 dark:bg-zinc-300"
                 type="textarea"
                 name="message"
               />

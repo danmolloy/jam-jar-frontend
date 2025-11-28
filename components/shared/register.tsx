@@ -201,7 +201,8 @@ export default function Register() {
       onSubmit={handleRegister}
     >
       {(props) => (
-        <Form className="flex flex-col p-4  justify-center items-center">
+        <Form           className="flex flex-col p-4 items-center justify-center w-screen min-h-[80vh]  bg-gradient-to-b  from-zinc-50 to-zinc-100"
+>
           <h1>Register</h1>
           <p>
             Already have an account?{' '}
@@ -211,6 +212,8 @@ export default function Register() {
           </p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           {success && <div className="text-green-500 mb-4">{success}</div>}
+                    <div className='flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 '>
+
           <UsernameField
             label="Username"
             name="username"
@@ -251,6 +254,7 @@ export default function Register() {
             <p>{isSubmitting ? 'Creating Account...' : 'Register'}</p>
             <IoIosArrowRoundForward size={24} />
           </button>
+          </div>
         </Form>
       )}
     </Formik>

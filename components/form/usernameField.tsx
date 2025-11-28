@@ -72,7 +72,7 @@ export default function UsernameField({
             {getStatusIcon()}
           </div>
         </div>
-        {error && <div className="text-red-500 text-sm">{error}</div>}
+        {error && <div className="text-red-500 text-xs">{error}</div>}
         {usernameStatus.message && !error && (
           <div className={`text-sm ${getStatusColor()}`}>{getStatusMessage()}</div>
         )}
