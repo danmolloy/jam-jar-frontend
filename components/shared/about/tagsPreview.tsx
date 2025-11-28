@@ -38,6 +38,12 @@ const animations = [
   },
 ];
 
+// Deterministic pseudo-random generator so SSR and client render match
+const pseudoRandom = (seed: number) => {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
+
 export default function TagsPreview() {
   return (
     <div className=" relative  flex justify-center p-6">
@@ -47,8 +53,10 @@ export default function TagsPreview() {
       >
         {words.map((word, i) => {
           const size = ['text-xs', 'text-sm', 'text-base', 'text-lg'][i % 4];
-          const rotate = Math.random() < 0.3 ? '-rotate-90' : '';
-          const animationInd = Math.random() < 0.5 ? 1 : 0;
+          const seed = i + 1;
+          const rotate = pseudoRandom(seed) < 0.3 ? '-rotate-90' : '';
+          const animationInd = pseudoRandom(seed + 100) < 0.5 ? 1 : 0;
+          const duration = pseudoRandom(seed + 200) < 0.5 ? 3 : 4;
 
           return (
             <div key={word} className="flex items-center justify-center min-h-[60px]">
@@ -59,7 +67,7 @@ export default function TagsPreview() {
                   rotate: [rotate ? -5 : -1, rotate ? 0 : 1, rotate ? -5 : -1],
                 }}
                 transition={{
-                  duration: Math.random() < 0.5 ? 3 : 4,
+                  duration,
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
