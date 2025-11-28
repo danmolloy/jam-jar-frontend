@@ -8,7 +8,7 @@ export default function About() {
       className="bg-gradient-to-b from-zinc-50 to-zinc-100  text-dark font-sans pt-8 p-2 flex flex-col "
     >
       <h1 className="font-sans  md:text-4xl text-4xl m-4 mb-8 text-center">
-        Capture your practice
+        Make every practice count
       </h1>
       <div className="flex flex-col md:flex-row flex-wrap  justify-center  lg:justify-evenly">
         {featuresArr.map((i, index) => (

@@ -21,25 +21,25 @@ export const featuresArr: {
 }[] = [
   {
     title: 'Practice Logging',
-    body: 'Keep a record of what you practiced, for how long and when. You can add notes and hashtags to your session.',
+    body: 'Keep a record of what you practiced, for how long and when - with optional notes and hashtags to keep everything organised.',
     icon: <CiBoxList />,
     component: <LogPreview />,
   },
   {
     title: 'Daily Targets',
-    body: "Set a target duration to practice each day. At a quick glance, you can see how you've done across the week.",
+    body: "Set daily practice goals and instantly see how you're tracking across the week.",
     icon: <BiTargetLock />,
     component: <TargetComponent />,
   },
   {
     title: 'Journaling',
-    body: "Write about anything - what you're aiming towards, lesson notes or just some thoughts you've had that day.",
+    body: "Capture your goals, lesson notes, reflections, or anything else that shapes your musical journey.",
     icon: <IoIosJournal />,
     component: <DiaryComponent />,
   },
   {
     title: 'Audio Recording',
-    body: 'Record your practice and listen back to how your playing has developed over time.',
+    body: 'Record your practice sessions and listen back to hear how your playing evolves over time.',
     icon: <RiRecordMailLine />,
     component: (
       <AudioPreview
@@ -59,13 +59,13 @@ export const featuresArr: {
 
   {
     title: 'Year Heat Map',
-    body: 'Spot trends in your practice with a heat map data display.',
+    body: 'Visualise your entire year of practice with a clear heat map that highlights your habits and trends.',
     icon: <FcHeatMap />,
     component: <HeatmapPreview />,
   },
   {
     title: 'Tags and Advanced Filtering',
-    body: 'Sort and filter your data by activity or hashtag to see what you’re putting time into.',
+    body: 'Use tags and advanced filters to break down your practice data and see exactly where your time goes.',
     icon: <FaHashtag />,
     component: <TagsPreview />,
   },
@@ -74,16 +74,14 @@ export const featuresArr: {
 export default function AboutIndex() {
   return (
     <div>
-      <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-full bg-dark">
-        <div className="flex flex-col items-center justify-center lg:w-1/2 p-4 text-center">
-          <h1 className="font-mono text-xl font-normal text-amber-50">Practice makes perfect.</h1>
-          {/* <p className="mt-4">
-            But progress doesn&apos;t happen overnight. Progress happens over days, weeks and years
-            in small, consistent steps and with constant reflection of the decisions you take.
-            Practice is about the journey taken.
-          </p> */}
+      {/* <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-full bg-dark">
+        <div className="flex font-mono flex-col font-normal text-zinc-50 items-center justify-center md:w-2/3 lg:w-1/2 p-4 text-center">
+          <h2 className="text-xl ">Make every practice count.</h2>
+           <p className="mt-4 text-md">
+  Track what you practise, review recordings, and build consistent habits with simple tools that support your growth.
+          </p>  
         </div>
-      </div>
+      </div> */}
       <About />
       {/* <div
         id="about"

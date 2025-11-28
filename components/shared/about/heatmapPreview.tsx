@@ -1,9 +1,11 @@
 'use client';
+import { useInView } from 'framer-motion';
 import { DateTime } from 'luxon';
 import { useEffect, useRef } from 'react';
 
 export default function HeatmapPreview() {
   const heatmapRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(heatmapRef, { once: true });
 
   useEffect(() => {
     if (heatmapRef.current) {
@@ -58,8 +60,8 @@ export default function HeatmapPreview() {
                   <div
                     key={`${weekIndex}-${dayIndex}`}
                     className={`w-[10px] h-[10px] hover:bg-orange-600  hover:cursor-pointer 
-                            ${day > DateTime.now() && 'hidden'}
-                            ${isSelected ? 'bg-orange-600' : getColorClass()}`}
+                            ${day > DateTime.now() && 'hidden'} transition-all duration-1000 delay-750
+                            ${!isInView ? 'bg-slate-200' : isSelected ? 'bg-orange-600' : getColorClass()}`}
                     title={`${day.toFormat('ccc dd LLL')}: 0 mins`}
                   />
                 );

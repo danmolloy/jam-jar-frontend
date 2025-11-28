@@ -75,7 +75,7 @@ export default function Dashboard({ session }: { session: Session | null }) {
           : data.practice_items.filter((i) => i.tags!.includes(selectedTag));
 
   return (
-    <div className="flex flex-col p-4 bg-neutral-100">
+    <div className="flex flex-col p-4 bg-zinc-100">
       {data.subscription_status !== 'active' && (
         <div className="text-center bg-white text-blue-600 font-medium mb-4 p-4 ">
           <Link href="/account" className="hover:underline">

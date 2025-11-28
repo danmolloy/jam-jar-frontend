@@ -35,7 +35,7 @@ export default function DonutMD(props: DonutMdProps) {
           ref={circleRef}
           initial={{ strokeDashoffset: dashArray }}
           animate={{ strokeDashoffset: isInView ? targetOffset : dashArray }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: .75 }}
           className="text-green-400 transition-all duration-500 ease-out"
           strokeWidth="8"
           strokeDasharray={dashArray}

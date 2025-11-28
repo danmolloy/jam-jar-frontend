@@ -43,7 +43,8 @@ export default function LogPreview() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{
-                delay: index * 0.5 + 1,
+                delay: index * 0.5 + .5,
+                duration: .05
               }}
               key={i.id}
               className={` w-full flex flex-col justify-between items-start px-4 pb-2 `}
@@ -56,7 +57,7 @@ export default function LogPreview() {
               <p className="text-sm self-start py-1  whitespace-pre-wrap">{i.notes}</p>
               <motion.div
                 transition={{
-                  delay: index * 0.5 + 3,
+                  delay: index * 0.1 + 2,
                   duration: 0.05,
                 }}
                 initial={{ opacity: 0 }}
