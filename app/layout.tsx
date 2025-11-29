@@ -50,7 +50,7 @@ export default async function RootLayout({
       >
         <SessionProviderWrapper>
           <Header />
-          <div className=" grow font-sans pt-12 ">{children}</div>
+          <div className=" grow font-sans pt-12 bg-gradient-to-b from-zinc-50 to-zinc-100">{children}</div>
           <Footer />
         </SessionProviderWrapper>
         <Analytics />

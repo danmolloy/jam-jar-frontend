@@ -24,7 +24,7 @@ export default function InputField({
           max={max}
           name={name}
           type={type}
-          className="border border-neutral-400 rounded shadow-xs my-1 p-1"
+          className="border border-zinc-400 rounded shadow-xs my-1 p-1"
         />
         {error && <div id="feedback" className='text-red-500 text-xs'>{error}</div>}
       </label>

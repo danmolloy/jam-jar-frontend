@@ -6,6 +6,7 @@ import ButtonPrimary from '../form/buttonPrimary';
 import { PracticeItem } from './detailView';
 import { useRouter } from 'next/navigation';
 import { authenticatedFetch } from '../../app/lib/api';
+import * as Yup from 'yup'
 
 export default function CreateSession({
   session,
@@ -38,7 +39,7 @@ export default function CreateSession({
           activity: '',
           notes: '',
           duration: 0,
-          tags: [''],
+          tags: '',
           rating: 1,
           date: formatDateForInput(new Date()),
         }
@@ -46,10 +47,18 @@ export default function CreateSession({
           activity: practiceItem!.activity ? practiceItem!.activity : '',
           notes: practiceItem!.notes ? practiceItem!.notes : '',
           duration: practiceItem!.duration ? practiceItem!.duration : 0,
-          tags: practiceItem!.tags ? practiceItem!.tags : [''],
+          tags: practiceItem!.tags.join(" ") ? practiceItem!.tags.join(" ") : '',
           rating: practiceItem!.rating ? practiceItem!.rating : 3,
           date: formatDateForInput(practiceItem!.date || new Date()),
         };
+
+  const validationSchema = Yup.object().shape({
+    activity: Yup.string().required(),
+    notes: Yup.string(),
+    duration: Yup.number().required(),
+    tags: Yup.string(),
+    date: Yup.string().required()
+  })
 
   const handleCreate = async (values: {
     activity: string;
@@ -130,26 +139,43 @@ export default function CreateSession({
   };
 
   return (
-    <div className="flex flex-col p-4 ">
-      <h1>{mode === 'create' ? 'Add' : 'Update'} Practice</h1>
+    <div className="flex flex-col p-4  items-center w-[90vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
+      <h1>{mode === 'create' ? 'Log' : 'Update'} Practice</h1>
       <Formik
         initialValues={initialVals}
         onSubmit={async (values) => {
-          await handleCreate(values);
+          await handleCreate({
+            ...values, 
+            tags: values.tags.split(' ').filter(i => i.length > 0).map(i => i.slice(1))
+          });
         }}
-        //validationSchema={{}}
+        validationSchema={validationSchema}
       >
         {(props) => (
           <form onSubmit={props.handleSubmit}>
+            <InputField label="Date" type="date" name="date" error={props.errors.date} />
             <InputField
               label="Activity"
               type="text"
               name="activity"
               error={props.errors.activity}
             />
-            <InputField label="Date" type="date" name="date" error={props.errors.date} />
-            <InputField label="Notes" type="text" name="notes" error={props.errors.notes} />
+            <div className="flex flex-col m-2 my-4">
+      <label className="flex flex-col w-60 ">
+        Notes
 
+            <Field
+                as="textarea"
+                className="border  border-zinc-400 rounded w-full p-2 text-sm"
+                name="notes"
+                rows={3}
+                maxLength={50}
+                />
+                </label>
+                <p className={`text-sm m-1 ${props.values.notes.length === 0 && "hidden"}`}>{props.values.notes.length}/50</p>
+                        {props.errors.notes && <div id="feedback" className='text-red-500 text-xs'>{props.errors.notes}</div>}
+
+                </div>
             <InputField
               error={props.errors.duration}
               label="Duration"
@@ -158,42 +184,32 @@ export default function CreateSession({
               min={1}
               max={180}
             />
-            <FieldArray
-              name="tags"
-              render={(arrayHelpers) => (
-                <div>
-                  <div>
-                    <div className="flex flex-wrap flex-col  mx-2 my-4">
-                      <label>Tags</label>
-                      {props.values.tags.map((tag, index) => (
-                        <div key={index} className="flex items-center gap-1 ">
-                          <Field
-                            name={`tags[${index}]`}
-                            //placeholder="#hashtag"
-                            className="border border-neutral-400 rounded shadow-xs my-1 p-1"
-                          />
-                          <button
-                            type="button"
-                            onClick={() => arrayHelpers.remove(index)}
-                            className="text-red-500"
-                          >
-                            ×
-                          </button>
-                        </div>
-                      ))}
-                    </div>
 
-                    <button
-                      type="button"
-                      onClick={() => arrayHelpers.push('')}
-                      className="text-blue-600 underline"
-                    >
-                      Add Hashtag
-                    </button>
-                  </div>
-                </div>
-              )}
-            />
+            <div className="flex flex-col m-2 my-4">
+      <label className="flex flex-col w-60 ">
+        Tags
+<Field
+                as="textarea"
+                className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
+                name="tags"
+                rows={3}
+                maxLength={50}
+                onChange={(e: { target: { value: any; }; }) => {
+        let value = e.target.value;
+
+        // Split on whitespace, add # to words missing it
+        value = value
+          .split(/\s+/)
+          .map((w: string) => w && !w.startsWith("#") ? `#${w}` : w)
+          .join(" ");
+
+        props.setFieldValue("tags", value);
+      }}
+                />
+        </label>
+                        <p className={`text-sm m-1 ${props.values.tags.length === 0 && "hidden"}`}>{props.values.tags.length}/50</p>
+
+            </div>
             <ButtonPrimary type="submit" label="Submit" handleClick={() => {}} />
           </form>
         )}
