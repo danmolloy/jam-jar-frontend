@@ -99,25 +99,30 @@ export default function Login() {
               {error}
             </div>
           )}
-          <div className='flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 '>
-          <InputField label="Username" name="username" type="text" error={props.errors.username} />
-          <InputField
-            label="Password"
-            name="password"
-            type="password"
-            error={props.errors.password}
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="flex flex-row items-center bg-dark text-white hover:underline border p-1 m-2 hover:cursor-pointer rounded disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <p>{isSubmitting ? 'Signing in...' : 'Sign in'}</p>
-            <IoIosArrowRoundForward size={24} />
-          </button>
-          <Link href="/reset-password" className="hover:underline text-sm text-blue-600 mt-4">
-            Forgot your password?
-          </Link>
+          <div className="flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 ">
+            <InputField
+              label="Username"
+              name="username"
+              type="text"
+              error={props.errors.username}
+            />
+            <InputField
+              label="Password"
+              name="password"
+              type="password"
+              error={props.errors.password}
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="flex flex-row items-center bg-dark text-white hover:underline border p-1 m-2 hover:cursor-pointer rounded disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <p>{isSubmitting ? 'Signing in...' : 'Sign in'}</p>
+              <IoIosArrowRoundForward size={24} />
+            </button>
+            <Link href="/reset-password" className="hover:underline text-sm text-blue-600 mt-4">
+              Forgot your password?
+            </Link>
           </div>
         </Form>
       )}

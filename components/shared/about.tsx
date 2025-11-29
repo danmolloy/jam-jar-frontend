@@ -33,7 +33,7 @@ export const featuresArr: {
   },
   {
     title: 'Journaling',
-    body: "Capture your goals, lesson notes, reflections, or anything else that shapes your musical journey.",
+    body: 'Capture your goals, lesson notes, reflections, or anything else that shapes your musical journey.',
     icon: <IoIosJournal />,
     component: <DiaryComponent />,
   },

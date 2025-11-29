@@ -39,7 +39,6 @@ export default function Contact() {
       id="contact"
       className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-gradient-to-b from-zinc-50 to-zinc-100  "
     >
-      
       <h1 className="font-sans md:text-4xl text-4xl font-normal">Get in touch</h1>
       <Formik
         initialValues={{

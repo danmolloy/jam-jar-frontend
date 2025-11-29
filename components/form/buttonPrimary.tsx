@@ -7,7 +7,7 @@ export default function ButtonPrimary({
   label: string;
   type: 'button' | 'submit' | 'reset' | undefined;
   handleClick: () => void;
-  disabled: boolean
+  disabled: boolean;
 }) {
   return (
     <button

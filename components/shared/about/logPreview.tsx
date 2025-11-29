@@ -43,8 +43,8 @@ export default function LogPreview() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{
-                delay: index * 0.5 + .5,
-                duration: .05
+                delay: index * 0.5 + 0.5,
+                duration: 0.05,
               }}
               key={i.id}
               className={` w-full flex flex-col justify-between items-start px-4 pb-2 `}

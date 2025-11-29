@@ -23,8 +23,7 @@ export default function CreateDiaryEntry({
   const [data, setData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const router = useRouter();
 
@@ -73,7 +72,7 @@ export default function CreateDiaryEntry({
 
   const handleCreate = async (values: { title: string; body: string }) => {
     try {
-            setIsSubmitting(true);
+      setIsSubmitting(true);
 
       const res =
         mode === 'create'
@@ -103,8 +102,7 @@ export default function CreateDiaryEntry({
     } catch (err) {
       console.error(err);
     } finally {
-            setIsSubmitting(false);
-
+      setIsSubmitting(false);
     }
   };
 
@@ -168,7 +166,12 @@ export default function CreateDiaryEntry({
                 <p className="text-sm m-2">{props.values.body.length}/5000</p>
               )}
             </div>
-            <ButtonPrimary disabled={isSubmitting} type="submit" label={isSubmitting ? "Submitting" : "Submit"} handleClick={() => {}} />
+            <ButtonPrimary
+              disabled={isSubmitting}
+              type="submit"
+              label={isSubmitting ? 'Submitting' : 'Submit'}
+              handleClick={() => {}}
+            />
           </form>
         )}
       </Formik>

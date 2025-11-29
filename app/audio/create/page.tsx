@@ -73,7 +73,7 @@ const AudioSchema = Yup.object().shape({
   notes: Yup.string(),
   tags: Yup.string(),
   location: Yup.string(),
-  date: Yup.string().required("Date is required"),
+  date: Yup.string().required('Date is required'),
 });
 
 export default function CreateAudioPage() {
@@ -151,178 +151,179 @@ export default function CreateAudioPage() {
   const isDailyLimitReached = dailyUploadCount !== null && dailyUploadCount >= MAX_DAILY_UPLOADS;
 
   return (
-        <div className='w-full p-2 h-full flex flex-col items-center justify-center'>
-    <div className="flex flex-col p-4  items-center  w-[90vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
-
-      <h1>Upload Audio</h1>
-      {userData.subscription_status !== 'active' && (
-        <div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
-          <div className="bg-white self-center mt-12 p-4 shadow text-center">
-            <h2 className="font-bold">Audio uploading is available for premium users only.</h2>
-            <Link href="/account" className="hover:underline text-blue-600 ">
-              Upgrade now
-            </Link>
+    <div className="w-full p-2 h-full flex flex-col items-center justify-center">
+      <div className="flex flex-col p-4  items-center  w-[90vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
+        <h1>Upload Audio</h1>
+        {userData.subscription_status !== 'active' && (
+          <div className="backdrop-blur-xs absolute flex flex-col items-start justify-start w-full h-full z-10">
+            <div className="bg-white self-center mt-12 p-4 shadow text-center">
+              <h2 className="font-bold">Audio uploading is available for premium users only.</h2>
+              <Link href="/account" className="hover:underline text-blue-600 ">
+                Upgrade now
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
-      {/* Daily upload count display */}
-      {!checkingUploads && dailyUploadCount !== null && (
-        <div
-          className={`p-1 rounded-md my-1 ${isDailyLimitReached ? 'bg-red-50 border border-red-200' : ''}`}
-        >
-          <p className={`text-sm ${isDailyLimitReached ? 'text-red-700' : 'text-zinc-500'}`}>
-            Daily uploads: {dailyUploadCount} / {MAX_DAILY_UPLOADS}
-            {isDailyLimitReached && (
-              <span className="block mt-1 font-medium">
-                Daily upload limit reached. Please try again tomorrow.
-              </span>
-            )}
-          </p>
-        </div>
-      )}
-
-      {checkingUploads && (
-        <div className="p-3 bg-gray-50 border border-gray-200 rounded-md mb-4">
-          <p className="text-sm text-gray-600">Checking daily upload count...</p>
-        </div>
-      )}
-
-      <Formik
-        initialValues={{
-          file: null as File | null,
-          title: '',
-          notes: '',
-          tags: '', 
-          location: '',
-          date: '',
-        }}
-        validationSchema={AudioSchema}
-        onSubmit={async (values, { resetForm }) => {
-          setMessage('');
-          setIsSubmitting(true);
-          try {
-            if (!session?.accessToken) {
-              setMessage('You must be logged in to upload audio.');
-              setIsSubmitting(false);
-              return;
-            }
-
-            // Check daily upload limit
-            if (dailyUploadCount !== null && dailyUploadCount >= MAX_DAILY_UPLOADS) {
-              setMessage(
-                `Daily upload limit reached (${MAX_DAILY_UPLOADS} uploads per day). Please try again tomorrow.`,
-              );
-              setIsSubmitting(false);
-              return;
-            }
-
-            const key = await uploadAudioFile(values.file!, session.accessToken);
-            await saveRecordingMetadata(
-              key,
-              {
-                title: values.title,
-                notes: values.notes,
-                tags: values.tags ? values.tags.split(',').map((t) => t.trim()) : [],
-                location: values.location,
-                date: values.date,
-              },
-              session.accessToken,
-            );
-
-            // Update the daily upload count
-            setDailyUploadCount((prev) => (prev !== null ? prev + 1 : 1));
-            setMessage('Audio uploaded successfully!');
-            resetForm();
-          } catch (err: unknown) {
-            if (err instanceof Error) {
-              setMessage('Upload failed: ' + err.message);
-            } else {
-              setMessage('Upload failed: ' + String(err));
-            }
-          } finally {
-            setIsSubmitting(false);
-          }
-        }}
-      >
-        {(props) => (
-          <Form className="flex flex-col gap-2 max-w-md mt-4">
-            <label className="flex flex-col m-2 my-4">
-              Audio File
-              <input
-              className=' file:border file:p-1 file:rounded file:border-blue-700 file:text-blue-700 my-2 cursor-pointer file:cursor-pointer text-zinc-600 '
-                type="file"
-                accept="audio/mpeg,audio/mp3,audio/*"
-                onChange={(e) =>
-                  props.setFieldValue('file', e.currentTarget.files ? e.currentTarget.files[0] : null)
-                }
-              />
-              
-              {props.errors.file && props.touched.file && (
-                <div className="text-red-500 text-xs">{props.errors.file as string}</div>
-              )}
-            </label>
-             <InputField
-              label="Date"
-              name="date"
-              type="date"
-              error={props.touched.date ? (props.errors.date as string) : undefined}
-            />
-            <InputField
-              label="Title"
-              name="title"
-              type="text"
-              error={props.touched.title ? (props.errors.title as string) : undefined}
-            />
-            <InputField
-              label="Notes"
-              name="notes"
-              type="text"
-              error={props.touched.notes ? (props.errors.notes as string) : undefined}
-            />
-             <div className="flex flex-col m-2 my-4">
-                  <label className="flex flex-col w-60 ">
-                    Tags
-            <Field
-                            as="textarea"
-                            className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
-                            name="tags"
-                            rows={3}
-                            maxLength={50}
-                            onChange={(e: { target: { value: string; }; }) => {
-                    let value = e.target.value;
-            
-                    // Split on whitespace, add # to words missing it
-                    value = value
-                      .split(/\s+/)
-                      .map((w: string) => w && !w.startsWith("#") ? `#${w}` : w)
-                      .join(" ");
-            
-                    props.setFieldValue("tags", value);
-                  }}
-                            />
-                    </label>
-                                    <p className={`text-sm m-1 ${props.values.tags.length === 0 && "hidden"}`}>{props.values.tags.length}/50</p>
-            
-                        </div>
-            <InputField
-              label="Location"
-              name="location"
-              type="text"
-              error={props.touched.location ? (props.errors.location as string) : undefined}
-            />
-           
-            <ButtonPrimary
-            handleClick={() => {}}
-              type="submit"
-              label={submitting ? 'Uploading...' : "Upload"}
-              disabled={submitting || isDailyLimitReached}
-              
-            />
-            {message && <div className="mt-2 text-green-600">{message}</div>}
-          </Form>
         )}
-      </Formik>
-    </div>
+        {/* Daily upload count display */}
+        {!checkingUploads && dailyUploadCount !== null && (
+          <div
+            className={`p-1 rounded-md my-1 ${isDailyLimitReached ? 'bg-red-50 border border-red-200' : ''}`}
+          >
+            <p className={`text-sm ${isDailyLimitReached ? 'text-red-700' : 'text-zinc-500'}`}>
+              Daily uploads: {dailyUploadCount} / {MAX_DAILY_UPLOADS}
+              {isDailyLimitReached && (
+                <span className="block mt-1 font-medium">
+                  Daily upload limit reached. Please try again tomorrow.
+                </span>
+              )}
+            </p>
+          </div>
+        )}
+
+        {checkingUploads && (
+          <div className="p-3 bg-gray-50 border border-gray-200 rounded-md mb-4">
+            <p className="text-sm text-gray-600">Checking daily upload count...</p>
+          </div>
+        )}
+
+        <Formik
+          initialValues={{
+            file: null as File | null,
+            title: '',
+            notes: '',
+            tags: '',
+            location: '',
+            date: '',
+          }}
+          validationSchema={AudioSchema}
+          onSubmit={async (values, { resetForm }) => {
+            setMessage('');
+            setIsSubmitting(true);
+            try {
+              if (!session?.accessToken) {
+                setMessage('You must be logged in to upload audio.');
+                setIsSubmitting(false);
+                return;
+              }
+
+              // Check daily upload limit
+              if (dailyUploadCount !== null && dailyUploadCount >= MAX_DAILY_UPLOADS) {
+                setMessage(
+                  `Daily upload limit reached (${MAX_DAILY_UPLOADS} uploads per day). Please try again tomorrow.`,
+                );
+                setIsSubmitting(false);
+                return;
+              }
+
+              const key = await uploadAudioFile(values.file!, session.accessToken);
+              await saveRecordingMetadata(
+                key,
+                {
+                  title: values.title,
+                  notes: values.notes,
+                  tags: values.tags ? values.tags.split(',').map((t) => t.trim()) : [],
+                  location: values.location,
+                  date: values.date,
+                },
+                session.accessToken,
+              );
+
+              // Update the daily upload count
+              setDailyUploadCount((prev) => (prev !== null ? prev + 1 : 1));
+              setMessage('Audio uploaded successfully!');
+              resetForm();
+            } catch (err: unknown) {
+              if (err instanceof Error) {
+                setMessage('Upload failed: ' + err.message);
+              } else {
+                setMessage('Upload failed: ' + String(err));
+              }
+            } finally {
+              setIsSubmitting(false);
+            }
+          }}
+        >
+          {(props) => (
+            <Form className="flex flex-col gap-2 max-w-md mt-4">
+              <label className="flex flex-col m-2 my-4">
+                Audio File
+                <input
+                  className=" file:border file:p-1 file:rounded file:border-blue-700 file:text-blue-700 my-2 cursor-pointer file:cursor-pointer text-zinc-600 "
+                  type="file"
+                  accept="audio/mpeg,audio/mp3,audio/*"
+                  onChange={(e) =>
+                    props.setFieldValue(
+                      'file',
+                      e.currentTarget.files ? e.currentTarget.files[0] : null,
+                    )
+                  }
+                />
+                {props.errors.file && props.touched.file && (
+                  <div className="text-red-500 text-xs">{props.errors.file as string}</div>
+                )}
+              </label>
+              <InputField
+                label="Date"
+                name="date"
+                type="date"
+                error={props.touched.date ? (props.errors.date as string) : undefined}
+              />
+              <InputField
+                label="Title"
+                name="title"
+                type="text"
+                error={props.touched.title ? (props.errors.title as string) : undefined}
+              />
+              <InputField
+                label="Notes"
+                name="notes"
+                type="text"
+                error={props.touched.notes ? (props.errors.notes as string) : undefined}
+              />
+              <div className="flex flex-col m-2 my-4">
+                <label className="flex flex-col w-60 ">
+                  Tags
+                  <Field
+                    as="textarea"
+                    className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
+                    name="tags"
+                    rows={3}
+                    maxLength={50}
+                    onChange={(e: { target: { value: string } }) => {
+                      let value = e.target.value;
+
+                      // Split on whitespace, add # to words missing it
+                      value = value
+                        .split(/\s+/)
+                        .map((w: string) => (w && !w.startsWith('#') ? `#${w}` : w))
+                        .join(' ');
+
+                      props.setFieldValue('tags', value);
+                    }}
+                  />
+                </label>
+                <p className={`text-sm m-1 ${props.values.tags.length === 0 && 'hidden'}`}>
+                  {props.values.tags.length}/50
+                </p>
+              </div>
+              <InputField
+                label="Location"
+                name="location"
+                type="text"
+                error={props.touched.location ? (props.errors.location as string) : undefined}
+              />
+
+              <ButtonPrimary
+                handleClick={() => {}}
+                type="submit"
+                label={submitting ? 'Uploading...' : 'Upload'}
+                disabled={submitting || isDailyLimitReached}
+              />
+              {message && <div className="mt-2 text-green-600">{message}</div>}
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 }

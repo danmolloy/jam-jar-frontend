@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Loading from '@/app/loading';
 
-
 type Recording = components['schemas']['AudioRecording'];
 type UserData = components['schemas']['User'];
 
@@ -168,7 +167,7 @@ export default function AudioForm({
         }}
       >
         {({ errors, touched }) => (
-          <Form >
+          <Form>
             <InputField
               label="Title*"
               name="title"

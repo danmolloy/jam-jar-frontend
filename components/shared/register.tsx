@@ -201,8 +201,7 @@ export default function Register() {
       onSubmit={handleRegister}
     >
       {(props) => (
-        <Form           className="flex flex-col p-4 items-center justify-center w-screen min-h-[80vh]  bg-gradient-to-b  from-zinc-50 to-zinc-100"
->
+        <Form className="flex flex-col p-4 items-center justify-center w-screen min-h-[80vh]  bg-gradient-to-b  from-zinc-50 to-zinc-100">
           <h1>Register</h1>
           <p>
             Already have an account?{' '}
@@ -212,48 +211,47 @@ export default function Register() {
           </p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           {success && <div className="text-green-500 mb-4">{success}</div>}
-                    <div className='flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 '>
+          <div className="flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 ">
+            <UsernameField
+              label="Username"
+              name="username"
+              error={props.errors.username}
+              onUsernameChange={debouncedCheckUsername}
+              usernameStatus={usernameStatus}
+            />
+            <InputField label="Email" name="email" type="email" error={props.errors.email} />
+            <InputField
+              label="Password"
+              name="password"
+              type="password"
+              error={props.errors.password}
+            />
+            <InputField
+              label="Confirm Password"
+              name="password_confirm"
+              type="password"
+              error={props.errors.password_confirm}
+            />
+            <InputField
+              label="First Name"
+              name="first_name"
+              type="text"
+              error={props.errors.first_name}
+            />
+            <InputField
+              label="Last Name"
+              name="last_name"
+              type="text"
+              error={props.errors.last_name}
+            />
 
-          <UsernameField
-            label="Username"
-            name="username"
-            error={props.errors.username}
-            onUsernameChange={debouncedCheckUsername}
-            usernameStatus={usernameStatus}
-          />
-          <InputField label="Email" name="email" type="email" error={props.errors.email} />
-          <InputField
-            label="Password"
-            name="password"
-            type="password"
-            error={props.errors.password}
-          />
-          <InputField
-            label="Confirm Password"
-            name="password_confirm"
-            type="password"
-            error={props.errors.password_confirm}
-          />
-          <InputField
-            label="First Name"
-            name="first_name"
-            type="text"
-            error={props.errors.first_name}
-          />
-          <InputField
-            label="Last Name"
-            name="last_name"
-            type="text"
-            error={props.errors.last_name}
-          />
-
-          <button
-            type="submit"
-            className="flex  flex-row items-center hover:underline border bg-dark text-white  p-1 m-2 hover:cursor-pointer rounded"
-          >
-            <p>{isSubmitting ? 'Creating Account...' : 'Register'}</p>
-            <IoIosArrowRoundForward size={24} />
-          </button>
+            <button
+              type="submit"
+              className="flex  flex-row items-center hover:underline border bg-dark text-white  p-1 m-2 hover:cursor-pointer rounded"
+            >
+              <p>{isSubmitting ? 'Creating Account...' : 'Register'}</p>
+              <IoIosArrowRoundForward size={24} />
+            </button>
           </div>
         </Form>
       )}

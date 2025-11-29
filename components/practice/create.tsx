@@ -6,7 +6,7 @@ import ButtonPrimary from '../form/buttonPrimary';
 import { PracticeItem } from './detailView';
 import { useRouter } from 'next/navigation';
 import { authenticatedFetch } from '../../app/lib/api';
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 import { useState } from 'react';
 
 export default function CreateSession({
@@ -19,8 +19,7 @@ export default function CreateSession({
   practiceItem?: PracticeItem & { tags: string[] };
 }) {
   const router = useRouter();
-      const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Helper function to format date for HTML input
   const formatDateForInput = (date: string | Date) => {
@@ -50,7 +49,7 @@ export default function CreateSession({
           activity: practiceItem!.activity ? practiceItem!.activity : '',
           notes: practiceItem!.notes ? practiceItem!.notes : '',
           duration: practiceItem!.duration ? practiceItem!.duration : 0,
-          tags: practiceItem!.tags.join(" ") ? practiceItem!.tags.join(" ") : '',
+          tags: practiceItem!.tags.join(' ') ? practiceItem!.tags.join(' ') : '',
           rating: practiceItem!.rating ? practiceItem!.rating : 3,
           date: formatDateForInput(practiceItem!.date || new Date()),
         };
@@ -60,8 +59,8 @@ export default function CreateSession({
     notes: Yup.string(),
     duration: Yup.number().required(),
     tags: Yup.string(),
-    date: Yup.string().required()
-  })
+    date: Yup.string().required(),
+  });
 
   const handleCreate = async (values: {
     activity: string;
@@ -119,7 +118,7 @@ export default function CreateSession({
     }
 
     try {
-            setIsSubmitting(true);
+      setIsSubmitting(true);
 
       const res = await authenticatedFetch(
         `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${practiceItem!.id}/`,
@@ -141,8 +140,7 @@ export default function CreateSession({
         alert('Failed to delete practice item. Please try again.');
       }
     } finally {
-            setIsSubmitting(false);
-
+      setIsSubmitting(false);
     }
   };
 
@@ -153,8 +151,11 @@ export default function CreateSession({
         initialValues={initialVals}
         onSubmit={async (values) => {
           await handleCreate({
-            ...values, 
-            tags: values.tags.split(' ').filter(i => i.length > 0).map(i => i.slice(1))
+            ...values,
+            tags: values.tags
+              .split(' ')
+              .filter((i) => i.length > 0)
+              .map((i) => i.slice(1)),
           });
         }}
         validationSchema={validationSchema}
@@ -169,21 +170,25 @@ export default function CreateSession({
               error={props.errors.activity}
             />
             <div className="flex flex-col m-2 my-4">
-      <label className="flex flex-col w-60 ">
-        Notes
-
-            <Field
-                as="textarea"
-                className="border  border-zinc-400 rounded w-full p-2 text-sm"
-                name="notes"
-                rows={3}
-                maxLength={50}
+              <label className="flex flex-col w-60 ">
+                Notes
+                <Field
+                  as="textarea"
+                  className="border  border-zinc-400 rounded w-full p-2 text-sm"
+                  name="notes"
+                  rows={3}
+                  maxLength={50}
                 />
-                </label>
-                <p className={`text-sm m-1 ${props.values.notes.length === 0 && "hidden"}`}>{props.values.notes.length}/50</p>
-                        {props.errors.notes && <div id="feedback" className='text-red-500 text-xs'>{props.errors.notes}</div>}
-
+              </label>
+              <p className={`text-sm m-1 ${props.values.notes.length === 0 && 'hidden'}`}>
+                {props.values.notes.length}/50
+              </p>
+              {props.errors.notes && (
+                <div id="feedback" className="text-red-500 text-xs">
+                  {props.errors.notes}
                 </div>
+              )}
+            </div>
             <InputField
               error={props.errors.duration}
               label="Duration"
@@ -194,31 +199,37 @@ export default function CreateSession({
             />
 
             <div className="flex flex-col m-2 my-4">
-      <label className="flex flex-col w-60 ">
-        Tags
-<Field
-                as="textarea"
-                className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
-                name="tags"
-                rows={3}
-                maxLength={50}
-                onChange={(e: { target: { value: string; }; }) => {
-        let value = e.target.value;
+              <label className="flex flex-col w-60 ">
+                Tags
+                <Field
+                  as="textarea"
+                  className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
+                  name="tags"
+                  rows={3}
+                  maxLength={50}
+                  onChange={(e: { target: { value: string } }) => {
+                    let value = e.target.value;
 
-        // Split on whitespace, add # to words missing it
-        value = value
-          .split(/\s+/)
-          .map((w: string) => w && !w.startsWith("#") ? `#${w}` : w)
-          .join(" ");
+                    // Split on whitespace, add # to words missing it
+                    value = value
+                      .split(/\s+/)
+                      .map((w: string) => (w && !w.startsWith('#') ? `#${w}` : w))
+                      .join(' ');
 
-        props.setFieldValue("tags", value);
-      }}
+                    props.setFieldValue('tags', value);
+                  }}
                 />
-        </label>
-                        <p className={`text-sm m-1 ${props.values.tags.length === 0 && "hidden"}`}>{props.values.tags.length}/50</p>
-
+              </label>
+              <p className={`text-sm m-1 ${props.values.tags.length === 0 && 'hidden'}`}>
+                {props.values.tags.length}/50
+              </p>
             </div>
-            <ButtonPrimary disabled={isSubmitting} type="submit" label={isSubmitting?"Submitting":"Submit"} handleClick={() => {}} />
+            <ButtonPrimary
+              disabled={isSubmitting}
+              type="submit"
+              label={isSubmitting ? 'Submitting' : 'Submit'}
+              handleClick={() => {}}
+            />
           </form>
         )}
       </Formik>
