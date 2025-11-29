@@ -1,5 +1,5 @@
 'use client';
-import { Field, FieldArray, Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import { Session } from 'next-auth';
 import InputField from '../form/inputField';
 import ButtonPrimary from '../form/buttonPrimary';
@@ -194,7 +194,7 @@ export default function CreateSession({
                 name="tags"
                 rows={3}
                 maxLength={50}
-                onChange={(e: { target: { value: any; }; }) => {
+                onChange={(e: { target: { value: string; }; }) => {
         let value = e.target.value;
 
         // Split on whitespace, add # to words missing it

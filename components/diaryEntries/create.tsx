@@ -128,7 +128,7 @@ export default function CreateDiaryEntry({
     }
   };
   return (
-    <div className="p-4">
+    <div className="flex flex-col p-4  w-[95vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
       <h1>Create Entry</h1>
       <Formik
         initialValues={initialVals}
