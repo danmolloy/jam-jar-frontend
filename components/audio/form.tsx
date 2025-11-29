@@ -1,5 +1,5 @@
 'use client';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
 import InputField from '@/components/form/inputField';
@@ -7,6 +7,7 @@ import { components } from '@/types/api';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Loading from '@/app/loading';
+import ButtonPrimary from '../form/buttonPrimary';
 
 type Recording = components['schemas']['AudioRecording'];
 type UserData = components['schemas']['User'];
@@ -139,9 +140,14 @@ export default function AudioForm({
   };
 
   return (
-    <div className="flex flex-col p-4  items-center w-[90vw] my-4 bg-blue-500 md:w-1/2 border rounded border-zinc-400 shadow">
+      <div className="flex flex-col p-4  items-center  w-[90vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
       <h1>{mode === 'create' ? 'Upload' : 'Update'} Audio</h1>
-
+      <button
+        onClick={() => handleDelete()}
+        className="px-1 hover:underline cursor-pointer self-center text-red-600 border border-red-600 rounded"
+      >
+        Delete
+      </button>
       <Formik
         initialValues={{
           //file: null as File | null,
@@ -166,55 +172,70 @@ export default function AudioForm({
           handleUpdate({ ...values, tags: formattedTags });
         }}
       >
-        {({ errors, touched }) => (
+        {(props) => (
           <Form>
             <InputField
               label="Title*"
               name="title"
               type="text"
-              error={touched.title ? (errors.title as string) : undefined}
-            />
-            <InputField
-              label="Notes"
-              name="notes"
-              type="text"
-              error={touched.notes ? (errors.notes as string) : undefined}
-            />
-            <InputField
-              label="Tags (comma separated)"
-              name="tags"
-              type="text"
-              error={touched.tags ? (errors.tags as string) : undefined}
-            />
-            <InputField
-              label="Location"
-              name="location"
-              type="text"
-              error={touched.location ? (errors.location as string) : undefined}
+              error={props.touched.title ? (props.errors.title as string) : undefined}
             />
             <InputField
               label="Date"
               name="date"
               type="date"
-              error={touched.date ? (errors.date as string) : undefined}
+              error={props.touched.date ? (props.errors.date as string) : undefined}
             />
-            <button
-              type="submit"
-              disabled={submitting}
-              className="bg-blue-600 text-white rounded px-4 py-2 mt-2"
-            >
-              {submitting ? 'Updating...' : 'Update'}
-            </button>
+            <InputField
+              label="Notes"
+              name="notes"
+              type="text"
+              error={props.touched.notes ? (props.errors.notes as string) : undefined}
+            />
+            <div className="flex flex-col m-2 my-4">
+                            <label className="flex flex-col w-60 ">
+                              Tags
+                              <Field
+                                as="textarea"
+                                className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
+                                name="tags"
+                                rows={3}
+                                maxLength={50}
+                                onChange={(e: { target: { value: string } }) => {
+                                  let value = e.target.value;
+            
+                                  // Split on whitespace, add # to words missing it
+                                  value = value
+                                    .split(/\s+/)
+                                    .map((w: string) => (w && !w.startsWith('#') ? `#${w}` : w))
+                                    .join(' ');
+            
+                                  props.setFieldValue('tags', value);
+                                }}
+                              />
+                            </label>
+                            <p className={`text-sm m-1 ${props.values.tags.length === 0 && 'hidden'}`}>
+                              {props.values.tags.length}/50
+                            </p>
+                          </div>
+            <InputField
+              label="Location"
+              name="location"
+              type="text"
+              error={props.touched.location ? (props.errors.location as string) : undefined}
+            />
+            
+            <ButtonPrimary
+                            handleClick={() => {}}
+                            type="submit"
+                            label={submitting ? 'Uploading...' : 'Upload'}
+                            disabled={submitting}
+                          />
             {/* {message && <div className="mt-2 text-green-600">{message}</div>} */}
           </Form>
         )}
       </Formik>
-      <button
-        onClick={() => handleDelete()}
-        className="self-center hover:bg-red-50 border border-red-500 text-red-500 rounded"
-      >
-        Delete
-      </button>
+      
     </div>
   );
 }

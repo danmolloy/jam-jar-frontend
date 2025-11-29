@@ -21,5 +21,8 @@ export default async function AudioUpdatePage({ params }: { params: Promise<{ id
 
   const data: Recording = await res.json();
 
-  return <AudioForm mode={'update'} audioRecording={data} />;
+  return (
+      <div className="w-full p-2 h-full flex flex-col items-center justify-center">
+
+  <AudioForm mode={'update'} audioRecording={data} /></div>);
 }

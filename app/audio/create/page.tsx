@@ -244,8 +244,8 @@ export default function CreateAudioPage() {
           }}
         >
           {(props) => (
-            <Form className="flex flex-col gap-2 max-w-md mt-4">
-              <label className="flex flex-col m-2 my-4">
+            <Form className="flex flex-col items-center justify-center  mt-4">
+              <label className="flex flex-col w-60 m-2 my-4">
                 Audio File
                 <input
                   className=" file:border file:p-1 file:rounded file:border-blue-700 file:text-blue-700 my-2 cursor-pointer file:cursor-pointer text-zinc-600 "
