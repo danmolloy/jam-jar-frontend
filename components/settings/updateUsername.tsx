@@ -87,6 +87,7 @@ export default function UpdateUsername({ username }: { username: string }) {
             </div>
             <div className="lg:self-end">
               <ButtonPrimary
+              disabled={isSubmitting}
                 type="submit"
                 label={isSubmitting ? 'Updating...' : 'Save Changes'}
                 handleClick={() => {}}

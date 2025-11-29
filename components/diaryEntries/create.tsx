@@ -23,6 +23,8 @@ export default function CreateDiaryEntry({
   const [data, setData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const router = useRouter();
 
@@ -71,6 +73,8 @@ export default function CreateDiaryEntry({
 
   const handleCreate = async (values: { title: string; body: string }) => {
     try {
+            setIsSubmitting(true);
+
       const res =
         mode === 'create'
           ? await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/diary-entries/`, {
@@ -98,6 +102,9 @@ export default function CreateDiaryEntry({
       }
     } catch (err) {
       console.error(err);
+    } finally {
+            setIsSubmitting(false);
+
     }
   };
 
@@ -161,7 +168,7 @@ export default function CreateDiaryEntry({
                 <p className="text-sm m-2">{props.values.body.length}/5000</p>
               )}
             </div>
-            <ButtonPrimary type="submit" label="Submit" handleClick={() => {}} />
+            <ButtonPrimary disabled={isSubmitting} type="submit" label={isSubmitting ? "Submitting" : "Submit"} handleClick={() => {}} />
           </form>
         )}
       </Formik>

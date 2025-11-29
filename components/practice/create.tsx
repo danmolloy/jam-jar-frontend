@@ -7,6 +7,7 @@ import { PracticeItem } from './detailView';
 import { useRouter } from 'next/navigation';
 import { authenticatedFetch } from '../../app/lib/api';
 import * as Yup from 'yup'
+import { useState } from 'react';
 
 export default function CreateSession({
   session,
@@ -18,6 +19,8 @@ export default function CreateSession({
   practiceItem?: PracticeItem & { tags: string[] };
 }) {
   const router = useRouter();
+      const [isSubmitting, setIsSubmitting] = useState(false);
+  
 
   // Helper function to format date for HTML input
   const formatDateForInput = (date: string | Date) => {
@@ -116,6 +119,8 @@ export default function CreateSession({
     }
 
     try {
+            setIsSubmitting(true);
+
       const res = await authenticatedFetch(
         `${process.env.NEXT_PUBLIC_API_URL}api/practice-items/${practiceItem!.id}/`,
         { method: 'DELETE' },
@@ -135,6 +140,9 @@ export default function CreateSession({
       } else {
         alert('Failed to delete practice item. Please try again.');
       }
+    } finally {
+            setIsSubmitting(false);
+
     }
   };
 
@@ -210,7 +218,7 @@ export default function CreateSession({
                         <p className={`text-sm m-1 ${props.values.tags.length === 0 && "hidden"}`}>{props.values.tags.length}/50</p>
 
             </div>
-            <ButtonPrimary type="submit" label="Submit" handleClick={() => {}} />
+            <ButtonPrimary disabled={isSubmitting} type="submit" label={isSubmitting?"Submitting":"Submit"} handleClick={() => {}} />
           </form>
         )}
       </Formik>

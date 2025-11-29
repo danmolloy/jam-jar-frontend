@@ -83,6 +83,7 @@ export default function UpdateDailyTarget({ dailyTarget }: { dailyTarget: number
             </div>
             <div className="lg:self-end">
               <ButtonPrimary
+              disabled={props.isSubmitting}
                 type="submit"
                 label={isSubmitting ? 'Updating...' : 'Save Changes'}
                 handleClick={() => {}}

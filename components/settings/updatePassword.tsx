@@ -133,6 +133,7 @@ export default function UpdatePassword() {
               error={props.errors.new_password_confirm}
             />
             <ButtonPrimary
+            disabled={isSubmitting}
               type="submit"
               label={isSubmitting ? 'Updating...' : 'Save Changes'}
               handleClick={() => {}}

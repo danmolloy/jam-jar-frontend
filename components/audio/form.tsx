@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Loading from '@/app/loading';
 
+
 type Recording = components['schemas']['AudioRecording'];
 type UserData = components['schemas']['User'];
 
@@ -139,7 +140,7 @@ export default function AudioForm({
   };
 
   return (
-    <div className="relative">
+    <div className="flex flex-col p-4  items-center w-[90vw] my-4 bg-blue-500 md:w-1/2 border rounded border-zinc-400 shadow">
       <h1>{mode === 'create' ? 'Upload' : 'Update'} Audio</h1>
 
       <Formik
@@ -167,7 +168,7 @@ export default function AudioForm({
         }}
       >
         {({ errors, touched }) => (
-          <Form className="flex flex-col gap-4 max-w-md mt-4">
+          <Form >
             <InputField
               label="Title*"
               name="title"
