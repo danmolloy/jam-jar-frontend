@@ -1,4 +1,3 @@
-'use client';
 import { featuresArr } from '../about';
 
 export default function About() {

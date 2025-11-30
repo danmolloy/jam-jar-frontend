@@ -1,3 +1,4 @@
+'use client'
 import { PracticeItem } from '@/components/practice/detailView';
 import { DateTime } from 'luxon';
 import { motion } from 'framer-motion';
