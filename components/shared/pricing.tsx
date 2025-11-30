@@ -35,7 +35,7 @@ export default function PricingIndex({ landing }: { landing: boolean }) {
       className={` p-4 font-medium flex  flex-col items-center justify-center min-h-[90vh] ${landing ? 'bg-dark' : 'bg-neutral-100 w-full'}`}
     >
       {landing ? (
-        <h2 className=" font-sans md:text-4xl text-4xl m-4 mt-8 text-white text-center">
+        <h2 className=" font-sans md:text-4xl text-4xl m-4 mt-8 text-zinc-50 text-center">
           Start for free and upgrade for more insight.
         </h2>
       ) : (
@@ -47,12 +47,12 @@ export default function PricingIndex({ landing }: { landing: boolean }) {
         {pricingTiers.map((i, index) => (
           <div
             key={index}
-            className="border-2 rounded shadow m-2 p-4  border-blue-600 bg-white w-[80vw] md:w-[40vw]  min-h-[300px]"
+            className="border-2 rounded shadow m-2 p-4  border-zinc-600 bg-zinc-50 w-[80vw] md:w-[40vw]  min-h-[300px]"
           >
             <h2 className="font-semibold text-2xl">{i.name}</h2>
             <p>{i.byline}</p>
             <h3 className="font-bold text-3xl my-4 text-center">
-              {i.price}
+              <span className='text-blue-600'>{i.price}</span>
               {i.frequency && <span className="text-base font-medium">/{i.frequency}</span>}
             </h3>
             <div>
@@ -69,7 +69,7 @@ export default function PricingIndex({ landing }: { landing: boolean }) {
         <div className=" w-screen flex flex-col items-center">
           <Link
             href={'/register'}
-            className="text-xl flex flex-row items-center   border   bg-black text-white rounded py-1 px-2 hover:underline "
+            className="text-xl flex flex-row items-center      bg-blue-600 text-white rounded py-1 px-2 hover:underline "
           >
             <p className="text-md">Start for free</p>
             <IoIosArrowRoundForward size={24} />
