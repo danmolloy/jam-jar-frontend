@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   title: 'Jam Jar - Music Practice Journal',
   description:
     'Track practice sessions, set daily goals, record audio and visualise your progress. Jam Jar is a simple, powerful practice diary built to help musicians stay consistent and improve faster.',
-  metadataBase: new URL("https://www.jamjar.site/"),
+  metadataBase: new URL("https://jamjar.site/"),
   alternates: {
     canonical: "/"
   }
