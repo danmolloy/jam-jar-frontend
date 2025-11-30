@@ -8,13 +8,7 @@ const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   experimental: {
     mdxRs: true,
-  },
-  // Optimize CSS loading
-  optimizeFonts: true,
-  // Enable compression
-  compress: true,
-  // Optimize bundle size
-  swcMinify: true,
+  }
 };
 
 const withMDX = createMDX({
