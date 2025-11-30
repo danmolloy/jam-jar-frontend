@@ -3,15 +3,18 @@ import { RiRecordMailLine } from 'react-icons/ri';
 import { IoIosJournal } from 'react-icons/io';
 import { FaHashtag } from 'react-icons/fa6';
 import { CiBoxList } from 'react-icons/ci';
+import dynamic from 'next/dynamic';
 import About from './about/index';
 import { DateTime } from 'luxon';
-import TargetComponent from './about/targetComponent';
-import DiaryComponent from './about/diaryComponent';
-import AudioPreview from './about/audioPreview';
-import TagsPreview from './about/tagsPreview';
-import LogPreview from './about/logPreview';
-import HeatmapPreview from './about/heatmapPreview';
 import { FcHeatMap } from 'react-icons/fc';
+
+// Lazy load heavy preview components that use animations
+const TargetComponent = dynamic(() => import('./about/targetComponent'), { ssr: true });
+const DiaryComponent = dynamic(() => import('./about/diaryComponent'), { ssr: true });
+const AudioPreview = dynamic(() => import('./about/audioPreview'), { ssr: true });
+const TagsPreview = dynamic(() => import('./about/tagsPreview'), { ssr: true });
+const LogPreview = dynamic(() => import('./about/logPreview'), { ssr: true });
+const HeatmapPreview = dynamic(() => import('./about/heatmapPreview'), { ssr: true });
 
 export const featuresArr: {
   title: string;

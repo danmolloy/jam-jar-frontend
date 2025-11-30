@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   optimizeFonts: true,
   // Enable compression
   compress: true,
+  // Optimize bundle size
+  swcMinify: true,
 };
 
 const withMDX = createMDX({
