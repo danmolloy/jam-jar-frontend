@@ -10,6 +10,7 @@ export default function ExternalMenu() {
   return (
     <div className=" flex flex-col items-center justify-center ">
       <button
+        aria-label='Open Menu'
         className=" hover:border hover:cursor-pointer p-1 rounded-full"
         onBlur={() => setTimeout(() => setShowMenu(false), 250)}
         onClick={(e) => {

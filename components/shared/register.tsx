@@ -246,6 +246,7 @@ export default function Register() {
             />
 
             <button
+              aria-label='Submit'
               type="submit"
               className="flex  flex-row items-center hover:underline border bg-dark text-white  p-1 m-2 hover:cursor-pointer rounded"
             >
