@@ -26,7 +26,7 @@ export default function DiaryComponent() {
           ))}
         </p>
       </div>
-      <div className="text-white text-sm bg-blue-400 w-10 rounded text-center self-end cursor-pointer">
+      <div className="text-blue-600 text-sm border border-blue-600 hover:underline bg-white w-10 rounded text-center self-end cursor-pointer">
         Save
       </div>
     </div>

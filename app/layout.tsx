@@ -11,23 +11,31 @@ const geistSans = Raleway({
   variable: '--font-geist-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
+  preload: true,
 });
 
 const playfairDisplay = Playfair_Display({
   variable: '--font-playfair-display',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  preload: true,
 });
 
 const barriecito = Coiny({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-barriecito',
+  display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {

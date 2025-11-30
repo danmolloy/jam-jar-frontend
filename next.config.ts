@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
   },
+  // Optimize CSS loading
+  optimizeFonts: true,
+  // Enable compression
+  compress: true,
 };
 
 const withMDX = createMDX({
