@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className="h-screen w-screen bg-blue-400 text-dark flex flex-col items-center pt-[20vh] sm:pt-[30vh] -mt-12">
+    <div className="h-screen w-screen bg-gradient-to-b from-zinc-50 via-blue-200 via-70%  to-zinc-50 text-dark flex flex-col items-center pt-[20vh] sm:pt-[30vh] -mt-12">
       <h1 className="text-6xl lg:text-8xl font-display flex flex-col text-center">
         Jam Jar <span className="text-lg font-display">Practice diary for musicians</span>
       </h1>
@@ -19,7 +19,7 @@ export default function Hero() {
           <div className="flex flex-row mt-2">
             <Link
               href={'/register'}
-              className="bg-yellow-400 text-black border-dark border text-center rounded flex flex-row items-center justify-center font-bold  w-32 py-1 px-2  mx-2  hover:underline"
+              className="bg-yellow-300 text-black border-dark border text-center rounded flex flex-row items-center justify-center font-bold  w-32 py-1 px-2  mx-2  hover:underline"
             >
               <p>Start for free</p>
               {/* <IoIosArrowRoundForward size={20}/> */}

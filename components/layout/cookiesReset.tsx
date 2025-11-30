@@ -10,7 +10,7 @@ export default function CookiesReset() {
       window.location.reload();
     };
   return (
-    <button aria-label="Reset Cookies Consent" onClick={() => handleReset()} className="hover:underline text-start cursor-pointer">
+    <button aria-label="Reset Cookies Consent" onClick={() => handleReset()} className="hover:underline text-start cursor-pointer p-1">
           Reset Cookies Consent
         </button>
   )
