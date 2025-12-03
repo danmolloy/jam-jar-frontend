@@ -56,21 +56,21 @@ export default function LogPreview() {
                 </p>
               </div>
               <p className="text-sm self-start py-1  whitespace-pre-wrap">{i.notes}</p>
-              <motion.div
-                transition={{
-                  delay: index * 0.1 + 2,
-                  duration: 0.05,
-                }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <div
+                
                 className="text-xs flex flex-row gap-1 text-blue-500"
               >
                 {i.tags?.map((i, ind) => (
-                  <p key={ind} className="hover:underline cursor-pointer">
+                  <motion.p transition={{
+                  delay: index * 0.4 + 2 + ind,
+                  duration: 0.05,
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }} key={ind} className="hover:underline cursor-pointer">
                     #{i}
-                  </p>
+                  </motion.p>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
