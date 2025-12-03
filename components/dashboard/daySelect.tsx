@@ -7,6 +7,7 @@ import { components } from '@/types/api';
 import DiaryEntry from './diaryEntry';
 import { MdEdit } from 'react-icons/md';
 import Link from 'next/link';
+import { motion } from 'framer-motion'
 
 export type Recording = components['schemas']['AudioRecording'];
 type DiaryEntry = components['schemas']['DiaryEntry'];
@@ -43,6 +44,10 @@ export default function DaySelect({
     return arr;
   };
 
+  const getDay = (ind: number) => {
+    return selectedWeek.plus({ days: ind });
+  }
+
   const weekData = getWeekArray().map((day) => {
     const totalMinutes = practiceItems
       .filter((item) => DateTime.fromISO(item.date).hasSame(day, 'day'))
@@ -70,7 +75,8 @@ export default function DaySelect({
 
   return (
     <div className="flex flex-col lg:flex-row ">
-      <div className="flex flex-col  shadow m-2 rounded p-4 bg-white w-full lg:max-w-[60%]">
+      <div
+       className="flex flex-col  shadow m-2 rounded p-4 bg-white lg:max-w-[60%] ">
         <div className="flex flex-row justify-evenly">
           <button
             className="text-black hover:text-slate-400 hover:cursor-pointer"
@@ -126,11 +132,18 @@ export default function DaySelect({
                     cx="10"
                     cy="10"
                   />
-                  <circle
-                    className="text-green-400 transition-all duration-1000 ease-in-out"
+                  <motion.circle
+                  
+                    className="text-green-400 "
                     strokeWidth="2"
                     strokeDasharray="56.5"
-                    strokeDashoffset={`${56.5 - (56.5 * progressPercent(i)) / 100}`}
+                    initial={{strokeDashoffset:56.5}}
+                  animate={{
+                    strokeDashoffset: 56.5 - (56.5 * progressPercent(i)) / 100
+                  }}
+                  transition={{
+                    type: 'spring', stiffness: 120, damping: 20 
+                  }}
                     strokeLinecap="round"
                     stroke="currentColor"
                     fill="transparent"
@@ -145,8 +158,8 @@ export default function DaySelect({
         </div>
         {/* md */}
         <div className="hidden md:flex flex-row justify-evenly ">
-          {getWeekArray().map((i) => (
-            <div key={i.toISO()} className="relative w-20 h-20 m-2">
+          {new Array(7).fill(null).map((_, ind) => (
+            <div key={ind} className="relative w-20 h-20 m-2">
               <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90 ">
                 <circle
                   className="text-slate-200"
@@ -157,11 +170,20 @@ export default function DaySelect({
                   cx="40"
                   cy="40"
                 />
-                <circle
-                  className={'text-green-400  transition-all duration-1000 ease-in-out'}
+                <motion.circle
+                key={ind}
+                  className={'text-green-400'}
                   strokeWidth="8"
                   strokeDasharray="226.2" // 2πr where r=36
-                  strokeDashoffset={`${226.2 - (226.2 * progressPercent(i)) / 100}`}
+                  initial={{strokeDashoffset:226.2}}
+                  animate={{
+                    strokeDashoffset:226.2 - (226.2 * progressPercent(getDay(ind))) / 100,
+                  }}
+                  transition={{
+                    type: 'spring', stiffness: 120, damping: 20 
+                  }}
+                  
+                  
                   strokeLinecap="round"
                   stroke="currentColor"
                   fill="transparent"
@@ -172,15 +194,15 @@ export default function DaySelect({
               </svg>
 
               <button
-                onClick={() => setSelectedDay(i)}
-                disabled={i > DateTime.now()}
+                onClick={() => setSelectedDay(getDay(ind))}
+                disabled={getDay(ind) > DateTime.now()}
                 className={`absolute hidden hover:text-blue-500 disabled:text-slate-500 disabled:cursor-auto top-0 left-0 w-full h-full rounded-full text-sm shadow p-2 md:flex flex-col items-center justify-center hover:cursor-pointer 
-      ${selectedDay.hasSame(i, 'day') ? ' text-blue-500 font-medium' : ''}`}
+      ${selectedDay.hasSame(getDay(ind), 'day') ? ' text-blue-500 font-medium' : ''}`}
               >
-                <p>{i.toFormat('ccc')}</p>
-                <p>{i.toFormat('dd')}</p>
+                <p>{getDay(ind).toFormat('ccc')}</p>
+                <p>{getDay(ind).toFormat('dd')}</p>
                 <div className="h-2 w-2 flex flex-col items-center justify-center">
-                  {dayRecordings(i).length > 0 && <p>•</p>}
+                  {dayRecordings(getDay(ind)).length > 0 && <p>•</p>}
                 </div>
               </button>
             </div>

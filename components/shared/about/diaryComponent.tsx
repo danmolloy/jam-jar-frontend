@@ -23,7 +23,7 @@ export default function DiaryComponent() {
         .typeString(text2)
         .start();
     }
-  }, [isInView, text0, text1, text2]);
+  }, [isInView]);
 
   return (
     <div className="bg-white text-xs p-4 m-4 w-54  rounded shadow flex flex-col">

@@ -13,6 +13,7 @@ import Link from 'next/link';
 import AllEntries from './allEntries';
 import { DateTime } from 'luxon';
 import Loading from '@/app/loading';
+import { motion } from 'framer-motion'
 
 type UserData = components['schemas']['User'];
 
@@ -75,7 +76,9 @@ export default function Dashboard({ session }: { session: Session | null }) {
           : data.practice_items.filter((i) => i.tags!.includes(selectedTag));
 
   return (
-    <div className="flex flex-col p-4 bg-zinc-100">
+    <motion.div
+      layout
+      transition={{ duration: 0.5, ease: "easeInOut" }} className="flex flex-col p-4 bg-zinc-100">
       {data.subscription_status !== 'active' && (
         <div className="text-center bg-white text-blue-600 font-medium mb-4 p-4 ">
           <Link href="/account" className="hover:underline">
@@ -155,6 +158,6 @@ export default function Dashboard({ session }: { session: Session | null }) {
         />
         <AllEntries entries={data.diary_entries} />
       </div>
-    </div>
+    </motion.div>
   );
 }

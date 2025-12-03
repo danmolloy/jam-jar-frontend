@@ -4,7 +4,7 @@ import InputField from '../form/inputField';
 import UsernameField from '../form/usernameField';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { IoIosArrowRoundForward } from 'react-icons/io';
@@ -117,8 +117,8 @@ export default function Register() {
     };
   };
 
-  const debouncedCheckUsername = useCallback(
-    debounce((username: string) => checkUsernameAvailability(username), 500),
+  const debouncedCheckUsername = useMemo(
+    () => debounce((username: string) => checkUsernameAvailability(username), 500),
     [checkUsernameAvailability],
   );
 

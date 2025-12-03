@@ -17,7 +17,7 @@ export default function WeekBarChart({
   selectedWeek: DateTime;
 }) {
   return (
-    <div className={'shadow rounded p-2 bg-white m-2 lg:w-1/2'}>
+    <div className={'shadow rounded p-2 bg-white m-2 lg:w-1/2 transition-all'}>
       <div className="p-2">
         <h2 className="text-base">
           WEEK {selectedWeek.startOf('week').toFormat('dd LLLL yyyy').toUpperCase()}
