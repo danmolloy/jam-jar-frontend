@@ -136,8 +136,7 @@ export default function Contact() {
               </div>
             </div>
             <button
-                          aria-label='Submit'
-
+              aria-label="Submit"
               disabled={props.isSubmitting || sendStatus === 'sending'}
               id="submit-button"
               type="submit"

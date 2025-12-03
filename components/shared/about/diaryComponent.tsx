@@ -1,16 +1,16 @@
-'use client'
+'use client';
 import { DateTime } from 'luxon';
 import { useInView } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
-import Typewriter, { TypewriterClass } from 'typewriter-effect'
+import Typewriter, { TypewriterClass } from 'typewriter-effect';
 
-const text0 = `Today's practice focused on letting go of perfection and just performing. `
+const text0 = `Today's practice focused on letting go of perfection and just performing. `;
 const text1 = `I concentrated on breathing deeply before each run through, visualising the audition space and playing through everything without stopping. `;
-const text2 = ` (regardless of mistakes). It was effective practice for the audition, and this is something I'm going to practice every day this week.`
+const text2 = ` (regardless of mistakes). It was effective practice for the audition, and this is something I'm going to practice every day this week.`;
 export default function DiaryComponent() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
-const typewriterRef = useRef<TypewriterClass | null>(null);
+  const typewriterRef = useRef<TypewriterClass | null>(null);
 
   useEffect(() => {
     if (isInView && typewriterRef.current) {
@@ -33,14 +33,14 @@ const typewriterRef = useRef<TypewriterClass | null>(null);
       </div>
       <div ref={ref} className="text-xs  h-60 py-1">
         <Typewriter
-   onInit={(instance) => {
-          typewriterRef.current = instance;
-        }}
-        options={{
-          cursor: "|",      
-          delay: 50,
-        }}
-/>
+          onInit={(instance) => {
+            typewriterRef.current = instance;
+          }}
+          options={{
+            cursor: '|',
+            delay: 50,
+          }}
+        />
         {/* <p className={`whitespace-pre-wrap leading-relaxed ${isInView ? 'fade-in-text' : 'opacity-0'}`}>
           {text}
         </p> */}

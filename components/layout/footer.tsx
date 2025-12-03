@@ -2,8 +2,6 @@ import Link from 'next/link';
 import CookiesReset from './cookiesReset';
 
 export default function Footer() {
-
-
   return (
     <footer className="text-sm flex flex-col items-start justify-start w-full bg-dark font-mono text-white p-4 py-8 min-h-[140px]">
       <div className="flex flex-col justify-between items-start w-full text-xs py-2">

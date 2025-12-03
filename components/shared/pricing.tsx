@@ -52,7 +52,7 @@ export default function PricingIndex({ landing }: { landing: boolean }) {
             <h2 className="font-semibold text-2xl">{i.name}</h2>
             <p>{i.byline}</p>
             <h3 className="font-bold text-3xl my-4 text-center">
-              <span className='text-blue-600'>{i.price}</span>
+              <span className="text-blue-600">{i.price}</span>
               {i.frequency && <span className="text-base font-medium">/{i.frequency}</span>}
             </h3>
             <div>

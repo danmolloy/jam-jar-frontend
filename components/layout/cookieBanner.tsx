@@ -11,7 +11,7 @@ export default function CookieBanner() {
       </p>
       <div className="flex gap-2">
         <button
-          aria-label='Accept optional cookies'
+          aria-label="Accept optional cookies"
           onClick={() => {
             accept();
           }}
@@ -20,8 +20,7 @@ export default function CookieBanner() {
           Accept
         </button>
         <button
-                  aria-label='Decline optional cookies'
-
+          aria-label="Decline optional cookies"
           onClick={() => {
             decline();
           }}

@@ -140,7 +140,7 @@ export default function AudioForm({
   };
 
   return (
-      <div className="flex flex-col p-4  items-center  w-[90vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
+    <div className="flex flex-col p-4  items-center  w-[90vw] my-4 bg-white md:w-1/2 border rounded border-zinc-400 shadow">
       <h1>{mode === 'create' ? 'Upload' : 'Update'} Audio</h1>
       <button
         onClick={() => handleDelete()}
@@ -193,49 +193,48 @@ export default function AudioForm({
               error={props.touched.notes ? (props.errors.notes as string) : undefined}
             />
             <div className="flex flex-col m-2 my-4">
-                            <label className="flex flex-col w-60 ">
-                              Tags
-                              <Field
-                                as="textarea"
-                                className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
-                                name="tags"
-                                rows={3}
-                                maxLength={50}
-                                onChange={(e: { target: { value: string } }) => {
-                                  let value = e.target.value;
-            
-                                  // Split on whitespace, add # to words missing it
-                                  value = value
-                                    .split(/\s+/)
-                                    .map((w: string) => (w && !w.startsWith('#') ? `#${w}` : w))
-                                    .join(' ');
-            
-                                  props.setFieldValue('tags', value);
-                                }}
-                              />
-                            </label>
-                            <p className={`text-sm m-1 ${props.values.tags.length === 0 && 'hidden'}`}>
-                              {props.values.tags.length}/50
-                            </p>
-                          </div>
+              <label className="flex flex-col w-60 ">
+                Tags
+                <Field
+                  as="textarea"
+                  className="border border-zinc-400 rounded w-full p-2 text-sm text-blue-700"
+                  name="tags"
+                  rows={3}
+                  maxLength={50}
+                  onChange={(e: { target: { value: string } }) => {
+                    let value = e.target.value;
+
+                    // Split on whitespace, add # to words missing it
+                    value = value
+                      .split(/\s+/)
+                      .map((w: string) => (w && !w.startsWith('#') ? `#${w}` : w))
+                      .join(' ');
+
+                    props.setFieldValue('tags', value);
+                  }}
+                />
+              </label>
+              <p className={`text-sm m-1 ${props.values.tags.length === 0 && 'hidden'}`}>
+                {props.values.tags.length}/50
+              </p>
+            </div>
             <InputField
               label="Location"
               name="location"
               type="text"
               error={props.touched.location ? (props.errors.location as string) : undefined}
             />
-            
+
             <ButtonPrimary
-                            handleClick={() => {}}
-                            type="submit"
-                            label={submitting ? 'Uploading...' : 'Upload'}
-                            disabled={submitting}
-                          />
+              handleClick={() => {}}
+              type="submit"
+              label={submitting ? 'Uploading...' : 'Upload'}
+              disabled={submitting}
+            />
             {/* {message && <div className="mt-2 text-green-600">{message}</div>} */}
           </Form>
         )}
       </Formik>
-      
     </div>
   );
 }

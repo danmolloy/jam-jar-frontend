@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { PracticeItem } from '@/components/practice/detailView';
 import { DateTime } from 'luxon';
 import { motion } from 'framer-motion';
@@ -56,17 +56,18 @@ export default function LogPreview() {
                 </p>
               </div>
               <p className="text-sm self-start py-1  whitespace-pre-wrap">{i.notes}</p>
-              <div
-                
-                className="text-xs flex flex-row gap-1 text-blue-500"
-              >
+              <div className="text-xs flex flex-row gap-1 text-blue-500">
                 {i.tags?.map((i, ind) => (
-                  <motion.p transition={{
-                  delay: index * 0.4 + 2 + ind,
-                  duration: 0.05,
-                }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }} key={ind} className="hover:underline cursor-pointer">
+                  <motion.p
+                    transition={{
+                      delay: index * 0.4 + 2 + ind,
+                      duration: 0.05,
+                    }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    key={ind}
+                    className="hover:underline cursor-pointer"
+                  >
                     #{i}
                   </motion.p>
                 ))}

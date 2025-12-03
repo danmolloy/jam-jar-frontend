@@ -113,8 +113,7 @@ export default function Login() {
               error={props.errors.password}
             />
             <button
-                          aria-label='Submit'
-
+              aria-label="Submit"
               type="submit"
               disabled={isSubmitting}
               className="flex flex-row items-center bg-dark text-white hover:underline border p-1 m-2 hover:cursor-pointer rounded disabled:opacity-50 disabled:cursor-not-allowed"
