@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className="h-screen w-screen bg-gradient-to-b from-sky-300 via-sky-300 to-sky-400 text-dark flex flex-col items-center pt-[20vh] sm:pt-[30vh] -mt-12">
+    <div className="h-screen w-screen bg-sky-300  text-dark flex flex-col items-center pt-[20vh] sm:pt-[30vh] -mt-12">
       <h1 className="text-6xl lg:text-8xl font-display flex flex-col text-center">
         Jam Jar <span className="text-lg font-display">Practice diary for musicians</span>
       </h1>

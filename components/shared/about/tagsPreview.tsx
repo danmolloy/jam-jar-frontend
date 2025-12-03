@@ -56,7 +56,7 @@ export default function TagsPreview() {
           return (
             <div key={word} className="flex items-center justify-center min-h-[60px]">
               <span
-                className={`cursor-pointer p-2 font-semibold ${size} ${rotate} text-black select-none block ${
+                className={`cursor-pointer p-2 font-semibold ${size} ${rotate} text-blue-500 select-none block ${
                   shouldAnimate ? 'animate-float' : ''
                 }`}
                 style={
