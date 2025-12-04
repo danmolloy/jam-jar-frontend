@@ -4,6 +4,7 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { IoIosMenu } from 'react-icons/io';
+import { motion } from 'framer-motion';
 
 export default function SessionMenu() {
   const [showMenu, setShowMenu] = useState(false);
@@ -24,7 +25,22 @@ export default function SessionMenu() {
       {showMenu && (
         <div className="fixed right-0 top-12 pb-32 text-white flex flex-col justify-evenly bg-dark  w-screen h-[95vh]  z-10 py-8 text-2xl font-bold  ">
           <Link href={'/'} className="px-4 mx-4 hover:underline text-start rounded">
-            Home
+            <motion.p
+              initial={{
+                y: 20,
+                opacity: 0.6,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                ease: 'easeOut',
+                duration: 0.3,
+              }}
+            >
+              Home
+            </motion.p>
           </Link>
           {/*       <Link href="/items" className="p-3 py-6 hover:bg-amber-200 text-start">Practice</Link>
            */}{' '}
@@ -32,13 +48,43 @@ export default function SessionMenu() {
           {/*       <Link href={'/goals/create'} className="p-3 py-6 hover:bg-amber-200 text-start">Create Goal</Link>
            */}{' '}
           <Link href={'/settings'} className="px-4 mx-4 hover:underline text-start rounded">
-            Settings
+            <motion.p
+              initial={{
+                y: 20,
+                opacity: 0.6,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                ease: 'easeOut',
+                duration: 0.5,
+              }}
+            >
+              Settings
+            </motion.p>
           </Link>
           <button
             onClick={() => signOut()}
             className="px-4 mx-4 hover:underline text-start rounded"
           >
-            Log Out
+            <motion.p
+              initial={{
+                y: 20,
+                opacity: 0.6,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                ease: 'easeOut',
+                duration: 0.7,
+              }}
+            >
+              Sign Out
+            </motion.p>
           </button>
         </div>
       )}

@@ -7,7 +7,7 @@ import { components } from '@/types/api';
 import DiaryEntry from './diaryEntry';
 import { MdEdit } from 'react-icons/md';
 import Link from 'next/link';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 export type Recording = components['schemas']['AudioRecording'];
 type DiaryEntry = components['schemas']['DiaryEntry'];
@@ -46,7 +46,7 @@ export default function DaySelect({
 
   const getDay = (ind: number) => {
     return selectedWeek.plus({ days: ind });
-  }
+  };
 
   const weekData = getWeekArray().map((day) => {
     const totalMinutes = practiceItems
@@ -75,8 +75,7 @@ export default function DaySelect({
 
   return (
     <div className="flex flex-col lg:flex-row ">
-      <div
-       className="flex flex-col  shadow m-2 rounded p-4 bg-white lg:max-w-[60%] ">
+      <div className="flex flex-col  shadow m-2 rounded p-4 bg-white lg:max-w-[60%] ">
         <div className="flex flex-row justify-evenly">
           <button
             className="text-black hover:text-slate-400 hover:cursor-pointer"
@@ -133,17 +132,18 @@ export default function DaySelect({
                     cy="10"
                   />
                   <motion.circle
-                  
                     className="text-green-400 "
                     strokeWidth="2"
                     strokeDasharray="56.5"
-                    initial={{strokeDashoffset:56.5}}
-                  animate={{
-                    strokeDashoffset: 56.5 - (56.5 * progressPercent(i)) / 100
-                  }}
-                  transition={{
-                    type: 'spring', stiffness: 120, damping: 20 
-                  }}
+                    initial={{ strokeDashoffset: 56.5 }}
+                    animate={{
+                      strokeDashoffset: 56.5 - (56.5 * progressPercent(i)) / 100,
+                    }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 120,
+                      damping: 20,
+                    }}
                     strokeLinecap="round"
                     stroke="currentColor"
                     fill="transparent"
@@ -171,19 +171,19 @@ export default function DaySelect({
                   cy="40"
                 />
                 <motion.circle
-                key={ind}
+                  key={ind}
                   className={'text-green-400'}
                   strokeWidth="8"
                   strokeDasharray="226.2" // 2πr where r=36
-                  initial={{strokeDashoffset:226.2}}
+                  initial={{ strokeDashoffset: 226.2 }}
                   animate={{
-                    strokeDashoffset:226.2 - (226.2 * progressPercent(getDay(ind))) / 100,
+                    strokeDashoffset: 226.2 - (226.2 * progressPercent(getDay(ind))) / 100,
                   }}
                   transition={{
-                    type: 'spring', stiffness: 120, damping: 20 
+                    type: 'spring',
+                    stiffness: 120,
+                    damping: 20,
                   }}
-                  
-                  
                   strokeLinecap="round"
                   stroke="currentColor"
                   fill="transparent"
