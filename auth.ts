@@ -1,6 +1,5 @@
-import NextAuth, { User } from 'next-auth';
+import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { ZodError } from 'zod/v4';
 import { jwtDecode } from 'jwt-decode';
 
 function isTokenExpired(token: string) {
