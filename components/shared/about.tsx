@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import About from './about/index';
 import { DateTime } from 'luxon';
 import { FcHeatMap } from 'react-icons/fc';
+import AboutText from './aboutText';
 
 // Lazy load heavy preview components that use animations
 const TargetComponent = dynamic(() => import('./about/targetComponent'), { ssr: true });
@@ -77,38 +78,9 @@ export const featuresArr: {
 export default function AboutIndex() {
   return (
     <div>
-      {/* <div className="min-h-screen w-screen flex flex-col items-center justify-center text-white rounded-t-full bg-dark">
-        <div className="flex font-mono flex-col font-normal text-zinc-50 items-center justify-center md:w-2/3 lg:w-1/2 p-4 text-center">
-          <h2 className="text-xl ">Make every practice count.</h2>
-           <p className="mt-4 text-md">
-  Track what you practise, review recordings, and build consistent habits with simple tools that support your growth.
-          </p>  
-        </div>
-      </div> */}
+      
       <About />
-      {/* <div
-        id="about"
-        className="bg-gray-100  flex flex-col pb-4 min-h-screen items-center justify-center"
-      >
-        <h1 className="font-serif md:text-7xl text-6xl m-4">Capture your practice</h1>
-
-        <div className="m-4 grid grid-cols-1 md:grid-cols-4 gap-4">
-          {featuresArr.map((i, index) => (
-            <div
-              key={index}
-              className={` border rounded-xl bg-white p-6 flex flex-col
-          ${index === 0 ? 'md:col-span-2' : ''}
-          ${index === featuresArr.length - 1 ? 'md:col-span-2' : ''}`}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="text-3xl text-blue-700">{i.icon}</div>
-                <h2 className="text-2xl font-semibold">{i.title}</h2>
-              </div>
-              <p className="text-lg">{i.body}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
+      <AboutText />
     </div>
   );
 }
