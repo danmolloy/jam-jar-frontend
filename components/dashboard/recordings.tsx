@@ -18,7 +18,7 @@ export default function RecordingsTable({
   return (
     <div className="lg:w-1/2 rounded p-4  shadow m-2 bg-white">
       <h2>ALL RECORDINGS</h2>
-      <div className=" border-t border-gray-300 flex flex-col items-center justify-center h-full">
+      <div className=" border-t border-gray-300 flex flex-col items-center justify-center h-full md:justify-start">
         {!isPremium ? (
           <div className="bg-white self-center my-4 p-4  text-center">
             <h2 className="font-bold">Audio recording is available for premium users only.</h2>
@@ -58,7 +58,7 @@ export default function RecordingsTable({
                 </div>
               )}
             </div>
-          ))
+          )) 
         )}
       </div>
     </div>
