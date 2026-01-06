@@ -58,7 +58,7 @@ export default function RecordingsTable({
                 </div>
               )}
             </div>
-          )) 
+          ))
         )}
       </div>
     </div>

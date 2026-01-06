@@ -50,7 +50,7 @@ export default function TagsPreview() {
           const seed = i + 1;
           const rotate = pseudoRandom(seed) < 0.3 ? '-rotate-90' : '';
           // Only animate a subset of elements to reduce JS overhead
-          const shouldAnimate = isInView && ( Math.random() > .7);
+          const shouldAnimate = isInView && Math.random() > 0.7;
           const animationDelay = pseudoRandom(seed + 200) * 2;
 
           return (

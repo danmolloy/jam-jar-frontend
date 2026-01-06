@@ -78,7 +78,6 @@ export const featuresArr: {
 export default function AboutIndex() {
   return (
     <div>
-      
       <About />
       <AboutText />
     </div>
