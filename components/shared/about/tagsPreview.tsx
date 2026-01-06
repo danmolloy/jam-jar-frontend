@@ -50,13 +50,13 @@ export default function TagsPreview() {
           const seed = i + 1;
           const rotate = pseudoRandom(seed) < 0.3 ? '-rotate-90' : '';
           // Only animate a subset of elements to reduce JS overhead
-          const shouldAnimate = isInView && i % 3 === 0;
+          const shouldAnimate = isInView && ( Math.random() > .7);
           const animationDelay = pseudoRandom(seed + 200) * 2;
 
           return (
             <div key={word} className="flex items-center justify-center min-h-[60px]">
               <span
-                className={`cursor-pointer p-2 font-semibold ${size} ${rotate} text-blue-500 select-none block ${
+                className={`cursor-pointer p-2 font-semibold ${size} ${rotate} text-dark select-none block ${
                   shouldAnimate ? 'animate-float' : ''
                 }`}
                 style={
