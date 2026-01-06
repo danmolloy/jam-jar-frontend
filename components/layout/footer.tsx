@@ -3,7 +3,7 @@ import CookiesReset from './cookiesReset';
 
 export default function Footer() {
   return (
-    <footer className="text-sm flex flex-col items-start justify-start w-full bg-dark font-mono text-white p-4 py-8 min-h-[140px]">
+    <footer className="text-sm flex flex-col items-start justify-start w-full bg-dark border-t border-neutral-500 font-mono text-white p-4 py-8 min-h-[140px]">
       <div className="flex flex-col justify-between items-start w-full text-xs py-2">
         <Link href="/privacy" className="hover:underline p-1 min-h-[24px] flex items-center">
           Privacy Policy

@@ -1,6 +1,5 @@
 import AboutIndex from './about';
 import PricingIndex from './pricing';
-import Contact from './contact';
 import Hero from './hero';
 
 export default function LandingPage() {
@@ -11,7 +10,6 @@ export default function LandingPage() {
       <Hero />
       <AboutIndex />
       <PricingIndex landing={true} />
-      <Contact />
     </div>
   );
 }

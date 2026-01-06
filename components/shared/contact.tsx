@@ -40,6 +40,10 @@ export default function Contact() {
       className="flex flex-col w-screen justify-start items-center p-4 py-16 text-sm min-h-[90vh] bg-gradient-to-b from-zinc-50 to-zinc-100  "
     >
       <h1 className="font-sans md:text-4xl text-4xl font-normal">Get in touch</h1>
+      <div className='font-sans text-lg font-normal text-center my-4 md:w-3/4 lg:w-1/2'>
+        <p className='mt-2'>If you have a question about Jam Jar, need support, or want to suggest a feature, please get in touch using the form below.</p>
+        <p className='mt-2'>Responses are usually within one business day.</p>
+      </div>
       <Formik
         initialValues={{
           name: '',
