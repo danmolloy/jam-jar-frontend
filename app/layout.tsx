@@ -46,6 +46,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+   openGraph: {
+    type: "website",
+    locale: "en_AU",
+    url: "https://jamjar.site/",
+    siteName: "Jam Jar",
+    title: "Jam Jar – Digital Practice Journal for Musicians",
+    description:
+      "A digital practice journal for musicians. Track practice, upload recordings, and analyse progress.",
+  },
 };
 
 export default async function RootLayout({
@@ -54,7 +63,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-AU">
       <link rel="icon" href="/jar-favicon.png" sizes="any" />
 
       <body
