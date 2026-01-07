@@ -17,7 +17,7 @@ const pricingTiers = [
   {
     byline: 'Features for a serious musician',
     name: 'Premium',
-    price: '£11.99',
+    price: 'A$19.99',
     frequency: '3 months',
     features: [
       'All basic features',
