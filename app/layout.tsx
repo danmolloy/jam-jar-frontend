@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Coiny, Playfair_Display, Raleway } from 'next/font/google';
+import { Geist_Mono, Coiny, Playfair_Display, Raleway, Caveat } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -11,6 +11,14 @@ const geistSans = Raleway({
   variable: '--font-geist-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  preload: true,
+});
+
+const rockSalt = Caveat({
+  variable: '--font-rock-salt',
+  subsets: ['latin'],
+  weight: ['400'],
   display: 'swap',
   preload: true,
 });
@@ -67,7 +75,7 @@ export default async function RootLayout({
       <link rel="icon" href="/jar-favicon.png" sizes="any" />
 
       <body
-        className={`${playfairDisplay.variable} ${geistSans.variable} ${geistMono.variable} ${barriecito.variable} antialiased flex flex-col  min-h-screen`}
+        className={`${playfairDisplay.variable} ${geistSans.variable} ${geistMono.variable} ${barriecito.variable} ${rockSalt.variable} antialiased flex flex-col  min-h-screen`}
       >
         <SessionProviderWrapper>
           <Header />

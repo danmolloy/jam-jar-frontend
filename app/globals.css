@@ -21,6 +21,7 @@
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-barriecito);
   --font-serif: var(--font-playfair-display);
+  --font-informal: var(--font-rock-salt);
 }
 
 @theme {
