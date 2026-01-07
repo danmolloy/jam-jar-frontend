@@ -16,8 +16,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col md:flex-row justify-between w-full text-xs p-1 mt-4 min-h-[20px]">
-        <p>Operated by Daniel Molloy, Sole Trader, UK</p>
-        <p>© 2025 Jam Jar. All rights reserved.</p>
+        <p>Operated by Daniel Molloy, Sole Trader, Australia</p>
+        <p>© 2026 Jam Jar. All rights reserved.</p>
       </div>
     </footer>
   );
