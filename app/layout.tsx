@@ -54,14 +54,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-   openGraph: {
-    type: "website",
-    locale: "en_AU",
-    url: "https://jamjar.site/",
-    siteName: "Jam Jar",
-    title: "Jam Jar – Digital Practice Journal for Musicians",
+  openGraph: {
+    type: 'website',
+    locale: 'en_AU',
+    url: 'https://jamjar.site/',
+    siteName: 'Jam Jar',
+    title: 'Jam Jar – Digital Practice Journal for Musicians',
     description:
-      "A digital practice journal for musicians. Track practice, upload recordings, and analyse progress.",
+      'A digital practice journal for musicians. Track practice, upload recordings, and analyse progress.',
   },
 };
 

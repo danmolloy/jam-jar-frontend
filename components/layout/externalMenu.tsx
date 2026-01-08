@@ -46,7 +46,7 @@ export default function ExternalMenu() {
             </motion.p>
           </Link>
           <Link
-            href="/#about"
+            href="/about"
             onClick={() => setTimeout(() => setShowMenu(false), 250)}
             className="px-4 mx-4 hover:underline text-start rounded"
           >
