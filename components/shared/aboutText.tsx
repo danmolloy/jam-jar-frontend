@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function AboutText() {
   return (
@@ -21,7 +21,12 @@ export default function AboutText() {
       <p className="p-2 pt-6">
         Jam Jar gives you the space to notice, reflect, and grow — one practice at a time.
       </p>
-      <Link href="/about" className="border border-white p-2 rounded hover:underline cursor-pointer self-center mt-8">Learn more</Link>
+      <Link
+        href="/about"
+        className="border border-white p-2 rounded hover:underline cursor-pointer self-center mt-8"
+      >
+        Learn more
+      </Link>
     </div>
   );
 }

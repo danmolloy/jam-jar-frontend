@@ -68,6 +68,28 @@ export default function ExternalMenu() {
             </motion.p>
           </Link>
           <Link
+            href="/#posts"
+            onClick={() => setTimeout(() => setShowMenu(false), 250)}
+            className="px-4 mx-4 hover:underline text-start rounded"
+          >
+            <motion.p
+              initial={{
+                y: 20,
+                opacity: 0.6,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                ease: 'easeOut',
+                duration: 0.4,
+              }}
+            >
+              Posts
+            </motion.p>
+          </Link>
+          <Link
             href="/#pricing"
             onClick={() => setTimeout(() => setShowMenu(false), 250)}
             className="px-4 mx-4 hover:underline text-start rounded"

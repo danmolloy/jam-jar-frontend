@@ -5,7 +5,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ...components,
     // Wrapper for the entire page content
     wrapper: ({ children, ...props }) => (
-      <div className="p-4 max-w-4xl mx-auto" {...props}>
+      <div className="p-4 max-w-4xl mx-auto text-black " {...props}>
         {children}
       </div>
     ),

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
@@ -24,20 +24,43 @@ export default function AboutPage() {
         <h2 className="mt-6 text-2xl font-bold">Jam Jar Features</h2>
         <ul>
           <li className="mt-2">- Log daily practice sessions</li>
-          <li className="mt-2">- Track time spent on technical work, repertoire, or specific pieces</li>
+          <li className="mt-2">
+            - Track time spent on technical work, repertoire, or specific pieces
+          </li>
           <li className="mt-2">- Upload audio recordings to document progress over time</li>
           <li className="mt-2">- Review daily, weekly, and yearly practice patterns</li>
           <li className="mt-2">- Track daily practice time in relation to a personal goal</li>
-          <li className="mt-2">- Keep a private practice diary alongside your playing and recordings</li>
+          <li className="mt-2">
+            - Keep a private practice diary alongside your playing and recordings
+          </li>
         </ul>
       </div>
       <div>
-        <p className="mt-6">Jam Jar is designed for musicians who take their practice seriously. It’s suitable for students, professionals, and dedicated amateurs alike — anyone who values consistency and reflection in their practice.</p>
-        <p className="mt-6">Jam Jar is built by a musician who wanted a better way to track practice over time — something more thoughtful than a spreadsheet, and more private and grounded than a public practice blog or social feed.</p>
-        <p className="mt-6">Practice logs and audio recordings are private by default and are never shared without your consent.</p>
-        <p className="mt-6">Jam Jar is still evolving, shaped by how musicians use it. If you’re curious, sign up for free and see what you can build over time.</p>
+        <p className="mt-6">
+          Jam Jar is designed for musicians who take their practice seriously. It’s suitable for
+          students, professionals, and dedicated amateurs alike — anyone who values consistency and
+          reflection in their practice.
+        </p>
+        <p className="mt-6">
+          Jam Jar is built by a musician who wanted a better way to track practice over time —
+          something more thoughtful than a spreadsheet, and more private and grounded than a public
+          practice blog or social feed.
+        </p>
+        <p className="mt-6">
+          Practice logs and audio recordings are private by default and are never shared without
+          your consent.
+        </p>
+        <p className="mt-6">
+          Jam Jar is still evolving, shaped by how musicians use it. If you’re curious, sign up for
+          free and see what you can build over time.
+        </p>
       </div>
-      <Link href="/register"  className="border border-white p-2 rounded hover:underline cursor-pointer self-center mt-8">Get started</Link>
+      <Link
+        href="/register"
+        className="border border-white p-2 rounded hover:underline cursor-pointer self-center mt-8"
+      >
+        Get started
+      </Link>
     </div>
   );
 }

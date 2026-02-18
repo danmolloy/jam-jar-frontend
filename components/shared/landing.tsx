@@ -1,6 +1,7 @@
 import AboutIndex from './about';
 import PricingIndex from './pricing';
 import Hero from './hero';
+import PostsPreview from './posts/postsPreview';
 
 export default function LandingPage() {
   return (
@@ -9,6 +10,7 @@ export default function LandingPage() {
       {/* bg-[url(/background.png)] bg-size-[300px] bg-center bg-repeat */}
       <Hero />
       <AboutIndex />
+      <PostsPreview />
       <PricingIndex landing={true} />
     </div>
   );
