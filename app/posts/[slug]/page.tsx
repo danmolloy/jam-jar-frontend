@@ -6,6 +6,7 @@ import { GrFormPreviousLink } from 'react-icons/gr';
 
 const posts = {
   'how-much-should-i-practice': () => import('../content/how-much-should-i-practice.mdx'),
+  'how-to-structure-a-music-practice-session': () => import('../content/how-to-structure-a-music-practice-session.mdx')
 };
 
 type PageProps = {
