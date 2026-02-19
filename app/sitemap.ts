@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const postsDirectory = path.join(process.cwd(), "lib/posts");
+  const postsDirectory = path.join(process.cwd(), "app/posts/content");
 
   const filenames = fs.readdirSync(postsDirectory);
 
