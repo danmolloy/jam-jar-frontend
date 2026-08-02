@@ -12,7 +12,9 @@ export default function Login() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/';
+  const rawCallback = searchParams.get('callbackUrl') || '/';
+  const callbackUrl =
+    rawCallback.startsWith('/') && !rawCallback.startsWith('//') ? rawCallback : '/';
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -61,7 +63,10 @@ export default function Login() {
           });
 
           if (result?.error) {
-            if (result.error === 'CredentialsSignin') {
+            if (result.error.includes('email_not_confirmed')) {
+              router.push(`/check-email?email=${encodeURIComponent(values.username)}`);
+              return;
+            } else if (result.error === 'CredentialsSignin') {
               setError('Invalid username or password. Please try again.');
             } else if (result.error === 'Configuration') {
               setError('Authentication is not properly configured. Please contact support.');

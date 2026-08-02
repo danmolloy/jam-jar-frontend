@@ -16,7 +16,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        // Type 'Promise<{ id: number; accessToken: any; refreshToken: any; } | null>' is not assignable to type 'Awaitable<User | null>'.
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/token/`, {
           method: 'POST',
           headers: {
@@ -30,9 +29,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         const data = await res.json();
 
-        if (!res.ok || !data.access) return null;
+        if (!res.ok || !data.access) {
+          if (data?.code?.[0] === 'email_not_confirmed' || data?.code === 'email_not_confirmed') {
+            throw new Error('email_not_confirmed');
+          }
+          return null;
+        }
 
-        // Return the user object to store in the session
         const decoded = jwtDecode<{ user_id: number }>(data.access);
 
         return {
@@ -84,7 +87,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token) {
         session.user.id = String(token.id);
         session.accessToken = token.accessToken as string;
-        session.refreshToken = token.refreshToken as string;
         session.error = token.error as string;
       }
       return session;

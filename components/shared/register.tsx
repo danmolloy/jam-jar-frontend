@@ -35,7 +35,6 @@ export default function Register() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [usernameStatus, setUsernameStatus] = useState<{
     checking: boolean;
@@ -146,7 +145,6 @@ export default function Register() {
     }
     setIsSubmitting(true);
     setError('');
-    setSuccess('');
 
     try {
       const response = await fetch(`${getApiUrl()}api/register/`, {
@@ -160,11 +158,8 @@ export default function Register() {
       const data = await response.json();
 
       if (response.ok) {
-        // Registration successful, show email confirmation message
-        setSuccess(
-          data.message ||
-            'Account created successfully! Please check your email to confirm your account.',
-        );
+        router.push('/check-email');
+        return;
       } else {
         // Handle registration errors
         if (data.username) {
@@ -210,7 +205,6 @@ export default function Register() {
             </Link>
           </p>
           {error && <div className="text-red-500 mb-4">{error}</div>}
-          {success && <div className="text-green-500 mb-4">{success}</div>}
           <div className="flex flex-col bg-white items-center border border-zinc-400 rounded shadow p-4 my-4 ">
             <UsernameField
               label="Username"

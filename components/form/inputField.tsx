@@ -7,6 +7,7 @@ export default function InputField({
   error,
   min,
   max,
+  disabled,
 }: {
   name: string;
   label: string;
@@ -14,6 +15,7 @@ export default function InputField({
   error: string | undefined;
   min?: number;
   max?: number;
+  disabled?: boolean;
 }) {
   return (
     <div className="flex flex-col m-2 my-4">
@@ -24,7 +26,8 @@ export default function InputField({
           max={max}
           name={name}
           type={type}
-          className="border border-zinc-400 rounded shadow-xs my-1 p-1"
+          disabled={disabled}
+          className="border border-zinc-400 rounded shadow-xs my-1 p-1 disabled:bg-zinc-100 disabled:cursor-not-allowed"
         />
         {error && (
           <div id="feedback" className="text-red-500 text-xs">

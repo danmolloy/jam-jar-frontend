@@ -5,7 +5,13 @@ import * as Yup from 'yup';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 
-export default function UpdateDailyTarget({ dailyTarget }: { dailyTarget: number | undefined }) {
+export default function UpdateDailyTarget({
+  dailyTarget,
+  isPremium,
+}: {
+  dailyTarget: number | undefined;
+  isPremium: boolean;
+}) {
   const { data: session } = useSession();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -79,11 +85,12 @@ export default function UpdateDailyTarget({ dailyTarget }: { dailyTarget: number
                 name="daily_target"
                 type="number"
                 error={props.errors.daily_target}
+                disabled={!isPremium}
               />
             </div>
             <div className="lg:self-end">
               <ButtonPrimary
-                disabled={props.isSubmitting}
+                disabled={props.isSubmitting || !isPremium}
                 type="submit"
                 label={isSubmitting ? 'Updating...' : 'Save Changes'}
                 handleClick={() => {}}

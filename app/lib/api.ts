@@ -47,7 +47,7 @@ export async function getProtectedData(accessToken: string) {
 export async function authenticatedFetch(
   url: string,
   options: RequestInit = {},
-  session: { accessToken: string; refreshToken: string },
+  session: { accessToken: string },
 ) {
   const defaultHeaders = {
     'Content-Type': 'application/json',

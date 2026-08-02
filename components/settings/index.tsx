@@ -12,9 +12,12 @@ type UserData = components['schemas']['User'];
 export default function SettingsIndex({ user }: { user: UserData }) {
   return (
     <div>
-      <UpdateDailyTarget dailyTarget={user.daily_target} />
+      <UpdateDailyTarget
+        dailyTarget={user.daily_target}
+        isPremium={user.subscription_status === 'active'}
+      />
       <UpdateEmail email={user.email} />
-      <UpdateUsername username={user.username} />
+      
       <div className="flex flex-col p-4 items-start  justify-between lg:flex-row border-b border-neutral-300">
         <h2 className="mx-2 font-medium text-lg">Reset Password</h2>
 
