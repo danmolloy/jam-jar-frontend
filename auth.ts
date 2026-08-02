@@ -29,12 +29,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         const data = await res.json();
 
-        if (!res.ok || !data.access) {
-          if (data?.code?.[0] === 'email_not_confirmed' || data?.code === 'email_not_confirmed') {
-            throw new Error('email_not_confirmed');
-          }
-          return null;
-        }
+        if (!res.ok || !data.access) return null;
 
         const decoded = jwtDecode<{ user_id: number }>(data.access);
 
@@ -72,11 +67,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             token.accessToken = refreshed.access;
             token.error = null;
           } else {
-            console.log('Token refresh failed', refreshed);
             token.error = 'RefreshAccessTokenError';
           }
         } catch (err) {
-          console.log('Refresh error', err);
+          console.error('Refresh error', err);
           token.error = 'RefreshAccessTokenError';
         }
       }

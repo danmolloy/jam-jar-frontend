@@ -56,6 +56,20 @@ export default function Login() {
         setIsSubmitting(true);
 
         try {
+          const preCheck = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/token/`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: values.username, password: values.password }),
+          });
+
+          if (!preCheck.ok) {
+            const data = await preCheck.json();
+            if (data?.code?.[0] === 'email_not_confirmed' || data?.code === 'email_not_confirmed') {
+              router.push(`/check-email?email=${encodeURIComponent(values.username)}`);
+              return;
+            }
+          }
+
           const result = await signIn('credentials', {
             username: values.username,
             password: values.password,
@@ -63,10 +77,7 @@ export default function Login() {
           });
 
           if (result?.error) {
-            if (result.error.includes('email_not_confirmed')) {
-              router.push(`/check-email?email=${encodeURIComponent(values.username)}`);
-              return;
-            } else if (result.error === 'CredentialsSignin') {
+            if (result.error === 'CredentialsSignin') {
               setError('Invalid username or password. Please try again.');
             } else if (result.error === 'Configuration') {
               setError('Authentication is not properly configured. Please contact support.');

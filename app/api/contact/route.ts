@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       { status: 201 },
     );
   } catch (e) {
-    console.log('SES Error:', e);
+    console.error('SES Error:', e);
     const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred';
     return NextResponse.json({ error: errorMessage, success: false }, { status: 500 });
   }

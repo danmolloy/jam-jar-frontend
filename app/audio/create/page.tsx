@@ -115,7 +115,7 @@ export default function CreateAudioPage() {
         const result = await res.json();
         setUserData(result);
       } catch (err) {
-        console.log(err);
+        console.error(err);
         setError('Failed to fetch user data');
       } finally {
         setLoading(false);
